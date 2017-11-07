@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 inline t_i32	ft_memcmp(t_cptr s1, t_cptr s2, t_usz n)
 {
