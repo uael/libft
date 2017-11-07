@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,12 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include "libft/ctype.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/tys.h"
+t_i32	ft_atoi(t_cstr str)
+{
+	t_i32	result;
+	t_car	sign;
 
-#endif
+	result = 0;
+	if ((sign = *str) == '+' || sign == '-')
+		++str;
+	while (*str >= '0' && *str <= '9')
+		result = result * 10 + *str++ - '0';
+	return (sign == '-' ? -result : result);
+}

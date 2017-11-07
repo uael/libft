@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:57 by alucas-           #+#    #+#             */
+/*   Created: 2017/11/07 09:53:05 by alucas-           #+#    #+#             */
 /*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline t_i32	ft_strcmp(t_cstr s1, t_cstr s2)
+t_usz	ft_strlcat(t_str dest, t_str src, t_usz size)
 {
-	while (*s1 && (*s1 == *s2))
+	t_usz	slen;
+	t_usz	dlen;
+
+	slen = (t_usz)ft_strlen(src);
+	dlen = (t_usz)ft_strnlen(dest, size);
+	if (dlen == size)
+		return (size + slen);
+	if (slen < size - dlen)
+		ft_strncpy(dest + dlen, src, slen + 1);
+	else
 	{
-		++s1;
-		++s2;
+		ft_strncpy(dest + dlen, src, size - dlen - 1);
+		dest[size - 1] = '\0';
 	}
-	return ((t_u08)*s1 - (t_u08)*s2);
+	return (dlen + slen);
 }

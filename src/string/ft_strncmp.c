@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
+/*   Created: 2017/11/07 09:53:13 by alucas-           #+#    #+#             */
 /*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include "libft/ctype.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/tys.h"
-
-#endif
+inline t_i32	ft_strncmp(t_cstr s1, t_cstr s2, t_usz n)
+{
+	while (n-- && *s1 && (*s1 == *s2))
+	{
+		++s1;
+		++s2;
+	}
+	return (n == 0 ? 0 : (t_u08) * s1 - (t_u08) * s2);
+}

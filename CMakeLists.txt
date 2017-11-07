@@ -28,11 +28,13 @@ else ()
   set(libft_ENABLE_TEST OFF)
 endif ()
 
+set(libft_HDR ${libft_INC_DIR}/libft.h)
+file(GLOB_RECURSE libft_HDRS ${libft_HDRS}
+  ${libft_INC_DIR}/libft/*.h)
 file(GLOB_RECURSE libft_SRCS ${libft_SRCS}
   ${libft_SRC_DIR}/*.c)
-set(libft_HDR ${libft_INC_DIR}/libft.h)
 
-add_library(ft ${libft_SRCS} ${libft_HDR})
+add_library(ft ${libft_HDR} ${libft_HDRS} ${libft_SRCS})
 set_property(TARGET ft PROPERTY C_STANDARD 90)
 target_include_directories(ft PUBLIC ${libft_INC_DIR})
 target_compile_definitions(ft PRIVATE U_COMPILE)

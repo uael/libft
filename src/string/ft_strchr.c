@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:53:05 by alucas-           #+#    #+#             */
+/*   Created: 2017/11/07 09:52:55 by alucas-           #+#    #+#             */
 /*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_usz	ft_strlcat(t_str dest, t_str src, t_usz size)
+inline t_str	ft_strchr(t_cstr s, t_i32 c)
 {
-	t_usz	slen;
-	t_usz	dlen;
-
-	slen = (t_usz)ft_strlen(src);
-	dlen = (t_usz)ft_strnlen(dest, size);
-	if (dlen == size)
-		return (size + slen);
-	if (slen < size - dlen)
-		ft_strncpy(dest + dlen, src, slen + 1);
-	else
-	{
-		ft_strncpy(dest + dlen, src, size - dlen - 1);
-		dest[size - 1] = '\0';
-	}
-	return (dlen + slen);
+	if (c == 0)
+		while (1)
+			if (!*s++)
+				return ((t_str)s - 1);
+	while (*s)
+		if (*s++ == c)
+			return ((t_str)s - 1);
+	return (NULL);
 }
-
