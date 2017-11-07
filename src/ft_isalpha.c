@@ -14,5 +14,5 @@
 
 inline t_i32	ft_isalpha(t_i32 c)
 {
-	return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+	return (ft_isupper(c) || ft_islower(c));
 }

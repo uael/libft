@@ -9,3 +9,15 @@
 /*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
+inline t_usz	ft_strlen(t_str str)
+{
+	t_usz len;
+
+	len = 0;
+	while (*str++)
+		++len;
+	return (len);
+}

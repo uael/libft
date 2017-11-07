@@ -12,7 +12,7 @@
 
 #include <libft.h>
 
-t_i32	ft_memcmp(t_cptr s1, t_cptr s2, t_usz n)
+inline t_i32	ft_memcmp(t_cptr s1, t_cptr s2, t_usz n)
 {
 	t_u08 const	*a;
 	t_u08 const	*b;

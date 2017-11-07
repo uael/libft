@@ -9,3 +9,15 @@
 /*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
+inline t_str	ft_strcpy(t_str dest, t_cstr src)
+{
+	t_str s;
+
+	s = dest;
+	while ((*s++ = *src++))
+		;
+	return (dest);
+}

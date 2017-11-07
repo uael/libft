@@ -12,8 +12,7 @@
 
 #include "libft.h"
 
-
-t_ptr	ft_memmove(t_ptr dst, t_cptr src, t_usz len)
+inline t_ptr	ft_memmove(t_ptr dst, t_cptr src, t_usz len)
 {
 	t_u08		*d;
 	t_u08 const	*s;

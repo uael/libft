@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_ptr	ft_memchr(t_cptr ptr, t_i32 c, size_t n)
+inline t_ptr	ft_memchr(t_cptr ptr, t_i32 c, size_t n)
 {
 	t_u08 const *s;
 

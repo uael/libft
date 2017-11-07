@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:55 by alucas-           #+#    #+#             */
+/*   Created: 2017/11/07 09:52:36 by alucas-           #+#    #+#             */
 /*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-inline t_str	ft_strchr(t_cstr s, t_i32 c)
+inline t_i32	ft_isupper(t_i32 c)
 {
-	if (c == 0)
-		while (1)
-			if (!*s++) return ((t_str)s - 1);
-	while (*s)
-		if (*s++ == c)
-			return ((t_str)s - 1);
-	return (NULL);
+	return (c >= 'A' && c <= 'Z');
 }

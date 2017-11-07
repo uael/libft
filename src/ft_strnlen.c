@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:55 by alucas-           #+#    #+#             */
+/*   Created: 2017/11/07 09:53:08 by alucas-           #+#    #+#             */
 /*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline t_str	ft_strchr(t_cstr s, t_i32 c)
+inline t_usz	ft_strnlen(t_cstr str, t_usz size)
 {
-	if (c == 0)
-		while (1)
-			if (!*s++) return ((t_str)s - 1);
-	while (*s)
-		if (*s++ == c)
-			return ((t_str)s - 1);
-	return (NULL);
+	t_usz len;
+
+	len = 0;
+	while (len < size && *str)
+	{
+		++len;
+		++str;
+	}
+	return (len);
 }
