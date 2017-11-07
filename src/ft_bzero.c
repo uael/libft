@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bwero.c                                         :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,20 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <cute.h>
+#include "libft.h"
 
-CUTEST_DATA {
-    int dummy;
-};
+void	ft_bzero(t_ptr ptr, t_usz n)
+{
+	t_str	str;
 
-CUTEST_SETUP {
-    (void) self;
-}
-
-CUTEST_TEARDOWN {
-    (void) self;
-}
-
-int main(void) {
-    return EXIT_SUCCESS;
+	if (n && (str = (t_str)ptr))
+		while (n--)
+			*str++ = '\0';
 }

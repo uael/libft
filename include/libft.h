@@ -15,6 +15,7 @@
 
 #include <string.h>
 
+typedef void				*t_ptr;
 typedef char				t_car,
 							*t_str;
 typedef size_t				t_usz;
@@ -34,5 +35,6 @@ typedef float				t_f32;
 typedef double				t_f64;
 
 t_i32						ft_atoi(const t_car *str);
+void						ft_bzero(t_ptr ptr, t_usz n);
 
 #endif
