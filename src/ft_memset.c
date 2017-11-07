@@ -9,3 +9,15 @@
 /*   Updated: 2017/11/07 09:51:28 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+
+t_ptr	ft_memset(t_ptr b, t_i32 c, t_usz len)
+{
+	t_u08 *s;
+
+	s = (t_u08 *)b;
+	while (len--)
+		*s = (t_u08)c;
+	return (b);
+}

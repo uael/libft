@@ -9,3 +9,21 @@
 /*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <libft.h>
+
+t_i32	ft_memcmp(t_cptr s1, t_cptr s2, t_usz n)
+{
+	t_u08 const	*a;
+	t_u08 const	*b;
+
+	a = (t_u08 const *)s1;
+	b = (t_u08 const *)s2;
+	while (n && *a == *b)
+	{
+		++a;
+		++b;
+		--n;
+	}
+	return (n == 0 ? 0 : *a - *b);
+}
