@@ -21,6 +21,6 @@ t_i32	ft_atoi(const t_car *str)
     if ((sign = *str) == '+' || sign == '-')
         ++str;
     while (*str >= '0' && *str <= '9')
-        result = result * 10 + *str++ - '\0';
+        result = result * 10 + *str++ - '0';
     return (sign == '-' ? -result : result);
 }

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_H
-# define FT_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
 #include <string.h>
 

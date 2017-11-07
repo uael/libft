@@ -11,13 +11,14 @@
 /* ************************************************************************** */
 
 #include <cute.h>
+#include <libft.h>
 
 CUTEST_DATA {
     int dummy;
 };
 
 CUTEST_SETUP {
-    self->dummy = 0;
+	(void) self;
 }
 
 CUTEST_TEARDOWN {
@@ -26,6 +27,17 @@ CUTEST_TEARDOWN {
 
 CUTEST(atoi, common) {
     ASSERT_EQ(0, self->dummy);
+	ASSERT_EQ(atoi("0"), ft_atoi("0"));
+	ASSERT_EQ(atoi("+0"), ft_atoi("+0"));
+	ASSERT_EQ(atoi("-0"), ft_atoi("-0"));
+	ASSERT_EQ(atoi("-1"), ft_atoi("-1"));
+	ASSERT_EQ(atoi("1"), ft_atoi("1"));
+	ASSERT_EQ(atoi("42"), ft_atoi("42"));
+	ASSERT_EQ(atoi("-42"), ft_atoi("-42"));
+	ASSERT_EQ(atoi("–2147483648"), ft_atoi("–2147483648"));
+	ASSERT_EQ(atoi("–21474836488"), ft_atoi("–21474836488"));
+	ASSERT_EQ(atoi("2147483647"), ft_atoi("2147483647"));
+	ASSERT_EQ(atoi("21474836478"), ft_atoi("21474836478"));
     return CUTE_SUCCESS;
 }
 
