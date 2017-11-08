@@ -26,7 +26,6 @@ CUTEST_TEARDOWN {
 }
 
 CUTEST(atoi, common) {
-    ASSERT_EQ(0, self->dummy);
 	ASSERT_EQ(atoi("0"), ft_atoi("0"));
 	ASSERT_EQ(atoi("+0"), ft_atoi("+0"));
 	ASSERT_EQ(atoi("-0"), ft_atoi("-0"));
