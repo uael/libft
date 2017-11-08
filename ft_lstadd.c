@@ -14,8 +14,8 @@
 
 inline void	ft_lstadd(t_list **alst, t_list *new)
 {
-	if (!alst || !*alst || !new)
+	if (!alst || !new)
 		return ;
-	(*alst)->next = new;
+	new->next = *alst;
 	*alst = new;
 }

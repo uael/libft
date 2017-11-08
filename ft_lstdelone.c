@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/08 13:07:24 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/08 16:48:40 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 inline void	ft_lstdelone(t_list **l, void (*d)(void *, t_usz))
 {
-	if (!l || !*l)
+	if (!l || !d)
 		return ;
-	if (d && *l && (*l)->content)
-		d((*l)->content, (*l)->content_size);
-	free(l);
+	d((*l)->content, (*l)->content_size);
+	ft_memdel((void **)l);
 }

@@ -14,9 +14,12 @@
 
 inline void	*ft_memmove(void *dst, void const *src, t_usz len)
 {
-	t_u08 buf[len];
+	t_u08 *ptr;
 
-	ft_memcpy(buf, src, len);
-	ft_memcpy(dst, buf, len);
+	if (!(ptr = malloc(len * sizeof(t_car))))
+		return (NULL);
+	ft_memcpy(ptr, src, len);
+	ft_memcpy(dst, ptr, len);
+	free(ptr);
 	return (dst);
 }
