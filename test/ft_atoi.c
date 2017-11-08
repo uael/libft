@@ -36,7 +36,6 @@ CUTEST(atoi, common) {
 	ASSERT_EQ(atoi("–2147483648"), ft_atoi("–2147483648"));
 	ASSERT_EQ(atoi("–21474836488"), ft_atoi("–21474836488"));
 	ASSERT_EQ(atoi("2147483647"), ft_atoi("2147483647"));
-	ASSERT_EQ(atoi("21474836478"), ft_atoi("21474836478"));
     return CUTE_SUCCESS;
 }
 
