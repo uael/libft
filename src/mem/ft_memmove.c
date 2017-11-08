@@ -16,16 +16,18 @@ inline void	*ft_memmove(void *dst, void const *src, t_usz len)
 {
 	t_u08		*d;
 	t_u08 const	*s;
-	t_usz		n;
-	t_u08		t[len];
 
 	d = (t_u08 *)dst;
 	s = (t_u08 const *)src;
-	n = 0;
-	while (n < len)
-		t[n++] = *s++;
-	n = 0;
-	while (n < len)
-		*d++ = t[n++];
+	if (s < d)
+	{
+		s += len;
+		d += len;
+		while (--len)
+			*--d = *--s;
+	}
+	else if (s != d)
+		while (--len)
+			*++d = *++s;
 	return (dst);
 }
