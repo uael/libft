@@ -15,15 +15,15 @@
 
 # include "tys.h"
 
-t_i32	ft_isalnum	(t_i32 c);
-t_i32	ft_isascii	(t_i32 c);
-t_i32	ft_isalpha	(t_i32 c);
-t_i32	ft_isdigit	(t_i32 c);
-t_i32	ft_islower	(t_i32 c);
-t_i32	ft_isprint	(t_i32 c);
-t_i32	ft_isupper	(t_i32 c);
+extern t_i32	ft_isalnum	(t_i32 c);
+extern t_i32	ft_isascii	(t_i32 c);
+extern t_i32	ft_isalpha	(t_i32 c);
+extern t_i32	ft_isdigit	(t_i32 c);
+extern t_i32	ft_islower	(t_i32 c);
+extern t_i32	ft_isprint	(t_i32 c);
+extern t_i32	ft_isupper	(t_i32 c);
 
-t_i32	ft_tolower	(t_i32 c);
-t_i32	ft_toupper	(t_i32 c);
+extern t_i32	ft_tolower	(t_i32 c);
+extern t_i32	ft_toupper	(t_i32 c);
 
 #endif
