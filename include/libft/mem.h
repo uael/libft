@@ -17,6 +17,7 @@
 
 void	ft_bzero	(void *ptr, t_usz n);
 
+void	*ft_memalloc(t_usz sz);
 void	*ft_memccpy	(void *dst, void const *src, t_i32 c, t_usz n);
 void	*ft_memchr	(void const *s, t_i32 c, size_t n);
 t_i32	ft_memcmp	(void const *s1, void const *s2, t_usz n);
