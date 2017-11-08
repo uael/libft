@@ -19,8 +19,8 @@ inline t_car	*ft_strncat(t_car *dest, t_car const *src, t_usz nb)
 	ptr = dest;
 	while (*ptr)
 		++ptr;
-	while (nb-- && (*ptr++ = *src++))
-		;
+	while (nb && (*ptr++ = *src++))
+		--nb;
 	if (nb <= 0)
 		*ptr = '\0';
 	return (dest);
