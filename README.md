@@ -1,5 +1,6 @@
 # Libft
-
+[![Build Status](https://travis-ci.org/uael/libft.svg?branch=master)](https://travis-ci.org/uael/libft)
+[![Build status](https://ci.appveyor.com/api/projects/status/c7w2kjqtq6jidk52/branch/master?svg=true)](https://ci.appveyor.com/project/uael/libft/branch/master)
 ## Your first own library
 
 ```
