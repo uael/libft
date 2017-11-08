@@ -45,7 +45,7 @@ target_compile_definitions(ft
 if (MSVC)
   target_compile_options(ft
     PRIVATE /MT$<$<CONFIG:Debug>:d> /Oy /W3
-    PRIVATE /D_CRT_SECURE_NO_WARNINGS /Dinline="__inline"
+    PRIVATE /D_CRT_SECURE_NO_WARNINGS /Dinline=__inline
     PRIVATE /O$<$<CONFIG:Debug>:d>$<$<CONFIG:Release>:x>)
 else ()
   target_compile_options(ft
