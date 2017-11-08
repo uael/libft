@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:53:08 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/08 09:49:19 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline t_usz	ft_strlen(t_car const *str)
+inline t_car	*ft_strnew(size_t sz)
 {
-	t_usz len;
-
-	len = 0;
-	while (*str++)
-		++len;
-	return (len);
+	return ((t_car *)ft_memalloc((sz + 1) * sizeof(t_car)));
 }

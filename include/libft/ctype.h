@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/08 10:44:53 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ extern t_i32	ft_isdigit	(t_i32 c);
 extern t_i32	ft_islower	(t_i32 c);
 extern t_i32	ft_isprint	(t_i32 c);
 extern t_i32	ft_isupper	(t_i32 c);
+extern t_i32	ft_isspace	(t_i32 c);
 
 extern t_i32	ft_tolower	(t_i32 c);
 extern t_i32	ft_toupper	(t_i32 c);

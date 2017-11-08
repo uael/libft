@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:53:08 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:57 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 10:05:11 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline t_usz	ft_strlen(t_car const *str)
+inline t_car	*ft_strmapi(t_car const *s, t_car (*f)(t_u32, t_car))
 {
-	t_usz len;
+	t_usz sz;
+	t_car *str;
+	t_car *ptr;
 
-	len = 0;
-	while (*str++)
-		++len;
-	return (len);
+	if (!(sz = ft_strlen(s)))
+		return (NULL);
+	if (!(str = ft_strnew(sz)))
+		return (NULL);
+	ptr = str;
+	sz = 0;
+	while (*s)
+		*ptr++ = f((t_u32)sz++, *s++);
+	return (str);
 }

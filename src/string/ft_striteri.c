@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:53:08 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:53:10 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 09:54:24 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline t_usz	ft_strlen(t_car const *str)
+inline void ft_striteri(t_car *s, void (*f)(t_u32, t_car *))
 {
-	t_usz len;
+	t_u32 idx;
 
-	len = 0;
-	while (*str++)
-		++len;
-	return (len);
+	idx = 0;
+	while (*s)
+		f(idx++, s++);
 }

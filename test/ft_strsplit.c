@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:53:08 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:44:14 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 11:16:21 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <libft.h>
 
-inline t_usz	ft_strlen(t_car const *str)
+int main(void)
 {
-	t_usz len;
+	t_car **r;
 
-	len = 0;
-	while (*str++)
-		++len;
-	return (len);
+	r = ft_strsplit("*hello*fellow***students*", '*');
+	while (*r)
+	{
+		write(1, *r, ft_strlen(*r));
+		write(1, "\n", 1);
+		++r;
+	}
+    return EXIT_SUCCESS;
 }

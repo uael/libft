@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:53:08 by alucas-           #+#    #+#             */
+/*   Created: 2017/11/07 09:52:57 by alucas-           #+#    #+#             */
 /*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-inline t_usz	ft_strlen(t_car const *str)
+inline void	ft_strclr(t_car *s)
 {
-	t_usz len;
-
-	len = 0;
-	while (*str++)
-		++len;
-	return (len);
+	while (*s)
+		*s++ = '\0';
 }
