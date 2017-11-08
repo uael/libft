@@ -12,13 +12,13 @@
 
 #include "libft.h"
 
-inline t_ptr	ft_memchr(t_cptr ptr, t_i32 c, size_t n)
+inline void	*ft_memchr(void const *ptr, t_i32 c, size_t n)
 {
 	t_u08 const *s;
 
 	s = (t_u08 const *)ptr;
 	while (n--)
 		if (*s++ == (t_u08)c)
-			return (t_ptr)s;
+			return (void *)s;
 	return (NULL);
 }

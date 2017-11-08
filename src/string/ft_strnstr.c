@@ -12,18 +12,18 @@
 
 #include "libft.h"
 
-inline t_str	ft_strnstr(t_cstr str, t_cstr to_find, t_usz len)
+inline t_car	*ft_strnstr(t_car const *str, t_car const *to_find, t_usz len)
 {
-	t_str begin;
-	t_str to_find_cp;
+	t_car *begin;
+	t_car *to_find_cp;
 	t_usz n;
 
 	if (*to_find == '\0')
-		return ((t_str)str);
+		return ((t_car *)str);
 	while (len-- && *str)
 	{
-		begin = (t_str)str;
-		to_find_cp = (t_str)to_find;
+		begin = (t_car *)str;
+		to_find_cp = (t_car *)to_find;
 		n = len;
 		while (n-- && *to_find_cp == *str)
 		{

@@ -15,20 +15,20 @@
 
 # include "tys.h"
 
-t_i32	ft_atoi(t_cstr str);
+t_i32	ft_atoi		(t_car const *str);
 
-t_str	ft_strcat(t_str dest, t_cstr src);
-t_str	ft_strchr(t_cstr s, t_i32 c);
-t_i32	ft_strcmp(t_cstr s1, t_cstr s2);
-t_str	ft_strcpy(t_str dest, t_cstr src);
-t_usz	ft_strlcat(t_str dest, t_str src, t_usz size);
-t_usz	ft_strlen(t_str str);
-t_str	ft_strncat(t_str dest, t_cstr src, t_usz nb);
-t_i32	ft_strncmp(t_cstr s1, t_cstr s2, t_usz n);
-t_str	ft_strncpy(t_str dest, t_cstr src, t_usz n);
-t_usz	ft_strnlen(t_cstr str, t_usz size);
-t_str	ft_strnstr(t_cstr str, t_cstr to_find, t_usz len);
-t_str	ft_strrchr(t_cstr s, t_i32 c);
-t_str	ft_strstr(t_cstr str, t_cstr to_find);
+t_car	*ft_strcat	(t_car *dest, t_car const *src);
+t_car	*ft_strchr	(t_car const *s, t_i32 c);
+t_i32	ft_strcmp	(t_car const *s1, t_car const *s2);
+t_car	*ft_strcpy	(t_car *dest, t_car const *src);
+t_usz	ft_strlcat	(t_car *dest, t_car *src, t_usz size);
+t_usz	ft_strlen	(t_car *str);
+t_car	*ft_strncat	(t_car *dest, t_car const *src, t_usz nb);
+t_i32	ft_strncmp	(t_car const *s1, t_car const *s2, t_usz n);
+t_car	*ft_strncpy	(t_car *dest, t_car const *src, t_usz n);
+t_usz	ft_strnlen	(t_car const *str, t_usz size);
+t_car	*ft_strnstr	(t_car const *str, t_car const *to_find, t_usz len);
+t_car	*ft_strrchr	(t_car const *s, t_i32 c);
+t_car	*ft_strstr	(t_car const *str, t_car const *to_find);
 
 #endif

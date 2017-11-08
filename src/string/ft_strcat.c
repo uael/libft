@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-inline t_str	ft_strcat(t_str dest, t_cstr src)
+inline t_car	*ft_strcat(t_car *dest, t_car const *src)
 {
-	t_str ptr;
+	t_car *ptr;
 
 	ptr = dest;
 	while (*ptr)

@@ -12,17 +12,17 @@
 
 #include "libft.h"
 
-inline t_str	ft_strrchr(t_cstr s, t_i32 c)
+inline t_car	*ft_strrchr(t_car const *s, t_i32 c)
 {
-	t_str beg;
+	t_car *beg;
 
-	beg = (t_str)s;
+	beg = (t_car *)s;
 	while (*s)
 		++s;
 	if (c == 0)
-		return ((t_str)s);
+		return ((t_car *)s);
 	while (s >= beg)
 		if (*s-- == c)
-			return ((t_str)s + 1);
+			return ((t_car *)s + 1);
 	return (NULL);
 }

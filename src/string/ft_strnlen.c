@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-inline t_usz	ft_strnlen(t_cstr str, t_usz size)
+inline t_usz	ft_strnlen(t_car const *str, t_usz size)
 {
 	t_usz len;
 

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-inline t_ptr	ft_memset(t_ptr b, t_i32 c, t_usz len)
+inline void	*ft_memset(void *b, t_i32 c, t_usz len)
 {
 	t_u08 *s;
 

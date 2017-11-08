@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-inline t_str	ft_strcpy(t_str dest, t_cstr src)
+inline t_car	*ft_strcpy(t_car *dest, t_car const *src)
 {
-	t_str s;
+	t_car *s;
 
 	s = dest;
 	while ((*s++ = *src++))

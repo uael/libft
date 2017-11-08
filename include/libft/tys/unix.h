@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   libft/tys/unix.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:44:11 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/07 09:44:26 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFT_TYS_UNIX_H
+# define LIBFT_TYS_UNIX_H
 
-void	ft_bzero(void *ptr, t_usz n)
-{
-	t_car	*str;
+# include "common.h"
 
-	if (n && (str = (t_car *)ptr))
-		while (n--)
-			*str++ = '\0';
-}
+# ifndef _MSC_VER
+
+typedef ssize_t				t_isz;
+typedef size_t				t_usz;
+#  define ISIZE_MAX SSIZE_MAX
+#  define USIZE_MAX SIZE_MAX
+# endif
+
+#endif

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-inline t_ptr	ft_memcpy(t_ptr dst, t_cptr src, t_usz n)
+inline void	*ft_memcpy(void *dst, void const *src, t_usz n)
 {
 	t_u08		*d;
 	t_u08 const	*s;

@@ -14,7 +14,7 @@
 #include <libft.h>
 
 CUTEST_DATA {
-	t_str str;
+	t_car *str;
 };
 
 CUTEST_SETUP {

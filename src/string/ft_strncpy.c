@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-inline t_str	ft_strncpy(t_str dest, t_cstr src, t_usz n)
+inline t_car	*ft_strncpy(t_car *dest, t_car const *src, t_usz n)
 {
 	t_usz i;
 

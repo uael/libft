@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-inline t_ptr	ft_memccpy(t_ptr dst, t_cptr src, t_i32 c, t_usz n)
+inline void	*ft_memccpy(void *dst, void const *src, t_i32 c, t_usz n)
 {
 	t_u08		*d;
 	t_u08 const	*s;
@@ -21,6 +21,6 @@ inline t_ptr	ft_memccpy(t_ptr dst, t_cptr src, t_i32 c, t_usz n)
 	s = (t_u08 const *)src;
 	while (n--)
 		if ((*d++ = *s++) == c)
-			return ((t_ptr)d);
+			return ((void *)d);
 	return (NULL);
 }

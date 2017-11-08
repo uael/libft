@@ -12,11 +12,11 @@
 
 #include "libft.h"
 
-inline t_str	ft_strdup(t_str src)
+inline t_car	*ft_strdup(t_car *src)
 {
-	t_str	dup;
-	t_str	sptr;
-	t_str	dptr;
+	t_car	*dup;
+	t_car	*sptr;
+	t_car	*dptr;
 
 	sptr = src;
 	while (*sptr++)

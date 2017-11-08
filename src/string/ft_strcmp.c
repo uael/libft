@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-inline t_i32	ft_strcmp(t_cstr s1, t_cstr s2)
+inline t_i32	ft_strcmp(t_car const *s1, t_car const *s2)
 {
 	while (*s1 && (*s1 == *s2))
 	{
