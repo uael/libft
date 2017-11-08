@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/08 10:55:12 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/08 10:55:52 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "tys.h"
 
 extern t_i32	ft_atoi		(t_car const *str);
+extern t_car	*ft_itoa	(t_i32 n);
 
 extern t_car	*ft_strcat	(t_car *dest, t_car const *src);
 extern t_car	*ft_strchr	(t_car const *s, t_i32 c);
