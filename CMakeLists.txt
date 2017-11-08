@@ -7,8 +7,8 @@ get_directory_property(libft_PARENT PARENT_DIRECTORY)
 
 set(BUILD_SHARED_LIBS OFF)
 
-set(libft_INC_DIR ${CMAKE_CURRENT_LIST_DIR}/include)
-set(libft_SRC_DIR ${CMAKE_CURRENT_LIST_DIR}/src)
+set(libft_INC_DIR ${CMAKE_CURRENT_LIST_DIR})
+set(libft_SRC_DIR ${CMAKE_CURRENT_LIST_DIR})
 set(libft_TEST_DIR ${CMAKE_CURRENT_LIST_DIR}/test)
 
 set(CMAKE_C_FLAGS "")
@@ -31,7 +31,7 @@ endif ()
 set(libft_HDR ${libft_INC_DIR}/libft.h)
 file(GLOB_RECURSE libft_HDRS ${libft_HDRS}
   ${libft_INC_DIR}/libft/*.h)
-file(GLOB_RECURSE libft_SRCS ${libft_SRCS}
+file(GLOB libft_SRCS ${libft_SRCS}
   ${libft_SRC_DIR}/*.c)
 
 add_library(ft ${libft_HDR} ${libft_HDRS} ${libft_SRCS})

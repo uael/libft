@@ -6,24 +6,76 @@
 #    By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:52:36 by alucas-           #+#    #+#              #
-#    Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr        #
+#    Updated: 2017/11/08 13:14:25 by alucas-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
-FLAGS = -Wall -Wextra -Werror -Iinclude
+FLAGS = -Wall -Wextra -Werror
 CC = gcc
-OBJ = src/ctype/ft_isalnum.o src/ctype/ft_isalpha.o src/ctype/ft_isascii.o \
-	src/ctype/ft_isdigit.o src/ctype/ft_islower.o src/ctype/ft_isprint.o \
-	src/ctype/ft_isupper.o src/ctype/ft_tolower.o src/ctype/ft_toupper.o \
-	src/mem/ft_bzero.o src/mem/ft_memccpy.o src/mem/ft_memchr.o \
-	src/mem/ft_memcmp.o src/mem/ft_memcpy.o src/mem/ft_memmove.o \
-	src/mem/ft_memset.o \
-	src/string/ft_atoi.o src/string/ft_strcat.o src/string/ft_strchr.o \
-	src/string/ft_strcmp.o src/string/ft_strcpy.o src/string/ft_strdup.o \
-	src/string/ft_strlcat.o src/string/ft_strlen.o src/string/ft_strncat.o \
-	src/string/ft_strncmp.o src/string/ft_strncpy.o src/string/ft_strnlen.o	\
-	src/string/ft_strnstr.o src/string/ft_strrchr.o src/string/ft_strstr.o
+OBJ = ft_atoi.o \
+	ft_bzero.o \
+	ft_isalnum.o \
+	ft_isalpha.o \
+	ft_isascii.o \
+	ft_isdigit.o \
+	ft_islower.o \
+	ft_isprint.o \
+	ft_isspace.o \
+	ft_isupper.o \
+	ft_itoa.o \
+	ft_lstadd.o \
+	ft_lstdel.o \
+	ft_lstdelone.o \
+	ft_lstiter.o \
+	ft_lstmap.o \
+	ft_lstnew.o \
+	ft_memalloc.o \
+	ft_memccpy.o \
+	ft_memchr.o \
+	ft_memcmp.o \
+	ft_memcpy.o \
+	ft_memdel.o \
+	ft_memmove.o \
+	ft_memset.o \
+	ft_putchar.o \
+	ft_putchar_fd.o \
+	ft_putendl.o \
+	ft_putendl_fd.o \
+	ft_putnbr.o \
+	ft_putnbr_fd.o \
+	ft_putstr.o \
+	ft_putstr_fd.o \
+	ft_strcat.o \
+	ft_strchr.o \
+	ft_strclr.o \
+	ft_strcmp.o \
+	ft_strcpy.o \
+	ft_strdel.o \
+	ft_strdup.o \
+	ft_strequ.o \
+	ft_striter.o \
+	ft_striteri.o \
+	ft_strjoin.o \
+	ft_strlcat.o \
+	ft_strlen.o \
+	ft_strmap.o \
+	ft_strmapi.o \
+	ft_strncat.o \
+	ft_strncmp.o \
+	ft_strncpy.o \
+	ft_strnequ.o \
+	ft_strnew.o \
+	ft_strnlen.o \
+	ft_strnstr.o \
+	ft_strrchr.o \
+	ft_strsplit.o \
+	ft_strstr.o \
+	ft_strsub.o \
+	ft_strtrim.o \
+	ft_strword.o \
+	ft_tolower.o \
+	ft_toupper.o
 
 all: $(NAME)
 
