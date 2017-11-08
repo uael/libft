@@ -1,23 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 12:37:05 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include "libft/ctype.h"
-# include "libft/io.h"
-# include "libft/list.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/tys.h"
+inline t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *))
+{
+	t_list	*beg;
+	t_list	*cur;
 
-#endif
+	if (!lst || !f)
+		return (NULL);
+	beg = NULL;
+	cur = NULL;
+	while (lst)
+	{
+		if (beg)
+		{
+			cur->next = (*f)(lst);
+			cur = cur->next;
+		}
+		else
+		{
+			beg = (*f)(lst);
+			cur = beg;
+		}
+		lst = lst->next;
+	}
+	return (beg);
+}

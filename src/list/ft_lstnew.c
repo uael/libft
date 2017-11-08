@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 12:39:37 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include "libft/ctype.h"
-# include "libft/io.h"
-# include "libft/list.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/tys.h"
+inline t_list	*ft_lstnew(void const *content, t_usz content_size)
+{
+	t_list *lst;
 
-#endif
+	if (!(lst = malloc(sizeof(t_list))))
+		return (NULL);
+	if (!(lst->content = malloc(content_size)))
+	{
+		free(lst);
+		return (NULL);
+	}
+	ft_memcpy(lst->content, content, content_size);
+	lst->content_size = content ? content_size : 0;
+	lst->next = NULL;
+	return (lst);
+}
+
