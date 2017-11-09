@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:57 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/08 16:32:06 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/09 11:59:27 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ inline t_car	**ft_strsplit(t_car const *s, t_car c)
 	if (!(r = malloc((nw + 1) * sizeof(t_car *))))
 		return (NULL);
 	ptr = r;
-	while (*s)
+	while (s && *s)
 		if (*s == c)
 			++s;
 		else

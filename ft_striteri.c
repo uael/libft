@@ -17,6 +17,7 @@ inline void	ft_striteri(t_car *s, void (*f)(t_u32 i, t_car *c))
 	t_u32 idx;
 
 	idx = 0;
-	while (*s)
-		f(idx++, s++);
+	if (s && f)
+		while (*s)
+			f(idx++, s++);
 }

@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/08 14:25:46 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/09 12:18:09 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ extern t_i32			ft_memcmp(void const *a, void const *b, t_usz n);
 extern void				*ft_memcpy(void *dst, void const *src, t_usz n);
 extern void				ft_memdel(void **ptr);
 extern void				*ft_memmove(void *dst, void const *src, t_usz len);
+extern void				*ft_memrcpy(void *dst, void const *src, t_usz n);
 extern void				*ft_memset(void *b, t_i32 c, t_usz len);
 
 extern t_i32			ft_atoi(t_car const *str);

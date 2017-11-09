@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_atoi.c                                        :+:      :+:    :+:   */
+/*   ft_memrcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 15:37:09 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/08 15:39:51 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:44:17 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/09 12:20:15 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <assert.h>
-#include <libft.h>
+#include "libft.h"
 
-t_i32	main(void)
+inline void	*ft_memrcpy(void *dst, void const *src, t_usz n)
 {
-	assert(atoi("") == ft_atoi(""));
-	assert(atoi("0") == ft_atoi("0"));
-	assert(atoi("0 1") == ft_atoi("0 1"));
-	return (EXIT_SUCCESS);
+	while (n--)
+		*((t_u08 *)dst + n) = *((t_u08 const *)src + n);
+	return (dst);
 }

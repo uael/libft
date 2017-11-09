@@ -16,6 +16,8 @@ inline t_car	*ft_strsub(t_car const *s, t_u32 start, t_usz len)
 {
 	t_car *r;
 
+	if (!s)
+		return (NULL);
 	if (!(r = malloc((len + 1) * sizeof(t_car))))
 		return (NULL);
 	r[len] = '\0';

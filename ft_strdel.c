@@ -14,5 +14,6 @@
 
 inline void	ft_strdel(t_car **s)
 {
-	ft_memdel((void **)s);
+	if (s && *s)
+		ft_memdel((void **)s);
 }

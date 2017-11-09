@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:44:20 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/08 14:46:54 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/09 12:16:41 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 inline void	*ft_memmove(void *dst, void const *src, t_usz len)
 {
-	t_u08 *ptr;
-
-	if (!(ptr = malloc(len * sizeof(t_car))))
-		return (NULL);
-	ft_memcpy(ptr, src, len);
-	ft_memcpy(dst, ptr, len);
-	free(ptr);
+	if (dst < src)
+		return (ft_memcpy(dst, src, len));
+	if (dst > src)
+		return (ft_memrcpy(dst, src, len));
 	return (dst);
 }

@@ -6,14 +6,15 @@
 #    By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:52:36 by alucas-           #+#    #+#              #
-#    Updated: 2017/11/08 13:14:25 by alucas-          ###   ########.fr        #
+#    Updated: 2017/11/09 12:17:57 by alucas-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 FLAGS = -Wall -Wextra -Werror
 CC = gcc
-OBJ = ft_atoi.o \
+OBJ = \
+	ft_atoi.o \
 	ft_bzero.o \
 	ft_isalnum.o \
 	ft_isalpha.o \
@@ -37,6 +38,7 @@ OBJ = ft_atoi.o \
 	ft_memcpy.o \
 	ft_memdel.o \
 	ft_memmove.o \
+	ft_memrcpy.o \
 	ft_memset.o \
 	ft_putchar.o \
 	ft_putchar_fd.o \

@@ -14,6 +14,7 @@
 
 inline void	ft_strclr(t_car *s)
 {
-	while (*s)
-		*s++ = '\0';
+	if (s)
+		while (*s)
+			*s++ = '\0';
 }

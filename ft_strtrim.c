@@ -17,6 +17,8 @@ inline t_car	*ft_strtrim(t_car const *s)
 	t_usz sz;
 	t_car *r;
 
+	if (!s)
+		return (NULL);
 	while (ft_isspace(*s))
 		++s;
 	if (!(sz = ft_strlen(s)))

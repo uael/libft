@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:57 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/08 10:08:16 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/09 11:56:56 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,9 @@
 
 inline t_i32	ft_strequ(t_car const *s1, t_car const *s2)
 {
+	if (!s1)
+		return (!s2);
+	if (!s2)
+		return (0);
 	return (ft_strcmp(s1, s2) == 0);
 }

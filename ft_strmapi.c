@@ -18,6 +18,8 @@ inline t_car	*ft_strmapi(t_car const *s, t_car (*f)(t_u32 i, t_car c))
 	t_car	*str;
 	t_car	*ptr;
 
+	if (!s || !f)
+		return (NULL);
 	if (!(sz = ft_strlen(s)))
 		return (NULL);
 	if (!(str = ft_strnew(sz)))

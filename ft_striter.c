@@ -14,6 +14,7 @@
 
 inline void	ft_striter(t_car *s, void (*f)(t_car *))
 {
-	while (*s)
-		f(s++);
+	if (s && f)
+		while (*s)
+			f(s++);
 }
