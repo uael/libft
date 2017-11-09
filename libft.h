@@ -96,7 +96,7 @@ extern t_i32			ft_strcmp(t_car const *s1, t_car const *s2);
 extern void				ft_strclr(t_car *s);
 extern t_car			*ft_strcpy(t_car *dest, t_car const *src);
 extern void				ft_strdel(t_car **s);
-extern t_car			*ft_strdup(t_car *src);
+extern t_car			*ft_strdup(t_car const *src);
 extern t_i32			ft_strequ(t_car const *s1, t_car const *s2);
 extern void				ft_striter(t_car *s, void (*f)(t_car *));
 extern void				ft_striteri(t_car *s, void (*f)(t_u32 i, t_car *c));

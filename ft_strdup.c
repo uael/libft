@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-inline t_car	*ft_strdup(t_car *src)
+inline t_car	*ft_strdup(t_car const *src)
 {
 	t_car	*dup;
 	t_usz	sz;
