@@ -38,14 +38,18 @@ typedef double			t_f64;
 
 typedef size_t			t_usz;
 
-typedef struct s_list	t_list;
-
-struct					s_list
+typedef struct			s_list
 {
-	void	*content;
-	t_usz	content_size;
-	t_list	*next;
-};
+	void				*content;
+	t_usz				content_size;
+	struct s_list		*next;
+}						t_list;
+
+typedef struct			s_ifs
+{
+	t_i32				fd;
+	t_list				*buf;
+}						t_ifs;
 
 extern t_i32			ft_isalnum(t_i32 c);
 extern t_i32			ft_isascii(t_i32 c);
@@ -118,5 +122,7 @@ extern t_car			*ft_strstr(t_car const *haystack, t_car const *needle);
 extern t_car			*ft_strsub(t_car const *s, t_u32 start, t_usz len);
 extern t_car			*ft_strtrim(t_car const *s);
 extern t_usz			ft_strword(t_car const *s, t_car c);
+
+extern ssize_t			ft_ifsbuf(t_ifs *self, t_usz n);
 
 #endif
