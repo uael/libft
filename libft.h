@@ -124,5 +124,8 @@ extern t_car			*ft_strtrim(t_car const *s);
 extern t_usz			ft_strword(t_car const *s, t_car c);
 
 extern ssize_t			ft_ifsbuf(t_ifs *self, t_usz n);
+extern ssize_t			ft_ifsread(t_ifs *self, t_car *buf, t_usz n);
+extern ssize_t			ft_ifsfind(t_ifs *self, t_car *needles);
+extern ssize_t			ft_ifsgetln(t_ifs *self, t_car **buf);
 
 #endif
