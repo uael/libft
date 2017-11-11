@@ -14,10 +14,13 @@
 
 t_car	*ft_itoa_base(t_i32 n, t_u08 base)
 {
-	t_i32	i;
-	t_i32	mod;
-	t_car	*str;
+	t_i32		i;
+	t_i32		mod;
+	t_car		*str;
+	static char	digits[31] = "0123456789abcdefghijklmnopqrst";
 
+	if (base > 30)
+		return (NULL);
 	i = ft_digits(n, base);
 	mod = n < 0;
 	if (!(str = malloc((i + 1 + mod) * sizeof(t_car))))
@@ -30,7 +33,7 @@ t_car	*ft_itoa_base(t_i32 n, t_u08 base)
 		*str-- = '0';
 	while (n)
 	{
-		*str-- = (t_car)((n % base) * (mod ? -1 : 1) + '0');
+		*str-- = digits[(n % base) * (mod ? -1 : 1)];
 		n /= base;
 	}
 	return (str + 1 - mod);
