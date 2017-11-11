@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_u08	ft_digits(t_i32 n, t_u08 base)
+t_u08	ft_digits(t_i64 n, t_u08 base)
 {
 	t_u08	i;
 

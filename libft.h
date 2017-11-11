@@ -91,7 +91,7 @@ extern void				*ft_memmove(void *dst, void const *src, t_usz len);
 extern void				*ft_memrcpy(void *dst, void const *src, t_usz n);
 extern void				*ft_memset(void *b, t_i32 c, t_usz len);
 
-extern t_u08			ft_digits(t_i32 n, t_u08 base);
+extern t_u08			ft_digits(t_i64 n, t_u08 base);
 extern t_i32			ft_atoi(t_car const *str);
 extern t_car			*ft_itoa(t_i32 n);
 extern t_car			*ft_itoa_base(t_i32 n, t_u08 base);
@@ -111,6 +111,7 @@ extern t_usz			ft_strlcat(t_car *dest, t_car const *src, t_usz size);
 extern t_usz			ft_strlen(t_car const *str);
 extern t_car			*ft_strmap(t_car const *s, t_car (*f)(t_car));
 extern t_car			*ft_strmapi(t_car const *s, t_car (*f)(t_u32, t_car));
+extern t_u08			ft_strnbr(t_car *dst, t_i64 n, t_u08 base);
 extern t_car			*ft_strncat(t_car *dest, t_car const *src, t_usz nb);
 extern t_i32			ft_strncmp(t_car const *s1, t_car const *s2, t_usz n);
 extern t_car			*ft_strncpy(t_car *dest, t_car const *src, t_usz n);

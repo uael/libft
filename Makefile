@@ -65,6 +65,7 @@ OBJ = \
 	ft_strlen.o \
 	ft_strmap.o \
 	ft_strmapi.o \
+	ft_strnbr.o \
 	ft_strncat.o \
 	ft_strncmp.o \
 	ft_strncpy.o \
