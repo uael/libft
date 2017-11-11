@@ -21,6 +21,8 @@
 #  include <unistd.h>
 # endif
 
+# define FT_INIT(S, TY) ft_memset(S, 0, sizeof(TY))
+
 typedef char			t_car;
 
 typedef unsigned char	t_u08;
@@ -45,10 +47,17 @@ typedef struct			s_list
 	struct s_list		*next;
 }						t_list;
 
+typedef struct			s_dstr
+{
+	t_car				*buf;
+	t_usz				cap;
+	t_usz				len;
+}						t_dstr;
+
 typedef struct			s_ifs
 {
 	t_i32				fd;
-	t_list				*buf;
+	t_dstr				buf;
 }						t_ifs;
 
 extern t_i32			ft_isalnum(t_i32 c);
@@ -89,6 +98,7 @@ extern void				*ft_memcpy(void *dst, void const *src, t_usz n);
 extern void				ft_memdel(void **ptr);
 extern void				*ft_memmove(void *dst, void const *src, t_usz len);
 extern void				*ft_memrcpy(void *dst, void const *src, t_usz n);
+extern void				*ft_memrealloc(void *ptr, t_usz psz, t_usz sz);
 extern void				*ft_memset(void *b, t_i32 c, t_usz len);
 
 extern t_u08			ft_digits(t_i64 n, t_u08 base);
@@ -125,5 +135,24 @@ extern t_car			*ft_strstr(t_car const *haystack, t_car const *needle);
 extern t_car			*ft_strsub(t_car const *s, t_u32 start, t_usz len);
 extern t_car			*ft_strtrim(t_car const *s);
 extern t_usz			ft_strword(t_car const *s, t_car c);
+
+extern t_car			*ft_dstrbeg(t_dstr *self);
+extern t_car			*ft_dstrend(t_dstr *self);
+extern t_car			*ft_dstrat(t_dstr *self, t_usz n);
+extern t_u08			ft_dstralloc(t_dstr *self, t_usz n);
+extern t_u08			ft_dstrgrow(t_dstr *self, t_usz n);
+extern t_car			*ft_dstrpushn(t_dstr *self, t_usz n);
+extern t_car			*ft_dstrpushncpy(t_dstr *self, t_car const *b, t_usz n);
+extern t_car			*ft_dstrpush(t_dstr *self);
+extern t_car			*ft_dstrappend(t_dstr *self, t_car const *s);
+extern t_car			*ft_dstrunshtn(t_dstr *self, t_usz n);
+extern t_car			*ft_dstrunshtncpy(t_dstr *sel, t_car const *b, t_usz n);
+extern t_car			*ft_dstrunsht(t_dstr *self);
+extern t_car			*ft_dstrunshtcpy(t_dstr *self, t_car c);
+extern t_car			*ft_dstrprepend(t_dstr *self, t_car const *s);
+extern t_usz			ft_dstrpopn(t_dstr *self, t_usz n, t_car *out);
+extern t_usz			ft_dstrpop(t_dstr *self, t_car *out);
+extern t_usz			ft_dstrshtn(t_dstr *self, t_usz n, t_car *out);
+extern t_usz			ft_dstrsht(t_dstr *self, t_car *out);
 
 #endif
