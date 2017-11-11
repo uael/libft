@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ifsgetln.c                                      :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:53:28 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 13:07:24 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-#define BUFF_SIZE (32)
-
-ssize_t	ft_ifsgetln(t_ifs *self, t_car **buf)
+t_car	*ft_itoa_base(t_i32 n, t_u08 base)
 {
-	ssize_t	n;
+	t_i32	i;
+	t_i32	mod;
+	t_car	*str;
 
-	if ((n = ft_ifsfind(self, "\n")) <= 0)
-		return (n);
-	if (!(*buf = malloc((n + 1) * sizeof(t_car))))
-		return (-1);
-	n = ft_ifsread(self, *buf, (t_usz)n);
-	if ((*buf)[n - 1] == '\n')
-		(*buf)[n - 1] = '\0';
-	return (n);
+	i = ft_digits(n, base);
+	mod = n < 0;
+	if (!(str = malloc((i + 1 + mod) * sizeof(t_car))))
+		return (NULL);
+	if (mod)
+		*str++ = '-';
+	str += i - 1;
+	*(str + 1) = '\0';
+	if (n == 0)
+		*str-- = '0';
+	while (n)
+	{
+		*str-- = (t_car)((n % base) * (mod ? -1 : 1) + '0');
+		n /= base;
+	}
+	return (str + 1 - mod);
 }

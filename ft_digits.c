@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_digits.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,12 @@
 
 #include "libft.h"
 
-t_car	*ft_itoa(t_i32 n)
+t_u08	ft_digits(t_i32 n, t_u08 base)
 {
-	return (ft_itoa_base(n, 10));
+	t_u08	i;
+
+	i = 1;
+	while (n /= base)
+		++i;
+	return (i);
 }
