@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_i32	ft_atoi(t_car const *str)
+inline t_i32	ft_atoi(t_car const *str)
 {
 	t_i64	result;
 	t_car	sign;
