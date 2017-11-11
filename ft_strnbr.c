@@ -19,7 +19,7 @@ inline t_u08	ft_strnbr(t_car *dst, t_i64 n, t_u08 base)
 	static char	digits[31] = "0123456789abcdefghijklmnopqrst";
 
 	if (base > 30)
-		return (NULL);
+		return (0);
 	i = ft_digits(n, base);
 	mod = (t_u08)(n < 0);
 	if (mod)
