@@ -25,10 +25,15 @@ ssize_t	ft_ifsfind(t_ifs *self, t_car *needles)
 	node = NULL;
 	while ((r = ft_ifsbuf(self, BUFF_SIZE)))
 		while ((node = node ? node->next : self->buf))
-			if ((i = -1) == -1)
-				while ((t_usz)++i < node->content_size && ++n)
-					if (!((t_car *)node->content)[i] ||
-						ft_strchr(needles, ((t_car *)node->content)[i]))
-							return (n);
+		{
+			i = -1;
+			while ((t_usz)++i < node->content_size)
+			{
+				++n;
+				if (!((t_car *)node->content)[i] ||
+					ft_strchr(needles, ((t_car *)node->content)[i]))
+					return (n);
+			}
+		}
 	return (r < 0 ? -1 : 0);
 }

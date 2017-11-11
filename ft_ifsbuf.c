@@ -33,12 +33,12 @@ ssize_t	ft_ifsbuf(t_ifs *self, t_usz n)
 		else if (state > 0)
 		{
 			tail = node ? &node->next : &self->buf;
-			if (!(*tail = ft_lstnew(buf, (t_usz) state)))
+			if (!(*tail = ft_lstnew(buf, (t_usz)state)))
 				return (STATE_ERR);
 			node = *tail;
 			state = STATE_RUN;
 		}
 	if (state == STATE_ERR)
 		return (state);
-	return ((ssize_t) (ret > n ? n : ret));
+	return ((ssize_t)(ret > n ? n : ret));
 }

@@ -25,7 +25,7 @@ ssize_t	ft_ifsread(t_ifs *self, t_car *buf, t_usz n)
 	i = 0;
 	while (i < n)
 		if (!node->content_size)
-			node = node->next; // todo: del/free nodes
+			node = node->next;
 		else if (!(j = 0))
 		{
 			while (i < n && j < node->content_size)
