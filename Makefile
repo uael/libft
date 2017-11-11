@@ -16,6 +16,7 @@ CC = gcc
 OBJ = \
 	ft_atoi.o \
 	ft_bzero.o \
+	ft_digits.o \
 	ft_isalnum.o \
 	ft_isalpha.o \
 	ft_isascii.o \
@@ -25,6 +26,7 @@ OBJ = \
 	ft_isspace.o \
 	ft_isupper.o \
 	ft_itoa.o \
+	ft_itoa_base.o \
 	ft_lstadd.o \
 	ft_lstdel.o \
 	ft_lstdelone.o \
