@@ -105,7 +105,7 @@ extern t_i32			ft_strequ(t_car const *s1, t_car const *s2);
 extern void				ft_striter(t_car *s, void (*f)(t_car *));
 extern void				ft_striteri(t_car *s, void (*f)(t_u32 i, t_car *c));
 extern t_car			*ft_strjoin(t_car const *s1, t_car const *s2);
-extern t_usz			ft_strlcat(t_car *dest, t_car *src, t_usz size);
+extern t_usz			ft_strlcat(t_car *dest, t_car const *src, t_usz size);
 extern t_usz			ft_strlen(t_car const *str);
 extern t_car			*ft_strmap(t_car const *s, t_car (*f)(t_car));
 extern t_car			*ft_strmapi(t_car const *s, t_car (*f)(t_u32, t_car));

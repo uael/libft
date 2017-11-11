@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-t_usz	ft_strlcat(t_car *dest, t_car *src, t_usz size)
+t_usz	ft_strlcat(t_car *dest, t_car const *src, t_usz size)
 {
 	t_usz	slen;
 	t_usz	dlen;
