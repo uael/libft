@@ -136,6 +136,7 @@ extern t_car			*ft_strsub(t_car const *s, t_u32 start, t_usz len);
 extern t_car			*ft_strtrim(t_car const *s);
 extern t_usz			ft_strword(t_car const *s, t_car c);
 
+extern void				ft_dstrdtor(t_dstr *self);
 extern t_car			*ft_dstrbeg(t_dstr *self);
 extern t_car			*ft_dstrend(t_dstr *self);
 extern t_car			*ft_dstrat(t_dstr *self, t_usz n);
