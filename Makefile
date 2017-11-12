@@ -6,7 +6,7 @@
 #    By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:52:36 by alucas-           #+#    #+#              #
-#    Updated: 2017/11/09 12:17:57 by alucas-          ###   ########.fr        #
+#    Updated: 2017/11/12 11:55:37 by alucas-          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,26 @@ OBJ = \
 	ft_atoi.o \
 	ft_bzero.o \
 	ft_digits.o \
+	ft_dstdtor.o \
+	ft_dstralloc.o \
+	ft_dstrappend.o \
+	ft_dstrat.o \
+	ft_dstrbeg.o \
+	ft_dstrend.o \
+	ft_dstrgrow.o \
+	ft_dstrpop.o \
+	ft_dstrpopn.o \
+	ft_dstrprepend.o \
+	ft_dstrpush.o \
+	ft_dstrpushcpy.o \
+	ft_dstrpushn.o \
+	ft_dstrpushncpy.o \
+	ft_dstrsht.o \
+	ft_dstrshtn.o \
+	ft_dstrunsht.o \
+	ft_dstrunshtcpy.o \
+	ft_dstrunshtn.o \
+	ft_dstrunshtncpy.o \
 	ft_isalnum.o \
 	ft_isalpha.o \
 	ft_isascii.o \
@@ -41,6 +61,7 @@ OBJ = \
 	ft_memdel.o \
 	ft_memmove.o \
 	ft_memrcpy.o \
+	ft_memrealloc.o \
 	ft_memset.o \
 	ft_putchar.o \
 	ft_putchar_fd.o \
