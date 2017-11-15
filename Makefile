@@ -6,14 +6,31 @@
 #    By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:52:36 by alucas-           #+#    #+#              #
-#    Updated: 2017/11/12 11:55:37 by alucas-          ###   ########.fr        #
+#    Updated: 2017/11/15 17:42:48 by null             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-FLAGS = -Wall -Wextra -Werror -O3
+PROJECT = libft
+NAME = $(PROJECT).a
+
+NOC=\033[0m
+OKC=\033[94;1m
+ERC=\033[31m
+WAC=\033[33m
+
 CC = gcc
-OBJ = \
+CFLAGS += -Wall -Werror -Wextra
+
+SRC_PATH = ./src/
+INC_PATH = ./include/
+OBJ_PATH = ./obj/
+
+OBJ_NAME = $(SRC_NAME:.c=.o)
+SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
+OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
+INC = $(addprefix -I,$(INC_PATH))
+
+SRC_NAME += \
 	ft_atoi.o \
 	ft_bzero.o \
 	ft_digits.o \
@@ -105,18 +122,25 @@ OBJ = \
 
 all: $(NAME)
 
-%.o: %.c
-	$(CC) $(FLAGS) -c -o $@ $<
+$(OBJ_PATH)%.o: $(SRC_PATH)/%.c
+	@mkdir -p $(OBJ_PATH)
+	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+	@echo -n =
 
 $(NAME): $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@echo "$(OKC)$(PROJECT): Creating the library$(NOC)"
+	@ar -rc $(NAME) $?
+	@echo "$(OKC)$(PROJECT): Generating the index$(NOC)"
+	@ranlib $(NAME)
+	@echo "$(OKC)$(PROJECT): $(PROJECT) ready$(NOC)"
 
 clean:
-	/bin/rm -f *.o
+	@rm -rf $(OBJ_PATH)
+	@echo "$(WAC)$(PROJECT): Removing obj path: '$(OBJ_PATH)'$(NOC)"
 
 fclean: clean
-	/bin/rm -f $(NAME)
+	@rm -rf $(NAME)
+	@echo "$(WAC)$(PROJECT): Removing '$(NAME)'$(NOC)"
 
 re: fclean all
 
