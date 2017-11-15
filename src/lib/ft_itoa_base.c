@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/09 12:18:09 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/08 13:07:24 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include "libft/ctype.h"
-# include "libft/io.h"
-# include "libft/lib.h"
-# include "libft/math.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/types.h"
+char	*ft_itoa_base(int n, uint8_t base)
+{
+	uint8_t	i;
+	char	*str;
 
-#endif
+	if (base > 30)
+		return (NULL);
+	i = ft_digits(n, base);
+	if (!(str = malloc((i + 1 + (n < 0)) * sizeof(char))))
+		return (NULL);
+	i = ft_strnbr(str, n, base);
+	str[i] = '\0';
+	return (str);
+}

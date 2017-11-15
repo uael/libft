@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/09 12:18:09 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 12:03:40 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include "libft/ctype.h"
-# include "libft/io.h"
-# include "libft/lib.h"
-# include "libft/math.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/types.h"
+inline void	ft_putnbr_fd(int n, int fd)
+{
+	int pow;
+	int mod;
+	int tmp;
 
-#endif
+	pow = 1;
+	tmp = n;
+	while (tmp /= 10)
+		pow *= 10;
+	mod = 1;
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		mod = -1;
+	}
+	while (pow)
+	{
+		ft_putchar_fd((char)(n / pow * mod + '0'), fd);
+		n %= pow;
+		pow /= 10;
+	}
+}

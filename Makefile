@@ -6,7 +6,7 @@
 #    By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:52:36 by alucas-           #+#    #+#              #
-#    Updated: 2017/11/15 17:42:48 by null             ###   ########.fr        #
+#    Updated: 2017/11/15 18:48:45 by null             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ CFLAGS += -Wall -Werror -Wextra
 SRC_PATH = ./src/
 INC_PATH = ./include/
 OBJ_PATH = ./obj/
+OBJS_PATH = ./obj/ ./obj/ctype/ ./obj/io ./obj/lib ./obj/mem ./obj/string
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
@@ -31,99 +32,60 @@ OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 INC = $(addprefix -I,$(INC_PATH))
 
 SRC_NAME += \
-	ft_atoi.o \
-	ft_bzero.o \
-	ft_digits.o \
-	ft_dstdtor.o \
-	ft_dstralloc.o \
-	ft_dstrappend.o \
-	ft_dstrat.o \
-	ft_dstrbeg.o \
-	ft_dstrend.o \
-	ft_dstrgrow.o \
-	ft_dstrpop.o \
-	ft_dstrpopn.o \
-	ft_dstrprepend.o \
-	ft_dstrpush.o \
-	ft_dstrpushcpy.o \
-	ft_dstrpushn.o \
-	ft_dstrpushncpy.o \
-	ft_dstrsht.o \
-	ft_dstrshtn.o \
-	ft_dstrunsht.o \
-	ft_dstrunshtcpy.o \
-	ft_dstrunshtn.o \
-	ft_dstrunshtncpy.o \
-	ft_isalnum.o \
-	ft_isalpha.o \
-	ft_isascii.o \
-	ft_isdigit.o \
-	ft_islower.o \
-	ft_isprint.o \
-	ft_isspace.o \
-	ft_isupper.o \
-	ft_itoa.o \
-	ft_itoa_base.o \
-	ft_lstadd.o \
-	ft_lstdel.o \
-	ft_lstdelone.o \
-	ft_lstiter.o \
-	ft_lstmap.o \
-	ft_lstnew.o \
-	ft_memalloc.o \
-	ft_memccpy.o \
-	ft_memchr.o \
-	ft_memcmp.o \
-	ft_memcpy.o \
-	ft_memdel.o \
-	ft_memmove.o \
-	ft_memrcpy.o \
-	ft_memrealloc.o \
-	ft_memset.o \
-	ft_putchar.o \
-	ft_putchar_fd.o \
-	ft_putendl.o \
-	ft_putendl_fd.o \
-	ft_putnbr.o \
-	ft_putnbr_fd.o \
-	ft_putstr.o \
-	ft_putstr_fd.o \
-	ft_strcat.o \
-	ft_strchr.o \
-	ft_strclr.o \
-	ft_strcmp.o \
-	ft_strcpy.o \
-	ft_strdel.o \
-	ft_strdup.o \
-	ft_strequ.o \
-	ft_striter.o \
-	ft_striteri.o \
-	ft_strjoin.o \
-	ft_strlcat.o \
-	ft_strlen.o \
-	ft_strmap.o \
-	ft_strmapi.o \
-	ft_strnbr.o \
-	ft_strncat.o \
-	ft_strncmp.o \
-	ft_strncpy.o \
-	ft_strnequ.o \
-	ft_strnew.o \
-	ft_strnlen.o \
-	ft_strnstr.o \
-	ft_strrchr.o \
-	ft_strsplit.o \
-	ft_strstr.o \
-	ft_strsub.o \
-	ft_strtrim.o \
-	ft_strword.o \
-	ft_tolower.o \
-	ft_toupper.o
+	ctype/ft_isalnum.c \
+	ctype/ft_isalpha.c \
+	ctype/ft_isascii.c \
+	ctype/ft_isdigit.c \
+	ctype/ft_islower.c \
+	ctype/ft_isprint.c \
+	ctype/ft_isspace.c \
+	ctype/ft_isupper.c \
+	ctype/ft_tolower.c \
+	ctype/ft_toupper.c \
+	io/ft_putchar.c \
+	io/ft_putchar_fd.c \
+	io/ft_putendl.c \
+	io/ft_putendl_fd.c \
+	io/ft_putnbr.c \
+	io/ft_putnbr_fd.c \
+	io/ft_putstr.c \
+	io/ft_putstr_fd.c \
+	lib/ft_atoi.c \
+	lib/ft_digits.c \
+	lib/ft_itoa.c \
+	lib/ft_itoa_base.c \
+	mem/ft_calloc.c \
+	mem/ft_malloc.c \
+	mem/ft_realloc.c \
+	string/ft_bzero.c \
+	string/ft_memccpy.c \
+	string/ft_memchr.c \
+	string/ft_memcmp.c \
+	string/ft_memcpy.c \
+	string/ft_memmove.c \
+	string/ft_memrcpy.c \
+	string/ft_memset.c \
+	string/ft_strcat.c \
+	string/ft_strchr.c \
+	string/ft_strclr.c \
+	string/ft_strcmp.c \
+	string/ft_strcpy.c \
+	string/ft_strdup.c \
+	string/ft_strlcat.c \
+	string/ft_strlen.c \
+	string/ft_strnbr.c \
+	string/ft_strncat.c \
+	string/ft_strncmp.c \
+	string/ft_strncpy.c \
+	string/ft_strnlen.c \
+	string/ft_strnstr.c \
+	string/ft_strrchr.c \
+	string/ft_strstr.c
 
 all: $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)/%.c
-	@mkdir -p $(OBJ_PATH)
+	@mkdir -p $(OBJS_PATH)
 	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 	@echo -n =
 

@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/09 12:18:09 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:44:20 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/09 12:16:41 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include "libft/ctype.h"
-# include "libft/io.h"
-# include "libft/lib.h"
-# include "libft/math.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/types.h"
-
-#endif
+inline void	*ft_memmove(void *dst, void const *src, size_t len)
+{
+	if (dst < src)
+		return (ft_memcpy(dst, src, len));
+	if (dst > src)
+		return (ft_memrcpy(dst, src, len));
+	return (dst);
+}

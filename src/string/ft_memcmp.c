@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/09 12:18:09 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:50 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 14:24:58 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include "libft/ctype.h"
-# include "libft/io.h"
-# include "libft/lib.h"
-# include "libft/math.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/types.h"
+inline int	ft_memcmp(void const *s1, void const *s2, size_t n)
+{
+	uint8_t const	*a;
+	uint8_t const	*b;
 
-#endif
+	a = (uint8_t const *)s1;
+	b = (uint8_t const *)s2;
+	while (n && *a == *b)
+	{
+		++a;
+		++b;
+		--n;
+	}
+	return (n == 0 ? 0 : *a - *b);
+}

@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/09 12:18:09 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:53:05 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include "libft/ctype.h"
-# include "libft/io.h"
-# include "libft/lib.h"
-# include "libft/math.h"
-# include "libft/mem.h"
-# include "libft/string.h"
-# include "libft/types.h"
+size_t	ft_strlcat(char *dest, char const *src, size_t size)
+{
+	size_t	slen;
+	size_t	dlen;
 
-#endif
+	slen = (size_t)ft_strlen(src);
+	dlen = (size_t)ft_strnlen(dest, size);
+	if (dlen == size)
+		return (size + slen);
+	if (slen < size - dlen)
+		ft_strncpy(dest + dlen, src, slen + 1);
+	else
+	{
+		ft_strncpy(dest + dlen, src, size - dlen - 1);
+		dest[size - 1] = '\0';
+	}
+	return (dlen + slen);
+}
