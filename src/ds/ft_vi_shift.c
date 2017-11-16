@@ -31,3 +31,8 @@ inline t_bool	ft_vi64_shift(t_vi64 *self, int64_t *out)
 {
 	return ((t_bool)(ft_vi64_shiftn(self, 1, out) == 1));
 }
+
+inline t_bool	ft_vstr_shift(t_vstr *self, char **out)
+{
+	return ((t_bool)(ft_vstr_shiftn(self, 1, out) == 1));
+}

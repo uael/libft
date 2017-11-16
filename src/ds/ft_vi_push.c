@@ -31,3 +31,8 @@ inline int64_t	*ft_vi64_push(t_vi64 *self)
 {
 	return (ft_vi64_pushn(self, 1));
 }
+
+inline char		**ft_vstr_push(t_vstr *self)
+{
+	return (ft_vstr_pushn(self, 1));
+}

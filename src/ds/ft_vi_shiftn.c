@@ -79,3 +79,20 @@ inline size_t	ft_vi64_shiftn(t_vi64 *self, size_t n, int64_t *out)
 		ft_memmove(it, it + n, (self->len + 1) * sizeof(int64_t));
 	return (n);
 }
+
+inline size_t	ft_vstr_shiftn(t_vstr *self, size_t n, char **out)
+{
+	size_t	len;
+	char	**it;
+
+	if (!n || (len = ft_vstr_size(self)) == 0)
+		return (0);
+	if (n > len)
+		n = len;
+	it = ft_vstr_begin(self);
+	if (out)
+		ft_memcpy(out, it, n * sizeof(int64_t));
+	if (self->len -= n)
+		ft_memmove(it, it + n, (self->len + 1) * sizeof(int64_t));
+	return (n);
+}

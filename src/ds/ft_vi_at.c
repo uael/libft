@@ -31,3 +31,8 @@ inline int64_t	*ft_vi64_at(t_vi64 *self, size_t idx)
 {
 	return (ft_vi64_begin(self) + idx);
 }
+
+inline char		**ft_vstr_at(t_vstr *self, size_t idx)
+{
+	return (ft_vstr_begin(self) + idx);
+}

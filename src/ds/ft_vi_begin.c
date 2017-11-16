@@ -31,3 +31,8 @@ inline int64_t	*ft_vi64_begin(t_vi64 *self)
 {
 	return (self->buf);
 }
+
+inline char		**ft_vstr_begin(t_vstr *self)
+{
+	return (self->buf);
+}

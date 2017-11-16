@@ -31,3 +31,8 @@ inline t_bool	ft_vi64_remove(t_vi64 *self, size_t idx, int64_t *out)
 {
 	return ((t_bool)(ft_vi64_removen(self, idx, 1, out) == 1));
 }
+
+inline t_bool	ft_vstr_remove(t_vstr *self, size_t idx, char **out)
+{
+	return ((t_bool)(ft_vstr_removen(self, idx, 1, out) == 1));
+}

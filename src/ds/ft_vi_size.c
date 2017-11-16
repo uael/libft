@@ -31,3 +31,8 @@ inline size_t	ft_vi64_size(t_vi64 *self)
 {
 	return (self->len);
 }
+
+inline size_t	ft_vstr_size(t_vstr *self)
+{
+	return (self->len);
+}

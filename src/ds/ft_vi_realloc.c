@@ -67,3 +67,17 @@ inline t_bool	ft_vi64_realloc(t_vi64 *self, size_t n)
 		self->len = n;
 	return (1);
 }
+
+inline t_bool	ft_vstr_realloc(t_vstr *self, size_t n)
+{
+	void *buf;
+
+	if (self->cap == n)
+		return (1);
+	if (!(buf = ft_realloc(self->buf, self->len, n * sizeof(char *))))
+		return (0);
+	self->buf = buf;
+	if (self->len > (self->cap = n))
+		self->len = n;
+	return (1);
+}

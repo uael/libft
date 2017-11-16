@@ -103,3 +103,26 @@ inline size_t	ft_vi64_removen(t_vi64 *self, size_t i, size_t n, int64_t *out)
 		return (n);
 	}
 }
+
+inline size_t	ft_vstr_removen(t_vstr *self, size_t i, size_t n, char **out)
+{
+	size_t	len;
+	char	**it;
+
+	if (i >= (len = ft_vstr_size(self)))
+		return (0);
+	else if (i == len - 1)
+		return (ft_vstr_popn(self, n, out));
+	else if (i == 0)
+		return (ft_vstr_shiftn(self, n, out));
+	else
+	{
+		if (n > len)
+			n = len;
+		it = ft_vstr_at(self, i);
+		if (out)
+			ft_memcpy(out, it, n * sizeof(char *));
+		ft_memmove(it, it + n, (len - i - n + 1) * sizeof(char *));
+		return (n);
+	}
+}

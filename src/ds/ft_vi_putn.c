@@ -95,3 +95,24 @@ inline int64_t	*ft_vi64_putn(t_vi64 *self, size_t idx, size_t n)
 		return (it);
 	}
 }
+
+inline char		**ft_vstr_putn(t_vstr *self, size_t idx, size_t n)
+{
+	size_t	len;
+	char	**it;
+
+	if (idx == 0)
+		return (ft_vstr_unshiftn(self, n));
+	else if (idx == (len = ft_vstr_size(self)))
+		return (ft_vstr_pushn(self, n));
+	else if (n == 0 || idx > len)
+		return (NULL);
+	else
+	{
+		ft_vstr_grow(self, n);
+		it = ft_vstr_begin(self) + idx;
+		ft_memmove(it + n, it, (len - idx + 1) * sizeof(char *));
+		self->len += n;
+		return (it);
+	}
+}

@@ -55,3 +55,14 @@ inline int64_t	*ft_vi64_pushn(t_vi64 *self, size_t n)
 	self->len += n;
 	return (it);
 }
+
+inline char		**ft_vstr_pushn(t_vstr *self, size_t n)
+{
+	char **it;
+
+	if (!n || !ft_vstr_grow(self, n))
+		return (NULL);
+	it = ft_vstr_end(self);
+	self->len += n;
+	return (it);
+}

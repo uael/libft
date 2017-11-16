@@ -31,3 +31,8 @@ inline int64_t	*ft_vi64_end(t_vi64 *self)
 {
 	return (self->buf + self->len);
 }
+
+inline char		**ft_vstr_end(t_vstr *self)
+{
+	return (self->buf + self->len);
+}

@@ -31,3 +31,8 @@ inline void	ft_vi64_ctor(t_vi64 *self)
 {
 	FT_INIT(self, t_vi64);
 }
+
+inline void	ft_vstr_ctor(t_vstr *self)
+{
+	FT_INIT(self, t_vstr);
+}

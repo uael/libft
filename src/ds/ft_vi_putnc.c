@@ -51,3 +51,13 @@ inline int64_t	*ft_vi64_putnc(t_vi64 *s, size_t i, int64_t const *b, size_t n)
 	ft_memcpy(it, b, n * sizeof(int64_t));
 	return (it);
 }
+
+inline char		**ft_vstr_putnc(t_vstr *s, size_t i, char const **b, size_t n)
+{
+	char **it;
+
+	if (!(it = ft_vstr_putn(s, i, n)))
+		return (NULL);
+	ft_memcpy(it, b, n * sizeof(int64_t));
+	return (it);
+}

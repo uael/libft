@@ -79,3 +79,20 @@ inline void	ft_vi64_dtor(t_vi64 *self, void (*idtor)(int64_t *i))
 	}
 	FT_INIT(self, t_vi64);
 }
+
+inline void	ft_vstr_dtor(t_vstr *self, void (*idtor)(char **i))
+{
+	char	**item;
+
+	if (self->buf)
+	{
+		if (idtor)
+		{
+			item = ft_vstr_begin(self);
+			while (item != ft_vstr_end(self))
+				idtor(item++);
+		}
+		free(self->buf);
+	}
+	FT_INIT(self, t_vstr);
+}

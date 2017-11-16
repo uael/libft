@@ -51,3 +51,13 @@ inline int64_t	*ft_vi64_unshiftc(t_vi64 *self, int64_t item)
 	*it = item;
 	return (it);
 }
+
+inline char		**ft_vstr_unshiftc(t_vstr *self, char *item)
+{
+	char **it;
+
+	if (!(it = ft_vstr_unshift(self)))
+		return (NULL);
+	*it = item;
+	return (it);
+}

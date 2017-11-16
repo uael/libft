@@ -79,3 +79,20 @@ inline size_t	ft_vi64_popn(t_vi64 *self, size_t n, int64_t *out)
 		return (n);
 	}
 }
+
+inline size_t	ft_vstr_popn(t_vstr *self, size_t n, char **out)
+{
+	size_t len;
+
+	if ((len = ft_vstr_size(self)) == 0)
+		return (0);
+	else
+	{
+		if (n > len)
+			n = len;
+		self->len -= n;
+		if (out)
+			ft_memcpy(out, ft_vstr_end(self), n * sizeof(char *));
+		return (n);
+	}
+}
