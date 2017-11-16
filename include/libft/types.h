@@ -15,4 +15,6 @@
 
 # include <stdint.h>
 
+typedef uint8_t t_bool;
+
 #endif
