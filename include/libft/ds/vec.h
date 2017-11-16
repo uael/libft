@@ -74,6 +74,13 @@ typedef struct	s_vu64
 	size_t		len;
 }				t_vu64;
 
+typedef struct	s_vstr
+{
+	char		**buf;
+	size_t		cap;
+	size_t		len;
+}				t_vstr;
+
 typedef size_t	t_vsz;
 
 extern void		ft_vi8_ctor(t_vi8 *s);
@@ -187,6 +194,34 @@ extern size_t	ft_vi64_shiftn(t_vi64 *s, size_t n, int64_t *out);
 extern t_bool	ft_vi64_shift(t_vi64 *s, int64_t *out);
 extern size_t	ft_vi64_removen(t_vi64 *s, size_t i, size_t n, int64_t *out);
 extern t_bool	ft_vi64_remove(t_vi64 *s, size_t i, int64_t *out);
+
+extern void		ft_vstr_ctor(t_vstr *s);
+extern void		ft_vstr_dtor(t_vstr *s, void(*idtor)(char **i));
+extern size_t	ft_vstr_size(t_vstr *s);
+extern char		**ft_vstr_begin(t_vstr *s);
+extern char		**ft_vstr_end(t_vstr *s);
+extern char		**ft_vstr_at(t_vstr *s, size_t i);
+extern t_bool	ft_vstr_realloc(t_vstr *s, size_t n);
+extern t_bool	ft_vstr_grow(t_vstr *s, size_t n);
+extern t_bool	ft_vstr_ensure(t_vstr *s, size_t n);
+extern char		**ft_vstr_pushn(t_vstr *s, size_t n);
+extern char		**ft_vstr_pushnc(t_vstr *s, char const **b, size_t n);
+extern char		**ft_vstr_push(t_vstr *s);
+extern char		**ft_vstr_pushc(t_vstr *s, char *item);
+extern char		**ft_vstr_unshiftn(t_vstr *s, size_t n);
+extern char		**ft_vstr_unshiftnc(t_vstr *s, char const **b, size_t n);
+extern char		**ft_vstr_unshift(t_vstr *s);
+extern char		**ft_vstr_unshiftc(t_vstr *s, char *item);
+extern char		**ft_vstr_putn(t_vstr *s, size_t i, size_t n);
+extern char		**ft_vstr_putnc(t_vstr *s, size_t i, char const **b, size_t n);
+extern char		**ft_vstr_put(t_vstr *s, size_t i);
+extern char		**ft_vstr_putc(t_vstr *s, size_t i, char *item);
+extern size_t	ft_vstr_popn(t_vstr *s, size_t n, char **out);
+extern t_bool	ft_vstr_pop(t_vstr *s, char **out);
+extern size_t	ft_vstr_shiftn(t_vstr *s, size_t n, char **out);
+extern t_bool	ft_vstr_shift(t_vstr *s, char **out);
+extern size_t	ft_vstr_removen(t_vstr *s, size_t i, size_t n, char **out);
+extern t_bool	ft_vstr_remove(t_vstr *s, size_t i, char **out);
 
 extern void		ft_vu8_ctor(t_vu8 *s);
 extern void		ft_vu8_dtor(t_vu8 *s, void(*idtor)(uint8_t *));
