@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/ds/vec.h"
 
 inline void	ft_vi8_dtor(t_vi8 *self, void (*idtor)(int8_t *i))
 {

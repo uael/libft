@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vi_ctor.c                                          :+:      :+:    :+:   */
+/*   vu_begin.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,22 +12,22 @@
 
 #include "libft/ds/vec.h"
 
-inline void	ft_vi8_ctor(t_vi8 *self)
+inline uint8_t	*ft_vu8_begin(t_vu8 *self)
 {
-	FT_INIT(self, t_vi8);
+	return (self->buf);
 }
 
-inline void	ft_vi16_ctor(t_vi16 *self)
+inline uint16_t	*ft_vu16_begin(t_vu16 *self)
 {
-	FT_INIT(self, t_vi16);
+	return (self->buf);
 }
 
-inline void	ft_vi32_ctor(t_vi32 *self)
+inline uint32_t	*ft_vu32_begin(t_vu32 *self)
 {
-	FT_INIT(self, t_vi16);
+	return (self->buf);
 }
 
-inline void	ft_vi64_ctor(t_vi64 *self)
+inline uint64_t	*ft_vu64_begin(t_vu64 *self)
 {
-	FT_INIT(self, t_vi64);
+	return (self->buf);
 }

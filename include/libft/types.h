@@ -14,6 +14,7 @@
 # define LIBFT_TYPES_H
 
 # include <stdint.h>
+# include <stddef.h>
 
 typedef uint8_t t_bool;
 

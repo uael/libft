@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vi_ctor.c                                          :+:      :+:    :+:   */
+/*   vi_pushn.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,22 +12,34 @@
 
 #include "libft/ds/vec.h"
 
-inline void	ft_vi8_ctor(t_vi8 *self)
+inline int8_t	*ft_vi8_pushn(t_vi8 *self, size_t n)
 {
-	FT_INIT(self, t_vi8);
+	if (!n || !ft_vi8_grow(self, n))
+		return (NULL);
+	self->len += n;
+	return (ft_vi8_end(self));
 }
 
-inline void	ft_vi16_ctor(t_vi16 *self)
+inline int16_t	*ft_vi16_pushn(t_vi16 *self, size_t n)
 {
-	FT_INIT(self, t_vi16);
+	if (!n || !ft_vi16_grow(self, n))
+		return (NULL);
+	self->len += n;
+	return (ft_vi16_end(self));
 }
 
-inline void	ft_vi32_ctor(t_vi32 *self)
+inline int32_t	*ft_vi32_pushn(t_vi32 *self, size_t n)
 {
-	FT_INIT(self, t_vi16);
+	if (!n || !ft_vi32_grow(self, n))
+		return (NULL);
+	self->len += n;
+	return (ft_vi32_end(self));
 }
 
-inline void	ft_vi64_ctor(t_vi64 *self)
+inline int64_t	*ft_vi64_pushn(t_vi64 *self, size_t n)
 {
-	FT_INIT(self, t_vi64);
+	if (!n || !ft_vi64_grow(self, n))
+		return (NULL);
+	self->len += n;
+	return (ft_vi64_end(self));
 }
