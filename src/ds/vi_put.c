@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vi_push.c                                          :+:      :+:    :+:   */
+/*   vi_put.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,22 +12,22 @@
 
 #include "libft/ds/vec.h"
 
-inline int8_t	*ft_vi8_push(t_vi8 *self)
+inline int8_t	*ft_vi8_put(t_vi8 *self, size_t idx)
 {
-	return (ft_vi8_pushn(self, 1));
+	return (ft_vi8_putn(self, idx, 1));
 }
 
-inline int16_t	*ft_vi16_push(t_vi16 *self)
+inline int16_t	*ft_vi16_put(t_vi16 *self, size_t idx)
 {
-	return (ft_vi16_pushn(self, 1));
+	return (ft_vi16_putn(self, idx, 1));
 }
 
-inline int32_t	*ft_vi32_push(t_vi32 *self)
+inline int32_t	*ft_vi32_put(t_vi32 *self, size_t idx)
 {
-	return (ft_vi32_pushn(self, 1));
+	return (ft_vi32_putn(self, idx, 1));
 }
 
-inline int64_t	*ft_vi64_push(t_vi64 *self)
+inline int64_t	*ft_vi64_put(t_vi64 *self, size_t idx)
 {
-	return (ft_vi64_pushn(self, 1));
+	return (ft_vi64_putn(self, idx, 1));
 }

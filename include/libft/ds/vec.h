@@ -74,6 +74,8 @@ typedef struct	s_vu64
 	size_t		len;
 }				t_vu64;
 
+typedef size_t	t_vsz;
+
 extern void		ft_vi8_ctor(t_vi8 *s);
 extern void		ft_vi8_dtor(t_vi8 *s, void(*idtor)(int8_t *i));
 extern size_t	ft_vi8_size(t_vi8 *s);
@@ -232,7 +234,7 @@ extern uint16_t	*ft_vu16_unshiftnc(t_vu16 *s, uint16_t const *b, size_t n);
 extern uint16_t	*ft_vu16_unshift(t_vu16 *s);
 extern uint16_t	*ft_vu16_unshiftc(t_vu16 *s, uint16_t item);
 extern uint16_t	*ft_vu16_putn(t_vu16 *s, size_t i, size_t n);
-extern uint16_t	*ft_vu16_putnc(t_vu16 *s, size_t i, uint16_t const *b, size_t n);
+extern uint16_t	*ft_vu16_putnc(t_vu16 *s, size_t i, uint16_t const *b, t_vsz n);
 extern uint16_t	*ft_vu16_put(t_vu16 *s, size_t i);
 extern uint16_t	*ft_vu16_putc(t_vu16 *s, size_t i, uint16_t item);
 extern size_t	ft_vu16_popn(t_vu16 *s, size_t n, uint16_t *out);
@@ -260,7 +262,7 @@ extern uint32_t	*ft_vu32_unshiftnc(t_vu32 *s, uint32_t const *b, size_t n);
 extern uint32_t	*ft_vu32_unshift(t_vu32 *s);
 extern uint32_t	*ft_vu32_unshiftc(t_vu32 *s, uint32_t item);
 extern uint32_t	*ft_vu32_putn(t_vu32 *s, size_t i, size_t n);
-extern uint32_t	*ft_vu32_putnc(t_vu32 *s, size_t i, uint32_t const *b, size_t n);
+extern uint32_t	*ft_vu32_putnc(t_vu32 *s, size_t i, uint32_t const *b, t_vsz n);
 extern uint32_t	*ft_vu32_put(t_vu32 *s, size_t i);
 extern uint32_t	*ft_vu32_putc(t_vu32 *s, size_t i, uint32_t item);
 extern size_t	ft_vu32_popn(t_vu32 *s, size_t n, uint32_t *out);
@@ -288,7 +290,7 @@ extern uint64_t	*ft_vu64_unshiftnc(t_vu64 *s, uint64_t const *b, size_t n);
 extern uint64_t	*ft_vu64_unshift(t_vu64 *s);
 extern uint64_t	*ft_vu64_unshiftc(t_vu64 *s, uint64_t item);
 extern uint64_t	*ft_vu64_putn(t_vu64 *s, size_t i, size_t n);
-extern uint64_t	*ft_vu64_putnc(t_vu64 *s, size_t i, uint64_t const *b, size_t n);
+extern uint64_t	*ft_vu64_putnc(t_vu64 *s, size_t i, uint64_t const *b, t_vsz n);
 extern uint64_t	*ft_vu64_put(t_vu64 *s, size_t i);
 extern uint64_t	*ft_vu64_putc(t_vu64 *s, size_t i, uint64_t item);
 extern size_t	ft_vu64_popn(t_vu64 *s, size_t n, uint64_t *out);

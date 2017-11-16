@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vi_push.c                                          :+:      :+:    :+:   */
+/*   vu_unshiftc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,22 +12,42 @@
 
 #include "libft/ds/vec.h"
 
-inline int8_t	*ft_vi8_push(t_vi8 *self)
+inline uint8_t	*ft_vu8_unshiftc(t_vu8 *self, uint8_t item)
 {
-	return (ft_vi8_pushn(self, 1));
+	uint8_t *it;
+
+	if (!(it = ft_vu8_unshift(self)))
+		return (NULL);
+	*it = item;
+	return (it);
 }
 
-inline int16_t	*ft_vi16_push(t_vi16 *self)
+inline uint16_t	*ft_vu16_unshiftc(t_vu16 *self, uint16_t item)
 {
-	return (ft_vi16_pushn(self, 1));
+	uint16_t *it;
+
+	if (!(it = ft_vu16_unshift(self)))
+		return (NULL);
+	*it = item;
+	return (it);
 }
 
-inline int32_t	*ft_vi32_push(t_vi32 *self)
+inline uint32_t	*ft_vu32_unshiftc(t_vu32 *self, uint32_t item)
 {
-	return (ft_vi32_pushn(self, 1));
+	uint32_t *it;
+
+	if (!(it = ft_vu32_unshift(self)))
+		return (NULL);
+	*it = item;
+	return (it);
 }
 
-inline int64_t	*ft_vi64_push(t_vi64 *self)
+inline uint64_t	*ft_vu64_unshiftc(t_vu64 *self, uint64_t item)
 {
-	return (ft_vi64_pushn(self, 1));
+	uint64_t *it;
+
+	if (!(it = ft_vu64_unshift(self)))
+		return (NULL);
+	*it = item;
+	return (it);
 }

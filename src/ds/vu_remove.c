@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vi_push.c                                          :+:      :+:    :+:   */
+/*   vu_remove.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,22 +12,22 @@
 
 #include "libft/ds/vec.h"
 
-inline int8_t	*ft_vi8_push(t_vi8 *self)
+inline t_bool	ft_vu8_remove(t_vu8 *self, size_t idx, uint8_t *out)
 {
-	return (ft_vi8_pushn(self, 1));
+	return ((t_bool)(ft_vu8_removen(self, idx, 1, out) == 1));
 }
 
-inline int16_t	*ft_vi16_push(t_vi16 *self)
+inline t_bool	ft_vu16_remove(t_vu16 *self, size_t idx, uint16_t *out)
 {
-	return (ft_vi16_pushn(self, 1));
+	return ((t_bool)(ft_vu16_removen(self, idx, 1, out) == 1));
 }
 
-inline int32_t	*ft_vi32_push(t_vi32 *self)
+inline t_bool	ft_vu32_remove(t_vu32 *self, size_t idx, uint32_t *out)
 {
-	return (ft_vi32_pushn(self, 1));
+	return ((t_bool)(ft_vu32_removen(self, idx, 1, out) == 1));
 }
 
-inline int64_t	*ft_vi64_push(t_vi64 *self)
+inline t_bool	ft_vu64_remove(t_vu64 *self, size_t idx, uint64_t *out)
 {
-	return (ft_vi64_pushn(self, 1));
+	return ((t_bool)(ft_vu64_removen(self, idx, 1, out) == 1));
 }

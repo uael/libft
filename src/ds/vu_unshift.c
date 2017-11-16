@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vi_push.c                                          :+:      :+:    :+:   */
+/*   vu_unshiftn.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,22 +12,22 @@
 
 #include "libft/ds/vec.h"
 
-inline int8_t	*ft_vi8_push(t_vi8 *self)
+inline uint8_t	*ft_vu8_unshift(t_vu8 *self)
 {
-	return (ft_vi8_pushn(self, 1));
+	return (ft_vu8_unshiftn(self, 1));
 }
 
-inline int16_t	*ft_vi16_push(t_vi16 *self)
+inline uint16_t	*ft_vu16_unshift(t_vu16 *self)
 {
-	return (ft_vi16_pushn(self, 1));
+	return (ft_vu16_unshiftn(self, 1));
 }
 
-inline int32_t	*ft_vi32_push(t_vi32 *self)
+inline uint32_t	*ft_vu32_unshift(t_vu32 *self)
 {
-	return (ft_vi32_pushn(self, 1));
+	return (ft_vu32_unshiftn(self, 1));
 }
 
-inline int64_t	*ft_vi64_push(t_vi64 *self)
+inline uint64_t	*ft_vu64_unshift(t_vu64 *self)
 {
-	return (ft_vi64_pushn(self, 1));
+	return (ft_vu64_unshiftn(self, 1));
 }
