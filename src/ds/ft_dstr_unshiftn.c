@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft/ds.h                                         :+:      :+:    :+:   */
+/*   ft_dstr_unshiftn.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/15 18:51:38 by null             ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_DS_H
-# define LIBFT_DS_H
+#include "libft/ds/dstr.h"
 
-# include "ds/dstr.h"
-# include "ds/vec.h"
+inline char	*ft_dstr_unshiftn(t_dstr *self, size_t n)
+{
+	size_t	len;
+	char	*it;
 
-#endif
+	if (!n || !ft_dstr_grow(self, n))
+		return (NULL);
+	it = ft_dstr_begin(self);
+	if ((len = ft_dstr_size(self)))
+		ft_memmove(it + n, it, (len + 1) * sizeof(char));
+	else
+		it[n] = '\0';
+	self->len += n;
+	return (it);
+}

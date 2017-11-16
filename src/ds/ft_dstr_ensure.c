@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft/ds.h                                         :+:      :+:    :+:   */
+/*   ft_dstr_ensure.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/15 18:51:38 by null             ###   ########.fr       */
+/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_DS_H
-# define LIBFT_DS_H
+#include "libft/ds/dstr.h"
 
-# include "ds/dstr.h"
-# include "ds/vec.h"
-
-#endif
+inline t_bool	ft_dstr_ensure(t_dstr *self, size_t n)
+{
+	if (++n < FT_DSTR_MIN_CAP && FT_DSTR_MIN_CAP > self->cap)
+		return (ft_dstr_realloc(self, FT_DSTR_MIN_CAP));
+	else if (n > self->cap)
+		return (ft_dstr_realloc(self, ISPOW2(n) ? n : pow2_next(n)));
+	return (1);
+}

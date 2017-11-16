@@ -102,21 +102,22 @@ inline uint64_t	pow2_next64(uint64_t n)
 
 inline size_t	pow2_next(size_t n)
 {
+	size_t i;
 	size_t j;
 
 	if (n == SIZE_MAX || ISPOW2(n))
 		return (n);
-	n = (uint32_t)n;
-	if (!(j = n & 0xFFFF0000))
-		j = n;
-	if (!(n = j & 0xFF00FF00))
-		n = j;
-	if (!(j = n & 0xF0F0F0F0))
-		j = n;
-	if (!(n = j & 0xCCCCCCCC))
-		n = j;
-	if (!(j = n & 0xAAAAAAAA))
-		j = n;
-	n = j << 1;
-	return ((j < n) ? (size_t)SIZE_MAX : j);
+	i = (uint32_t)n;
+	if (!(j = i & 0xFFFF0000))
+		j = i;
+	if (!(i = j & 0xFF00FF00))
+		i = j;
+	if (!(j = i & 0xF0F0F0F0))
+		j = i;
+	if (!(i = j & 0xCCCCCCCC))
+		i = j;
+	if (!(j = i & 0xAAAAAAAA))
+		j = i;
+	i = j << 1;
+	return ((i < n) ? (size_t)SIZE_MAX : i);
 }
