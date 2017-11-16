@@ -12,12 +12,6 @@
 
 PROJECT = libft
 NAME = $(PROJECT).a
-
-NOC=\033[0m
-OKC=\033[94;1m
-ERC=\033[31m
-WAC=\033[33m
-
 CC = gcc
 CFLAGS += -Wall -Werror -Wextra
 
@@ -171,23 +165,18 @@ SRC_NAME += \
 all: $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)/%.c
-	@mkdir -p $(OBJ_SUB_PATHS)
-	@$(CC) $(CFLAGS) $(INC) -o $@ -c $<
+	mkdir -p $(OBJ_SUB_PATHS)
+	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 $(NAME): $(OBJ)
-	@echo "$(OKC)$(PROJECT): Creating the library$(NOC)"
-	@ar -rc $(NAME) $?
-	@echo "$(OKC)$(PROJECT): Generating the index$(NOC)"
-	@ranlib $(NAME)
-	@echo "$(OKC)$(PROJECT): $(PROJECT) ready$(NOC)"
+	ar -rc $(NAME) $?
+	ranlib $(NAME)
 
 clean:
-	@rm -rf $(OBJ_PATH)
-	@echo "$(WAC)$(PROJECT): Removing obj path: '$(OBJ_PATH)'$(NOC)"
+	/bin/rm -rf $(OBJ_PATH)
 
 fclean: clean
-	@rm -rf $(NAME)
-	@echo "$(WAC)$(PROJECT): Removing '$(NAME)'$(NOC)"
+	/bin/rm -rf $(NAME)
 
 re: fclean all
 
