@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/17 18:02:00 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,15 @@ inline uint64_t	*ft_vu64_pushc(t_vu64 *self, uint64_t item)
 	if (!(it = ft_vu64_push(self)))
 		return (NULL);
 	*it = item;
+	return (it);
+}
+
+inline void	*ft_vec_pushc(t_vec *self, void *item)
+{
+	void *it;
+
+	if (!(it = ft_vec_push(self)))
+		return (NULL);
+	ft_memcpy(it, item, self->isz);
 	return (it);
 }

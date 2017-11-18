@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/07 09:53:34 by alucas-          ###   ########.fr       */
+/*   Updated: 2017/11/18 14:18:33 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,22 @@ inline void	ft_vu64_dtor(t_vu64 *self, void (*idtor)(uint64_t *i))
 			item = ft_vu64_begin(self);
 			while (item != ft_vu64_end(self))
 				idtor(item++);
+		}
+		free(self->buf);
+	}
+	FT_INIT(self, t_vu64);
+}
+
+inline void		ft_vec_dtor(t_vec *self, void(*idtor)(void *i))
+{
+	char	*item;
+	if (self->buf)
+	{
+		if (idtor)
+		{
+			item = ft_vec_begin(self) - self->isz;
+			while ((item += self->isz) != ft_vec_end(self))
+				idtor(item);
 		}
 		free(self->buf);
 	}

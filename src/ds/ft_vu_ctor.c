@@ -31,3 +31,9 @@ inline void	ft_vu64_ctor(t_vu64 *self)
 {
 	FT_INIT(self, t_vu64);
 }
+
+inline void	ft_vec_ctor(t_vec *self, size_t isz)
+{
+	FT_INIT(self, t_vu64);
+	self->isz = isz;
+}

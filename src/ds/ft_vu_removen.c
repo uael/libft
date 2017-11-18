@@ -103,3 +103,27 @@ inline size_t	ft_vu64_removen(t_vu64 *self, size_t i, size_t n, uint64_t *out)
 		return (n);
 	}
 }
+
+inline size_t	ft_vec_removen(t_vec *self, size_t i, size_t n, void *out)
+{
+	size_t	len;
+	void	*it;
+
+	if (i >= (len = ft_vec_size(self)))
+		return (0);
+	else if (i == len - 1)
+		return (ft_vec_popn(self, n, out));
+	else if (i == 0)
+		return (ft_vec_shiftn(self, n, out));
+	else
+	{
+		if (n > len)
+			n = len;
+		it = ft_vec_at(self, i);
+		if (out)
+			ft_memcpy(out, it, n * self->isz);
+		ft_memmove(it, (char  *)it + (n * self->isz),
+			(len - i - n + 1) * self->isz);
+		return (n);
+	}
+}

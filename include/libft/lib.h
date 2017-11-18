@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/15 18:06:48 by null             ###   ########.fr       */
+/*   Updated: 2017/11/17 10:03:31 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 # define LIBFT_LIB_H
 
 # include <stdlib.h>
-# include "types.h"
+
+# include "tys.h"
+# include "cty.h"
+# include "mem.h"
 
 # define FT_INIT(S, TY) ft_memset(S, 0, sizeof(TY))
 
-extern int		ft_atoi(char const *str);
-extern char		*ft_itoa(int n);
-extern char		*ft_itoa_base(int n, uint8_t base);
-extern uint8_t	ft_digits(int64_t n, uint8_t base);
+extern int64_t	ft_atoi(char const *str);
+extern char		*ft_itoa(int64_t n, uint8_t base);
+extern char		*ft_utoa(uint64_t n, uint8_t base);
 
 #endif

@@ -31,3 +31,8 @@ inline uint64_t	*ft_vu64_begin(t_vu64 *self)
 {
 	return (self->buf);
 }
+
+inline void		*ft_vec_begin(t_vec *self)
+{
+	return (self->buf);
+}

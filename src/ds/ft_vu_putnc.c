@@ -51,3 +51,13 @@ inline uint64_t	*ft_vu64_putnc(t_vu64 *s, size_t i, uint64_t const *b, size_t n)
 	ft_memcpy(it, b, n * sizeof(int64_t));
 	return (it);
 }
+
+inline void		*ft_vec_putnc(t_vec *s, size_t i, void const *b, size_t n)
+{
+	uint64_t *it;
+
+	if (!(it = ft_vec_putn(s, i, n)))
+		return (NULL);
+	ft_memcpy(it, b, n * s->isz);
+	return (it);
+}

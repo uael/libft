@@ -18,7 +18,8 @@ inline t_bool	ft_vi8_realloc(t_vi8 *self, size_t n)
 
 	if (self->cap == n)
 		return (1);
-	if (!(buf = ft_realloc(self->buf, self->len, n * sizeof(int8_t))))
+	if (!(buf = ft_realloc(self->buf, self->len * sizeof(int8_t),
+		n * sizeof(int8_t))))
 		return (0);
 	self->buf = buf;
 	if (self->len > (self->cap = n))
@@ -32,7 +33,8 @@ inline t_bool	ft_vi16_realloc(t_vi16 *self, size_t n)
 
 	if (self->cap == n)
 		return (1);
-	if (!(buf = ft_realloc(self->buf, self->len, n * sizeof(int16_t))))
+	if (!(buf = ft_realloc(self->buf, self->len * sizeof(int16_t),
+		n * sizeof(int16_t))))
 		return (0);
 	self->buf = buf;
 	if (self->len > (self->cap = n))
@@ -46,7 +48,8 @@ inline t_bool	ft_vi32_realloc(t_vi32 *self, size_t n)
 
 	if (self->cap == n)
 		return (1);
-	if (!(buf = ft_realloc(self->buf, self->len, n * sizeof(int32_t))))
+	if (!(buf = ft_realloc(self->buf, self->len * sizeof(int32_t),
+		n * sizeof(int32_t))))
 		return (0);
 	self->buf = buf;
 	if (self->len > (self->cap = n))
@@ -60,7 +63,8 @@ inline t_bool	ft_vi64_realloc(t_vi64 *self, size_t n)
 
 	if (self->cap == n)
 		return (1);
-	if (!(buf = ft_realloc(self->buf, self->len, n * sizeof(int64_t))))
+	if (!(buf = ft_realloc(self->buf, self->len * sizeof(int64_t),
+		n * sizeof(int64_t))))
 		return (0);
 	self->buf = buf;
 	if (self->len > (self->cap = n))
@@ -74,7 +78,8 @@ inline t_bool	ft_vstr_realloc(t_vstr *self, size_t n)
 
 	if (self->cap == n)
 		return (1);
-	if (!(buf = ft_realloc(self->buf, self->len, n * sizeof(char *))))
+	if (!(buf = ft_realloc(self->buf, self->len * sizeof(char *),
+		n * sizeof(char *))))
 		return (0);
 	self->buf = buf;
 	if (self->len > (self->cap = n))

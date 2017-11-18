@@ -31,3 +31,8 @@ inline size_t	ft_vu64_size(t_vu64 *self)
 {
 	return (self->len);
 }
+
+inline size_t	ft_vec_size(t_vec *self)
+{
+	return (self->len);
+}

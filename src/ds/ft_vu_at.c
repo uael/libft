@@ -31,3 +31,8 @@ inline uint64_t	*ft_vu64_at(t_vu64 *self, size_t idx)
 {
 	return (ft_vu64_begin(self) + idx);
 }
+
+inline void		*ft_vec_at(t_vec *self, size_t idx)
+{
+	return ((char *)ft_vec_begin(self) + (idx * self->isz));
+}

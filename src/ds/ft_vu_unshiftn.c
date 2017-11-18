@@ -67,3 +67,18 @@ inline uint64_t	*ft_vu64_unshiftn(t_vu64 *self, size_t n)
 	self->len += n;
 	return (it);
 }
+
+inline void		*ft_vec_unshiftn(t_vec *self, size_t n)
+{
+	size_t	len;
+	void	*it;
+
+	if (!n || !ft_vec_grow(self, n))
+		return (NULL);
+	it = ft_vec_begin(self);
+	if ((len = ft_vec_size(self)))
+		ft_memmove((char *)it + (n * self->isz), it,
+			(len + 1) * self->isz);
+	self->len += n;
+	return (it);
+}

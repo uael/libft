@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/15 18:23:29 by null             ###   ########.fr       */
+/*   Updated: 2017/11/17 11:32:22 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_DS_VEC_H
 
 # include "../mem.h"
+# include "../str.h"
 # include "../math.h"
 
 # define FT_VEC_MIN_CAP 32
@@ -80,6 +81,14 @@ typedef struct	s_vstr
 	size_t		cap;
 	size_t		len;
 }				t_vstr;
+
+typedef struct	s_vec
+{
+	void		*buf;
+	size_t		isz;
+	size_t		cap;
+	size_t		len;
+}				t_vec;
 
 typedef size_t	t_vsz;
 
@@ -222,6 +231,34 @@ extern size_t	ft_vstr_shiftn(t_vstr *s, size_t n, char **out);
 extern t_bool	ft_vstr_shift(t_vstr *s, char **out);
 extern size_t	ft_vstr_removen(t_vstr *s, size_t i, size_t n, char **out);
 extern t_bool	ft_vstr_remove(t_vstr *s, size_t i, char **out);
+
+extern void		ft_vec_ctor(t_vec *s, size_t isz);
+extern void		ft_vec_dtor(t_vec *s, void(*idtor)(void *i));
+extern size_t	ft_vec_size(t_vec *s);
+extern void		*ft_vec_begin(t_vec *s);
+extern void		*ft_vec_end(t_vec *s);
+extern void		*ft_vec_at(t_vec *s, size_t i);
+extern t_bool	ft_vec_realloc(t_vec *s, size_t n);
+extern t_bool	ft_vec_grow(t_vec *s, size_t n);
+extern t_bool	ft_vec_ensure(t_vec *s, size_t n);
+extern void		*ft_vec_pushn(t_vec *s, size_t n);
+extern void		*ft_vec_pushnc(t_vec *s, void const *b, size_t n);
+extern void		*ft_vec_push(t_vec *s);
+extern void		*ft_vec_pushc(t_vec *s, void *item);
+extern void		*ft_vec_unshiftn(t_vec *s, size_t n);
+extern void		*ft_vec_unshiftnc(t_vec *s, void const *b, size_t n);
+extern void		*ft_vec_unshift(t_vec *s);
+extern void		*ft_vec_unshiftc(t_vec *s, void *item);
+extern void		*ft_vec_putn(t_vec *s, size_t i, size_t n);
+extern void		*ft_vec_putnc(t_vec *s, size_t i, void const *b, size_t n);
+extern void		*ft_vec_put(t_vec *s, size_t i);
+extern void		*ft_vec_putc(t_vec *s, size_t i, void *item);
+extern size_t	ft_vec_popn(t_vec *s, size_t n, void *out);
+extern t_bool	ft_vec_pop(t_vec *s, void *out);
+extern size_t	ft_vec_shiftn(t_vec *s, size_t n, void *out);
+extern t_bool	ft_vec_shift(t_vec *s, void *out);
+extern size_t	ft_vec_removen(t_vec *s, size_t i, size_t n, void *out);
+extern t_bool	ft_vec_remove(t_vec *s, size_t i, void *out);
 
 extern void		ft_vu8_ctor(t_vu8 *s);
 extern void		ft_vu8_dtor(t_vu8 *s, void(*idtor)(uint8_t *));

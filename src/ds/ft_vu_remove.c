@@ -31,3 +31,8 @@ inline t_bool	ft_vu64_remove(t_vu64 *self, size_t idx, uint64_t *out)
 {
 	return ((t_bool)(ft_vu64_removen(self, idx, 1, out) == 1));
 }
+
+inline t_bool	ft_vec_remove(t_vec *self, size_t idx, void *out)
+{
+	return ((t_bool)(ft_vec_removen(self, idx, 1, out) == 1));
+}

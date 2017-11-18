@@ -13,7 +13,7 @@
 #ifndef LIBFT_MATH_H
 # define LIBFT_MATH_H
 
-# include "types.h"
+# include "tys.h"
 
 # ifndef MIN
 #  define MIN(a, b) (((a)<(b))?(a):(b))

@@ -6,7 +6,7 @@
 #    By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 09:52:36 by alucas-           #+#    #+#              #
-#    Updated: 2017/11/15 18:48:45 by null             ###   ########.fr        #
+#    Updated: 2017/11/18 09:54:36 by null             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CFLAGS += -Wall -Werror -Wextra
 SRC_PATH = ./src/
 INC_PATH = ./include/
 OBJ_PATH = ./obj/
-OBJ_PATHS = ctype ds io lib math mem string
+OBJ_PATHS = cty ds fs int io lib math mem str
 
 OBJ_SUB_PATHS = $(addprefix $(OBJ_PATH),$(OBJ_PATHS))
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -27,16 +27,16 @@ OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
 INC = $(addprefix -I,$(INC_PATH))
 
 SRC_NAME += \
-	ctype/ft_isalnum.c \
-	ctype/ft_isalpha.c \
-	ctype/ft_isascii.c \
-	ctype/ft_isdigit.c \
-	ctype/ft_islower.c \
-	ctype/ft_isprint.c \
-	ctype/ft_isspace.c \
-	ctype/ft_isupper.c \
-	ctype/ft_tolower.c \
-	ctype/ft_toupper.c \
+	cty/ft_isalnum.c \
+	cty/ft_isalpha.c \
+	cty/ft_isascii.c \
+	cty/ft_isdigit.c \
+	cty/ft_islower.c \
+	cty/ft_isprint.c \
+	cty/ft_isspace.c \
+	cty/ft_isupper.c \
+	cty/ft_tolower.c \
+	cty/ft_toupper.c \
 	ds/ft_dstr_append.c \
 	ds/ft_dstr_at.c \
 	ds/ft_dstr_begin.c \
@@ -121,51 +121,50 @@ SRC_NAME += \
 	ds/ft_vu_unshiftc.c \
 	ds/ft_vu_unshiftn.c \
 	ds/ft_vu_unshiftnc.c \
-	io/ft_putchar.c \
-	io/ft_putchar_fd.c \
-	io/ft_putendl.c \
-	io/ft_putendl_fd.c \
-	io/ft_putnbr.c \
-	io/ft_putnbr_fd.c \
-	io/ft_putstr.c \
-	io/ft_putstr_fd.c \
+	fs/ft_basename.c \
+	fs/ft_isdots.c \
+	fs/ft_pathjoin.c \
+	int/ft_intlen.c \
+	int/ft_intstr.c \
+	io/ft_putc.c \
+	io/ft_putl.c \
+	io/ft_putn.c \
+	io/ft_puts.c \
 	lib/ft_atoi.c \
-	lib/ft_digits.c \
 	lib/ft_itoa.c \
-	lib/ft_itoa_base.c \
 	math/pow2.c \
 	mem/ft_calloc.c \
 	mem/ft_malloc.c \
 	mem/ft_realloc.c \
-	string/ft_bzero.c \
-	string/ft_memccpy.c \
-	string/ft_memchr.c \
-	string/ft_memcmp.c \
-	string/ft_memcpy.c \
-	string/ft_memmove.c \
-	string/ft_memrcpy.c \
-	string/ft_memset.c \
-	string/ft_strcat.c \
-	string/ft_strchr.c \
-	string/ft_strclr.c \
-	string/ft_strcmp.c \
-	string/ft_strcpy.c \
-	string/ft_strdup.c \
-	string/ft_strlcat.c \
-	string/ft_strlen.c \
-	string/ft_strnbr.c \
-	string/ft_strncat.c \
-	string/ft_strncmp.c \
-	string/ft_strncpy.c \
-	string/ft_strnlen.c \
-	string/ft_strnstr.c \
-	string/ft_strrchr.c \
-	string/ft_strstr.c
+	str/ft_bzero.c \
+	str/ft_memccpy.c \
+	str/ft_memchr.c \
+	str/ft_memcmp.c \
+	str/ft_memcpy.c \
+	str/ft_memmove.c \
+	str/ft_memrcpy.c \
+	str/ft_memset.c \
+	str/ft_strcat.c \
+	str/ft_strchr.c \
+	str/ft_strclr.c \
+	str/ft_strcmp.c \
+	str/ft_strcpy.c \
+	str/ft_strdup.c \
+	str/ft_strlcat.c \
+	str/ft_strlen.c \
+	str/ft_strnbr.c \
+	str/ft_strncat.c \
+	str/ft_strncmp.c \
+	str/ft_strncpy.c \
+	str/ft_strnlen.c \
+	str/ft_strnstr.c \
+	str/ft_strrchr.c \
+	str/ft_strstr.c
 
 all: $(NAME)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)/%.c
-	mkdir -p $(OBJ_SUB_PATHS)
+	@mkdir -p $(OBJ_SUB_PATHS)
 	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
 $(NAME): $(OBJ)

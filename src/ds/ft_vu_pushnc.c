@@ -51,3 +51,13 @@ inline uint64_t	*ft_vu64_pushnc(t_vu64 *self, uint64_t const *items, size_t n)
 	ft_memcpy(it, items, n * sizeof(int64_t));
 	return (it);
 }
+
+inline void		*ft_vec_pushnc(t_vec *self, void const *items, size_t n)
+{
+	void *it;
+
+	if (!(it = ft_vec_pushn(self, n)))
+		return (NULL);
+	ft_memcpy(it, items, n * self->isz);
+	return (it);
+}

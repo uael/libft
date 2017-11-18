@@ -79,3 +79,20 @@ inline size_t	ft_vu64_popn(t_vu64 *self, size_t n, uint64_t *out)
 		return (n);
 	}
 }
+
+inline size_t	ft_vec_popn(t_vec *self, size_t n, void *out)
+{
+	size_t len;
+
+	if ((len = ft_vec_size(self)) == 0)
+		return (0);
+	else
+	{
+		if (n > len)
+			n = len;
+		self->len -= n;
+		if (out)
+			ft_memcpy(out, ft_vec_end(self), n * self->isz);
+		return (n);
+	}
+}

@@ -13,7 +13,7 @@
 #ifndef LIBFT_DS_DSTR_H
 # define LIBFT_DS_DSTR_H
 
-# include "../mem.h"
+# include "../str.h"
 # include "../math.h"
 
 # define FT_DSTR_MIN_CAP 32

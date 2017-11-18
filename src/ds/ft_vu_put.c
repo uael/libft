@@ -31,3 +31,9 @@ inline uint64_t	*ft_vu64_put(t_vu64 *self, size_t idx)
 {
 	return (ft_vu64_putn(self, idx, 1));
 }
+
+
+inline void		*ft_vec_put(t_vec *self, size_t idx)
+{
+	return (ft_vec_putn(self, idx, 1));
+}

@@ -47,3 +47,12 @@ inline t_bool	ft_vu64_ensure(t_vu64 *self, size_t n)
 		return (ft_vu64_realloc(self, ISPOW2(n) ? n : pow2_next(n)));
 	return (1);
 }
+
+inline t_bool	ft_vec_ensure(t_vec *self, size_t n)
+{
+	if (++n < FT_VEC_MIN_CAP && FT_VEC_MIN_CAP > self->cap)
+		return (ft_vec_realloc(self, FT_VEC_MIN_CAP));
+	else if (n > self->cap)
+		return (ft_vec_realloc(self, ISPOW2(n) ? n : pow2_next(n)));
+	return (1);
+}

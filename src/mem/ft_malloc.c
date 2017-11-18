@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/mem.h"
 
 inline void	*ft_malloc(size_t sz)
 {
