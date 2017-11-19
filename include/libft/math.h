@@ -56,10 +56,35 @@
 # define F64CMP(a, b) ((int8_t)(((a) > (b)) - ((a) < (b))))
 # define ADDRCMP(a, b) ((int8_t)((&(a) > &(b)) - (&(a) < &(b))))
 
-extern uint8_t	pow2_next8(uint8_t n);
-extern uint16_t	pow2_next16(uint16_t n);
-extern uint32_t	pow2_next32(uint32_t n);
-extern uint64_t	pow2_next64(uint64_t n);
-extern size_t	pow2_next(size_t n);
+extern int8_t	ft_i8max(int8_t a, int8_t b);
+extern int16_t	ft_i16max(int16_t a, int16_t b);
+extern int32_t	ft_i32max(int32_t a, int32_t b);
+extern int64_t	ft_i64max(int64_t a, int64_t b);
+extern ssize_t	ft_imax(ssize_t a, ssize_t b);
+
+extern uint8_t	ft_u8max(uint8_t a, uint8_t b);
+extern uint16_t	ft_u16max(uint16_t a, uint16_t b);
+extern uint32_t	ft_u32max(uint32_t a, uint32_t b);
+extern uint64_t	ft_u64max(uint64_t a, uint64_t b);
+extern size_t	ft_umax(size_t a, size_t b);
+
+extern int8_t	ft_i8min(int8_t a, int8_t b);
+extern int16_t	ft_i16min(int16_t a, int16_t b);
+extern int32_t	ft_i32min(int32_t a, int32_t b);
+extern int64_t	ft_i64min(int64_t a, int64_t b);
+extern ssize_t	ft_imin(ssize_t a, ssize_t b);
+
+extern uint8_t	ft_u8min(uint8_t a, uint8_t b);
+extern uint16_t	ft_u16min(uint16_t a, uint16_t b);
+extern uint32_t	ft_u32min(uint32_t a, uint32_t b);
+extern uint64_t	ft_u64min(uint64_t a, uint64_t b);
+extern size_t	ft_umin(size_t a, size_t b);
+
+extern uint64_t	ft_pow(int64_t n, int16_t p);
+extern uint8_t	ft_pow2_next8(uint8_t n);
+extern uint16_t	ft_pow2_next16(uint16_t n);
+extern uint32_t	ft_pow2_next32(uint32_t n);
+extern uint64_t	ft_pow2_next64(uint64_t n);
+extern size_t	ft_pow2_next(size_t n);
 
 #endif

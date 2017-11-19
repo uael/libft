@@ -15,6 +15,7 @@
 
 # include <stdint.h>
 # include <stddef.h>
+# include <sys/types.h>
 
 typedef uint8_t	t_bool;
 

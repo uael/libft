@@ -54,7 +54,7 @@ inline int64_t	*ft_vi64_putc(t_vi64 *self, size_t idx, int64_t item)
 
 inline char		**ft_vstr_putc(t_vstr *self, size_t idx, char *item)
 {
-	char 	**it;
+	char	**it;
 
 	if (!(it = ft_vstr_put(self, idx)))
 		return (NULL);

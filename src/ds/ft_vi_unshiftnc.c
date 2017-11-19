@@ -52,7 +52,6 @@ inline int64_t	*ft_vi64_unshiftnc(t_vi64 *self, int64_t const *items, size_t n)
 	return (it);
 }
 
-
 inline char		**ft_vstr_unshiftnc(t_vstr *self, char const **items, size_t n)
 {
 	char **it;

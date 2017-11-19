@@ -12,7 +12,7 @@
 
 #include "libft/fs.h"
 
-inline char	const *ft_basename(char const *path)
+inline char	const	*ft_basename(char const *path)
 {
 	char const *ret;
 

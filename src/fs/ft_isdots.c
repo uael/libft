@@ -14,5 +14,5 @@
 
 inline t_bool	ft_isdots(char const *path)
 {
-	return ((t_bool)(*path == '.'));
+	return ((t_bool)(ft_strcmp(path, ".") == 0 || ft_strcmp(path, "..") == 0));
 }

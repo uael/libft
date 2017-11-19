@@ -1,45 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intlen.c                                        :+:      :+:    :+:   */
+/*   ft_pow.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/17 09:51:01 by null             ###   ########.fr       */
+/*   Updated: 2017/11/18 17:19:30 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/int.h"
+#include "libft/math.h"
 
-inline uint8_t	ft_floatlen(float n, int precision, uint8_t base)
+inline uint64_t	ft_pow(int64_t n, int16_t p)
 {
-	uint8_t	i;
-	float	d;
+	uint64_t	r;
+	int64_t		t;
 
-	if ((int64_t)n == n)
-		return (ft_intlen((int64_t)n, base));
-	i = ft_intlen((int64_t)n, base);
-	d = n - (int64_t)n;
-	return (i + ft_intlen((int64_t)(precision * d), 10));
-}
-
-inline uint8_t	ft_intlen(int64_t n, uint8_t base)
-{
-	uint8_t	i;
-
-	i = 1;
-	while (n /= base)
-		++i;
-	return (i);
-}
-
-inline uint8_t	ft_uintlen(uint64_t n, uint8_t base)
-{
-	uint8_t	i;
-
-	i = 1;
-	while (n /= base)
-		++i;
-	return (i);
+	r = 1;
+	t = n;
+	while (p)
+	{
+		if (p & 1)
+			r *= t;
+		t *= t;
+		p = p >> 1;
+	}
+	return (r);
 }

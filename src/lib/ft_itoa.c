@@ -13,7 +13,7 @@
 #include "libft/lib.h"
 #include "libft/int.h"
 
-char *ft_itoa(int64_t n, uint8_t base)
+char	*ft_itoa(int64_t n, uint8_t base)
 {
 	uint8_t	i;
 	char	*str;
@@ -30,7 +30,7 @@ char *ft_itoa(int64_t n, uint8_t base)
 	return (str);
 }
 
-char *ft_utoa(uint64_t n, uint8_t base)
+char	*ft_utoa(uint64_t n, uint8_t base)
 {
 	uint8_t	i;
 	char	*str;

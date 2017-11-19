@@ -1,45 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intlen.c                                        :+:      :+:    :+:   */
+/*   ft_umin.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/17 09:51:01 by null             ###   ########.fr       */
+/*   Updated: 2017/11/18 17:19:30 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/int.h"
+#include "libft/math.h"
 
-inline uint8_t	ft_floatlen(float n, int precision, uint8_t base)
+inline uint8_t	ft_u8min(uint8_t a, uint8_t b)
 {
-	uint8_t	i;
-	float	d;
-
-	if ((int64_t)n == n)
-		return (ft_intlen((int64_t)n, base));
-	i = ft_intlen((int64_t)n, base);
-	d = n - (int64_t)n;
-	return (i + ft_intlen((int64_t)(precision * d), 10));
+	return (MIN(a, b));
 }
 
-inline uint8_t	ft_intlen(int64_t n, uint8_t base)
+inline uint16_t	ft_u16min(uint16_t a, uint16_t b)
 {
-	uint8_t	i;
-
-	i = 1;
-	while (n /= base)
-		++i;
-	return (i);
+	return (MIN(a, b));
 }
 
-inline uint8_t	ft_uintlen(uint64_t n, uint8_t base)
+inline uint32_t	ft_u32min(uint32_t a, uint32_t b)
 {
-	uint8_t	i;
+	return (MIN(a, b));
+}
 
-	i = 1;
-	while (n /= base)
-		++i;
-	return (i);
+inline uint64_t	ft_u64min(uint64_t a, uint64_t b)
+{
+	return (MIN(a, b));
+}
+
+inline size_t	ft_umin(size_t a, size_t b)
+{
+	return (MIN(a, b));
 }
