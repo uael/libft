@@ -81,10 +81,10 @@ extern uint64_t	ft_u64min(uint64_t a, uint64_t b);
 extern size_t	ft_umin(size_t a, size_t b);
 
 extern uint64_t	ft_pow(int64_t n, int16_t p);
-extern uint8_t	ft_pow2_next8(uint8_t n);
-extern uint16_t	ft_pow2_next16(uint16_t n);
-extern uint32_t	ft_pow2_next32(uint32_t n);
-extern uint64_t	ft_pow2_next64(uint64_t n);
-extern size_t	ft_pow2_next(size_t n);
+extern uint8_t	pow2_next8(uint8_t n);
+extern uint16_t	pow2_next16(uint16_t n);
+extern uint32_t	pow2_next32(uint32_t n);
+extern uint64_t	pow2_next64(uint64_t n);
+extern size_t	pow2_next(size_t n);
 
 #endif

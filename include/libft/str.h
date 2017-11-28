@@ -6,7 +6,7 @@
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:30 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/17 10:03:31 by null             ###   ########.fr       */
+/*   Updated: 2017/11/23 11:46:11 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,14 @@ extern void		*ft_memset(void *b, int c, size_t len);
 
 extern char		*ft_strcat(char *dest, char const *src);
 extern char		*ft_strchr(char const *s, int c);
+extern char		*ft_strmchr(char const *s, char const *c);
 extern int		ft_strcmp(char const *s1, char const *s2);
 extern void		ft_strclr(char *s);
 extern char		*ft_strcpy(char *dest, char const *src);
-extern void		ft_strdel(char **s);
 extern char		*ft_strdup(char const *src);
 extern size_t	ft_strlen(char const *str);
+extern size_t	ft_strlcpy(char *dst, char const *src, size_t size);
+extern size_t	ft_strlcat(char *dest, char const *src, size_t size);
 extern uint8_t	ft_strnbr(char *dst, int64_t n, uint8_t base);
 extern char		*ft_strncat(char *dest, char const *src, size_t nb);
 extern int		ft_strncmp(char const *s1, char const *s2, size_t n);
@@ -44,5 +46,6 @@ extern size_t	ft_strnlen(char const *str, size_t size);
 extern char		*ft_strnstr(char const *str, char const *f, size_t l);
 extern char		*ft_strrchr(char const *s, int c);
 extern char		*ft_strstr(char const *haystack, char const *needle);
+extern char		*ft_strbegw(char const *s1, char const *s2);
 
 #endif

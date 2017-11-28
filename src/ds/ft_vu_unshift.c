@@ -27,6 +27,11 @@ inline uint32_t	*ft_vu32_unshift(t_vu32 *self)
 	return (ft_vu32_unshiftn(self, 1));
 }
 
+inline uint64_t	*ft_vu64_unshift(t_vu64 *self)
+{
+	return (ft_vu64_unshiftn(self, 1));
+}
+
 inline void		*ft_vec_unshift(t_vec *self)
 {
 	return (ft_vec_unshiftn(self, 1));
