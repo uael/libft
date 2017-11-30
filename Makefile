@@ -177,6 +177,10 @@ SRC_NAME += \
 	ds/ft_du_unshiftc.c \
 	ds/ft_du_unshiftn.c \
 	ds/ft_du_unshiftnc.c \
+	ds/ft_node.c \
+	ds/ft_node_add.c \
+	ds/ft_node_next.c \
+	ds/ft_node_prev.c \
 	fs/ft_basename.c \
 	fs/ft_isdots.c \
 	fs/ft_pathjoin.c \
@@ -214,6 +218,7 @@ SRC_NAME += \
 	lex/tokv_init1.c \
 	lex/tokv_init2.c \
 	lib/ft_atoi.c \
+	lib/ft_clean.c \
 	lib/ft_dtor.c \
 	lib/ft_itoa.c \
 	lib/ft_strerr.c \
