@@ -84,20 +84,3 @@ if (libft_ENABLE_TEST)
     endif ()
   endforeach ()
 endif ()
-
-add_executable(main main.c)
-target_link_libraries(main ft)
-target_compile_definitions(main
-        PRIVATE $<$<CONFIG:Debug>:DEBUG>$<$<CONFIG:Release>:NDEBUG>
-        PRIVATE API_COMPILE)
-if (MSVC)
-  target_compile_options(main
-          PRIVATE /MT$<$<CONFIG:Debug>:d> /Oy /W3
-          PRIVATE /D_CRT_SECURE_NO_WARNINGS /Dinline=__inline
-          PRIVATE /O$<$<CONFIG:Debug>:d>$<$<CONFIG:Release>:x>)
-else ()
-  target_compile_options(main
-          PRIVATE -Wall -Werror -Wextra -fomit-frame-pointer -ansi
-          PRIVATE -Wno-missing-field-initializers -Wno-missing-braces
-          PRIVATE -O$<$<CONFIG:Debug>:0 -g3>$<$<CONFIG:Release>:3>)
-endif ()

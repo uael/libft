@@ -16,15 +16,3 @@ inline t_lst	*ft_lst_ctor(t_lst *self)
 {
 	return ((t_lst *)ft_node_ctor((t_node *)self));
 }
-
-
-inline void		ft_lst_dtor(t_lst *self)
-{
-	t_node *cur;
-
-	cur = (t_node *)self;
-	while ((cur = cur->next) != (t_node *)self)
-	{
-
-	}
-}

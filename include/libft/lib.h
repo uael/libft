@@ -61,6 +61,6 @@ extern void		ft_pfree(void **pptr);
 extern char		*ft_strerr(int errn);
 extern void		ft_clean(void *ptr);
 
-#define GC(T) __attribute__((__cleanup__(ft_clean))) T
+# define GC(T) __attribute__((__cleanup__(ft_clean))) T
 
 #endif

@@ -19,22 +19,22 @@ inline void	*ft_memcpy(void *dst, void const *src, size_t n)
 	d = dst;
 	while (n >= sizeof(uint64_t))
 	{
-		*((uint64_t *)dst)++ = *((uint64_t const *)src)++;
+		*((uint64_t *)dst++) = *((uint64_t const *)src++);
 		n -= sizeof(uint64_t);
 	}
 	while (n >= sizeof(uint32_t))
 	{
-		*((uint32_t *)dst)++ = *((uint32_t const *)src)++;
+		*((uint32_t *)dst++) = *((uint32_t const *)src++);
 		n -= sizeof(uint32_t);
 	}
 	while (n >= sizeof(uint16_t))
 	{
-		*((uint16_t *)dst)++ = *((uint16_t const *)src)++;
+		*((uint16_t *)dst++) = *((uint16_t const *)src++);
 		n -= sizeof(uint16_t);
 	}
 	while (n)
 	{
-		*(uint8_t *) dst++ = *(uint8_t const *) src++;
+		*(uint8_t *)dst++ = *(uint8_t const *)src++;
 		--n;
 	}
 	return (d);
