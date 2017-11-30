@@ -40,6 +40,10 @@ typedef ssize_t	t_sz;
 # define SZ_TOST(SZ) (ISE(SZ) ? (t_st)(SZ) : (NOK))
 # define ST_TOSZ(ST) (ISE(ST) ? (t_sz)(ST) : (OK))
 
+# ifndef ELAST
+#  define ELAST 140
+# endif
+
 # define ENIMPL (ELAST + 1)
 # define EBOUND (ENIMPL + 1)
 
@@ -55,5 +59,8 @@ extern int		ft_ret(int code, char const *msg, ...);
 extern int		ft_szret(int code, char const *msg, ...);
 extern void		ft_pfree(void **pptr);
 extern char		*ft_strerr(int errn);
+extern void		ft_clean(void *ptr);
+
+# define GC(T) __attribute__((__cleanup__(ft_clean))) T
 
 #endif
