@@ -1,38 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cin_seek.c                                      :+:      :+:    :+:   */
+/*   ft_ostream_put.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/23 07:09:14 by null             ###   ########.fr       */
+/*   Updated: 2017/11/23 07:50:09 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/io/istream.h"
+#include "libft/io/ostream.h"
 
-inline void		ft_cin_flush(void)
+inline t_sz	ft_ostream_putc(t_ostream *self, char c)
 {
-	return (ft_istream_flush(g_cin));
+	if (self->kind == OSTREAM_FILE)
+		return (ft_ofstream_putc(&self->u.file, c));
+	return (ft_omstream_putc(&self->u.mem, c));
 }
 
-inline t_st		ft_cin_rewind(size_t n)
+inline t_sz	ft_ostream_puts(t_ostream *self, char const *s)
 {
-	return (ft_istream_rewind(g_cin, n));
-}
-
-inline t_st		ft_cin_forward(size_t n)
-{
-	return (ft_istream_forward(g_cin, n));
-}
-
-inline t_st		ft_cin_seek(size_t off)
-{
-	return (ft_istream_seek(g_cin, off));
-}
-
-inline size_t	ft_cin_tell(void)
-{
-	return (ft_istream_tell(g_cin));
+	if (self->kind == OSTREAM_FILE)
+		return (ft_ofstream_puts(&self->u.file, s));
+	return (ft_omstream_puts(&self->u.mem, s));
 }

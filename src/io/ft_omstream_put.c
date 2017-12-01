@@ -1,38 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cin_seek.c                                      :+:      :+:    :+:   */
+/*   ft_omstream_put.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
-/*   Updated: 2017/11/23 07:09:14 by null             ###   ########.fr       */
+/*   Updated: 2017/11/23 07:50:09 by null             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/io/istream.h"
+#include "libft/io/omstream.h"
 
-inline void		ft_cin_flush(void)
+inline t_sz	ft_omstream_putc(t_omstream *self, char c)
 {
-	return (ft_istream_flush(g_cin));
+	return (ft_omstream_write(self, &c, 1));
 }
 
-inline t_st		ft_cin_rewind(size_t n)
+inline t_sz	ft_omstream_puts(t_omstream *self, char const *s)
 {
-	return (ft_istream_rewind(g_cin, n));
-}
-
-inline t_st		ft_cin_forward(size_t n)
-{
-	return (ft_istream_forward(g_cin, n));
-}
-
-inline t_st		ft_cin_seek(size_t off)
-{
-	return (ft_istream_seek(g_cin, off));
-}
-
-inline size_t	ft_cin_tell(void)
-{
-	return (ft_istream_tell(g_cin));
+	return (ft_omstream_write(self, s, ft_strlen(s)));
 }

@@ -189,6 +189,8 @@ SRC_NAME += \
 	int/ft_intstr.c \
 	io/ft_cin_read.c \
 	io/ft_cin_seek.c \
+	io/ft_cout_write.c \
+	io/ft_cout_seek.c \
 	io/ft_ifstream.c \
 	io/ft_ifstream_peek.c \
 	io/ft_ifstream_read.c \
@@ -201,6 +203,18 @@ SRC_NAME += \
 	io/ft_istream_peek.c \
 	io/ft_istream_read.c \
 	io/ft_istream_seek.c \
+	io/ft_ofstream.c \
+	io/ft_ofstream_put.c \
+	io/ft_ofstream_write.c \
+	io/ft_ofstream_seek.c \
+	io/ft_omstream.c \
+	io/ft_omstream_put.c \
+	io/ft_omstream_write.c \
+	io/ft_omstream_seek.c \
+	io/ft_ostream.c \
+	io/ft_ostream_put.c \
+	io/ft_ostream_write.c \
+	io/ft_ostream_seek.c \
 	io/ft_padn.c \
 	io/ft_putc.c \
 	io/ft_putf.c \
@@ -259,7 +273,7 @@ SRC_NAME += \
 
 all: $(NAME)
 
-$(OBJ_PATH)%.o: $(SRC_PATH)/%.c
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_SUB_PATHS)
 	$(CC) $(CFLAGS) $(INC) -o $@ -c $<
 
