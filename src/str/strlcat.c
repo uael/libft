@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cty_3.c                                         :+:      :+:    :+:   */
+/*   str/strlcat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
-/*   Updated: 2017/12/11 11:11:30 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:44:14 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 14:29:11 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/cty.h"
+#include "libft/str.h"
 
-inline int	ft_iscntrl(int c)
+inline size_t	ft_strlcat(char *dest, char const *src, size_t size)
 {
-	return (c < 32 || c == 127);
+	size_t	slen;
+	size_t	dlen;
+
+	slen = (size_t)ft_strlen(src);
+	dlen = (size_t)ft_strnlen(dest, size);
+	if (dlen == size)
+		return (size + slen);
+	if (slen < size - dlen)
+		ft_strncpy(dest + dlen, src, slen + 1);
+	else
+	{
+		ft_strncpy(dest + dlen, src, size - dlen - 1);
+		dest[size - 1] = '\0';
+	}
+	return (dlen + slen);
 }

@@ -1,18 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cty_3.c                                         :+:      :+:    :+:   */
+/*   str/strncat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
-/*   Updated: 2017/12/11 11:11:30 by alucas-          ###   ########.fr       */
+/*   Created: 2017/11/07 09:44:14 by alucas-           #+#    #+#             */
+/*   Updated: 2017/11/08 14:29:11 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/cty.h"
+#include "libft/str.h"
 
-inline int	ft_iscntrl(int c)
+inline char	*ft_strncat(char *dest, char const *src, size_t nb)
 {
-	return (c < 32 || c == 127);
+	char *ptr;
+
+	ptr = dest;
+	while (*ptr)
+		++ptr;
+	while (nb && (*ptr++ = *src++))
+		--nb;
+	if (nb <= 0)
+		*ptr = '\0';
+	return (dest);
 }

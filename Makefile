@@ -38,34 +38,42 @@ LIB_NAME = $(LIBS)
 endif
 3TH_NAME =
 SRC_NAME = \
-	cty/cty.c cty/cty_2.c cty/cty_3.c \
-	ds/alloc.c ds/apd.c ds/at.c ds/aver.c ds/back.c ds/begin.c ds/clean.c \
-	ds/clr.c ds/cpush.c ds/cput.c ds/ctor.c ds/cusht.c ds/dtor.c ds/emp.c \
-	ds/end.c ds/grow.c ds/len.c ds/mpush.c ds/mput.c ds/musht.c ds/npop.c \
-	ds/npush.c ds/nput.c ds/nrem.c ds/nsht.c ds/nusht.c ds/pop.c ds/prd.c \
-	ds/push.c ds/put.c ds/rem.c ds/sht.c ds/usht.c ds/mdtor.c ds/map.c \
-	ds/map_2.c ds/set.c ds/set_2.c \
-	ex/ex.c ex/ex_2.c \
-	fs/fs.c fs/fs_2.c fs/fs_3.c fs/fs_4.c \
-	glob/globux.c glob/glob_match.c glob/glob_climb_tree.c \
-	glob/glob_util/glob_list.c glob/glob_util/glob_dir.c \
-	glob/glob_util/glob_is_magic.c glob/glob_util/glob_path.c \
-	glob/glob_util/glob_show.c glob/glob_util/glob_finder.c \
-	glob/glob_util/glob_sanitize.c glob/glob_brace.c \
-	hash/hash.c hash/hash_2.c \
-	int/len.c int/str.c \
-	io/fcntl.c io/ifs.c io/ifs_2.c io/ofs.c io/ofs_2.c io/ofs_3.c io/padn.c \
-	io/putc.c io/putf.c io/putl.c io/putn.c io/puts.c \
-	lib/atoi.c lib/clean.c lib/dtor.c lib/getenv.c lib/itoa.c lib/join.c \
-	lib/strerr.c \
-	math/imax.c math/imin.c math/m4.c math/m4_mul.c math/m4_rot.c \
-	math/m4_trans.c math/pow.c math/pow2_next.c math/umax.c math/umin.c \
-	math/v3.c math/v3_2.c math/eq.c math/eq_2.c \
-	mem/alloc.c \
-	str/mem.c str/mem_2.c str/str.c str/str_2.c str/str_3.c str/str_4.c \
-	str/str_5.c str/str_6.c str/str_7.c \
-	getopt.c \
-	sort/ft_shellsort.c
+  cty/cty.c cty/cty_2.c cty/cty_3.c \
+  ds/alloc.c ds/apd.c ds/at.c ds/aver.c ds/back.c ds/begin.c ds/clean.c \
+  ds/clr.c ds/cpush.c ds/cput.c ds/ctor.c ds/cusht.c ds/dtor.c ds/emp.c \
+  ds/end.c ds/grow.c ds/len.c ds/mpush.c ds/mput.c ds/musht.c ds/npop.c \
+  ds/npush.c ds/nput.c ds/nrem.c ds/nsht.c ds/nusht.c ds/pop.c ds/prd.c \
+  ds/push.c ds/put.c ds/rem.c ds/sht.c ds/usht.c ds/mdtor.c ds/map.c \
+  ds/map_2.c ds/set.c ds/set_2.c \
+  ex/ex.c ex/ex_2.c \
+  fs/fs.c fs/fs_2.c fs/fs_3.c fs/fs_4.c \
+  glob/globux.c glob/glob_match.c glob/glob_climb_tree.c \
+  glob/glob_util/glob_list.c glob/glob_util/glob_dir.c \
+  glob/glob_util/glob_is_magic.c glob/glob_util/glob_path.c \
+  glob/glob_util/glob_show.c glob/glob_util/glob_finder.c \
+  glob/glob_util/glob_sanitize.c glob/glob_brace.c \
+  hash/hash.c hash/hash_2.c \
+  int/len.c int/str.c \
+  io/fmt/eval.c io/fmt/fmtd.c io/fmt/fmtm.c io/fmt/fmtpct.c io/fmt/fmts.c \
+  io/fmt/fmtxp.c io/fmt/parse.c io/fmt/type.c io/asprintf.c io/dprintf.c \
+  io/fprintf.c io/fwrite.c io/printf.c io/snprintf.c io/sprintf.c io/stderr.c \
+  io/stdio.c io/stdout.c io/vasprintf.c io/vdprintf.c io/vfprintf.c \
+  io/vprintf.c io/vsnprintf.c io/vsprintf.c io/fflush.c \
+  lib/atoi.c lib/clean.c lib/dtor.c lib/getenv.c lib/itoa.c lib/join.c \
+  lib/error.c lib/wctomb.c \
+  math/imax.c math/imin.c math/m4.c math/m4_mul.c math/m4_rot.c \
+  math/m4_trans.c math/pow.c math/pow2_next.c math/umax.c math/umin.c \
+  math/v3.c math/v3_2.c math/eq.c math/eq_2.c \
+  mem/alloc.c \
+  str/bzero.c str/memccpy.c str/memchr.c str/memcmp.c str/memcpy.c \
+  str/memdup.c str/memmove.c str/memrcpy.c str/memset.c str/stpcpy.c \
+  str/strbstr.c str/strcat.c str/strchr.c str/strcmp.c str/strcpy.c \
+  str/strcspn.c str/strdup.c str/strestr.c str/strlcat.c str/strlcpy.c \
+  str/strlen.c str/strmchr.c str/strncat.c str/strnchr.c str/strncmp.c \
+  str/strncpy.c str/strndup.c str/strnlen.c str/strnstr.c str/strrchr.c \
+  str/strscpy.c str/strspn.c str/strstr.c \
+  getopt.c \
+  sort/ft_shellsort.c
 
 3TH = $(addprefix $(3TH_PATH)/, $(3TH_NAME))
 OBJ = $(addprefix $(OBJ_PATH)/, $(SRC_NAME:.c=.o))

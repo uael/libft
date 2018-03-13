@@ -59,4 +59,7 @@ extern char		*ft_getenv(char **env, char const *var);
 extern void		ft_setenv(struct s_vec *env, char *var, char *val);
 extern t_bool	ft_unsetenv(struct s_vec *env, char *var, t_bool delm);
 
+extern int		ft_error(int rno, int eno);
+extern int		ft_wctomb(char *s, wchar_t wc);
+
 #endif

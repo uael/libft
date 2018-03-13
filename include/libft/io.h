@@ -13,31 +13,52 @@
 #ifndef LIBFT_IO_H
 # define LIBFT_IO_H
 
+# include <stdarg.h>
+# include <unistd.h>
+
 # include "int.h"
 # include "str.h"
 
-# include "io/fcntl.h"
-# include "io/ifs.h"
-# include "io/ofs.h"
+struct s_stream;
 
-# define STD_FILENOS ((int[3]){STDIN_FILENO, STDOUT_FILENO, STDERR_FILENO})
+typedef size_t	(t_write)(struct s_stream *, const uint8_t *, size_t);
 
-extern ssize_t	ft_putc(int fd, char c);
-extern ssize_t	ft_putl(int fd, char const *s);
-extern ssize_t	ft_putd(int fd, float n, int precision, uint8_t base);
-extern ssize_t	ft_putn(int fd, int64_t n, uint8_t base);
-extern ssize_t	ft_putu(int fd, uint64_t n, uint8_t base);
-extern ssize_t	ft_padnl(int fd, int64_t n, uint8_t base, size_t pad);
-extern ssize_t	ft_padnr(int fd, int64_t n, uint8_t base, size_t pad);
-extern ssize_t	ft_padul(int fd, uint64_t n, uint8_t base, size_t pad);
-extern ssize_t	ft_padur(int fd, uint64_t n, uint8_t base, size_t pad);
-extern ssize_t	ft_puts(int fd, char const *s);
-extern ssize_t	ft_putr(int fd, char c, size_t n);
-extern ssize_t	ft_padl(int fd, char const *s, size_t pad);
-extern ssize_t	ft_padr(int fd, char const *s, size_t pad);
-extern ssize_t	ft_putf(int fd, char const *fmt, ...);
-extern ssize_t	ft_vputf(int fd, char const *f, va_list ap);
+typedef struct	s_stream
+{
+	int			fd;
+	int8_t		lbf;
+	int8_t		mode;
+	int8_t		flags;
+	int8_t		lock;
+	void		*cookie;
+	t_write		*write;
+	size_t		buf_size;
+	uint8_t		*buf;
+	uint8_t		*rpos;
+	uint8_t		*rend;
+	uint8_t		*wpos;
+	uint8_t		*wbase;
+	uint8_t		*wend;
+}				t_stream;
 
-extern int		ft_dup2std(int *io, int *src);
+extern t_stream	*g_stdout;
+extern t_stream	*g_stderr;
+
+extern size_t	ft_fwrite(t_stream *f, void const *src, size_t n, size_t isz);
+extern int		ft_fflush(t_stream *f);
+extern void		ft_fflushstd(void);
+
+extern int		ft_asprintf(char **s, char const *fmt, ...);
+extern int		ft_dprintf(int fd, char const *fmt, ...);
+extern int		ft_fprintf(t_stream *f, char const *fmt, ...);
+extern int		ft_printf(char const *fmt, ...);
+extern int		ft_snprintf(char *s, size_t n, char const *fmt, ...);
+extern int		ft_sprintf(char *s, char const *fmt, ...);
+extern int		ft_vasprintf(char **s, char const *fmt, va_list ap);
+extern int		ft_vdprintf(int fd, char const *fmt, va_list ap);
+extern int		ft_vfprintf(t_stream *f, char const *fmt, va_list ap);
+extern int		ft_vprintf(char const *fmt, va_list ap);
+extern int		ft_vsnprintf(char *s, size_t n, char const *fmt, va_list ap);
+extern int		ft_vsprintf(char *s, char const *fmt, va_list ap);
 
 #endif

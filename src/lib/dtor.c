@@ -31,7 +31,7 @@ int			ft_dtor(int code, t_dtor dtor, void *arg, char const *msg, ...)
 	if (!msg)
 		return (code);
 	va_start(ap, msg);
-	ft_vputf(code ? 2 : 1, msg, ap);
+	ft_vdprintf(code ? 2 : 1, msg, ap);
 	va_end(ap);
 	return (code);
 }
@@ -45,7 +45,7 @@ int			ft_fatal(int code, t_dtor dtor, void *arg, char const *msg, ...)
 	if (!msg)
 		exit(code);
 	va_start(ap, msg);
-	ft_vputf(code ? 2 : 1, msg, ap);
+	ft_vdprintf(code ? 2 : 1, msg, ap);
 	va_end(ap);
 	exit(code);
 }
@@ -57,7 +57,7 @@ int			ft_retf(int code, char const *msg, ...)
 	if (!msg)
 		return (code);
 	va_start(ap, msg);
-	ft_vputf(code ? 2 : 1, msg, ap);
+	ft_vdprintf(code ? 2 : 1, msg, ap);
 	va_end(ap);
 	return (code);
 }
@@ -69,7 +69,7 @@ int			ft_szret(int code, char const *msg, ...)
 	if (!msg)
 		return (code);
 	va_start(ap, msg);
-	ft_vputf(code <= 0 ? 2 : 1, msg, ap);
+	ft_vdprintf(code <= 0 ? 2 : 1, msg, ap);
 	va_end(ap);
 	return (code);
 }

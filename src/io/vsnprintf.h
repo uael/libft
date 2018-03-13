@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cty_3.c                                         :+:      :+:    :+:   */
+/*   io/vsnprintf.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
-/*   Updated: 2017/12/11 11:11:30 by alucas-          ###   ########.fr       */
+/*   Created: 2018/02/25 00:42:42 by alucas-           #+#    #+#             */
+/*   Updated: 2018/02/25 00:42:42 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/cty.h"
+#ifndef IO_VSNPRINTF_H
+# define IO_VSNPRINTF_H
 
-inline int	ft_iscntrl(int c)
+# include "libft/io.h"
+
+typedef struct	s_cookie
 {
-	return (c < 32 || c == 127);
-}
+	char		*s;
+	size_t		n;
+}				t_cookie;
+
+#endif

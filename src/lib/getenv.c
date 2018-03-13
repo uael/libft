@@ -18,7 +18,7 @@ inline char		*ft_getenv(char **env, char const *var)
 {
 	char *val;
 
-	while (*env && (!ft_strbegw(var, *env) || (*env)[ft_strlen(var)] != '='))
+	while (*env && (!ft_strbstr(var, *env) || (*env)[ft_strlen(var)] != '='))
 		++env;
 	if (!*env || !(val = ft_strchr(*env, '=')))
 		return (NULL);
@@ -32,7 +32,7 @@ inline void		ft_setenv(t_vec *env, char *var, char *val)
 	if (!(it = ft_vecbeg(env)))
 		return ;
 	while (it != ft_vecend(env))
-		if (!*it || !ft_strbegw(var, *it) || (*it)[ft_strlen(var)] != '=')
+		if (!*it || !ft_strbstr(var, *it) || (*it)[ft_strlen(var)] != '=')
 			++it;
 		else
 		{
@@ -60,7 +60,7 @@ inline t_bool	ft_unsetenv(t_vec *env, char *var, t_bool delm)
 	i = 0;
 	while (i < ft_veclen(env))
 		if ((it = ft_vecat(env, i)) && *it &&
-			ft_strbegw(var, *it) && (*it)[ft_strlen(var)] == '=')
+			ft_strbstr(var, *it) && (*it)[ft_strlen(var)] == '=')
 		{
 			delm ? free(*it) : 0;
 			ft_vecrem(env, i, NULL);

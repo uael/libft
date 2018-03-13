@@ -1,18 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cty_3.c                                         :+:      :+:    :+:   */
+/*   io/vdprintf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
-/*   Updated: 2017/12/11 11:11:30 by alucas-          ###   ########.fr       */
+/*   Created: 2018/02/25 00:42:42 by alucas-           #+#    #+#             */
+/*   Updated: 2018/02/25 00:42:42 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/cty.h"
+#include <stdio.h>
 
-inline int	ft_iscntrl(int c)
+#include "internal.h"
+
+int	ft_vdprintf(int fd, char const *fmt, va_list ap)
 {
-	return (c < 32 || c == 127);
+	t_stream f;
+
+	if (fd == 1)
+		return (ft_vfprintf(g_stdout, fmt, ap));
+	if (fd == 2)
+		return (ft_vfprintf(g_stderr, fmt, ap));
+	f = (t_stream){
+		.fd = fd,
+		.lbf = EOF,
+		.write = stdiowrite,
+		.buf = (void *)fmt,
+		.buf_size = 0,
+		.lock = -1
+	};
+	return (ft_vfprintf(&f, fmt, ap));
 }

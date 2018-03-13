@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_cty_3.c                                         :+:      :+:    :+:   */
+/*   io/fflush.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/07 09:52:33 by alucas-           #+#    #+#             */
-/*   Updated: 2017/12/11 11:11:30 by alucas-          ###   ########.fr       */
+/*   Created: 2018/02/25 00:42:42 by alucas-           #+#    #+#             */
+/*   Updated: 2018/02/25 00:42:42 by alucas-          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/cty.h"
+#include <stdio.h>
 
-inline int	ft_iscntrl(int c)
+#include "internal.h"
+
+void	ft_fflushstd(void)
 {
-	return (c < 32 || c == 127);
+	ft_fflush(g_stderr);
+	ft_fflush(g_stdout);
+}
+
+int		ft_fflush(t_stream *f)
+{
+	if (f->wpos > f->wbase)
+	{
+		f->write(f, 0, 0);
+		if (!f->wpos)
+			return (EOF);
+	}
+	f->wpos = 0;
+	f->wbase = 0;
+	f->wend = 0;
+	f->rpos = 0;
+	f->rend = 0;
+	return (0);
 }

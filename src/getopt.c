@@ -30,7 +30,7 @@ static inline int	getopt2(char const *s, int ac, char *av[], char const *fmt)
 	if (g_optopt == ':' || (s = ft_strchr(fmt, g_optopt)) == NULL)
 	{
 		!*g_place ? ++g_optind : 0;
-		g_opterr && *fmt != ':' ? ft_putf(2, ERR0, av[0], g_optopt) : 0;
+		g_opterr && *fmt != ':' ? ft_dprintf(2, ERR0, av[0], g_optopt) : 0;
 		return (BADCH);
 	}
 	if (s[1] != ':' && !(g_optarg = NULL))
@@ -45,7 +45,7 @@ static inline int	getopt2(char const *s, int ac, char *av[], char const *fmt)
 		{
 			if ((g_place = EMSG) && *fmt == ':')
 				return (BADARG);
-			g_opterr ? ft_putf(STDERR_FILENO, ERR1, av[0], g_optopt) : 0;
+			g_opterr ? ft_dprintf(STDERR_FILENO, ERR1, av[0], g_optopt) : 0;
 			return (BADCH);
 		}
 		g_place = EMSG;
