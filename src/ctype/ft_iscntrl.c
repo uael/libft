@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ctype/ft_iscntrl.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft/ctype.h"
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
-
-#endif
+inline int	ft_iscntrl(int c)
+{
+	return (c < 32 || c == 127);
+}

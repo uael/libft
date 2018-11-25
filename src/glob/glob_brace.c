@@ -25,7 +25,7 @@ static int			glob_boom(t_glob_env *e, char const *brace_buf)
 	e->match_list = NULL;
 	glob_climb_tree(e);
 	if (!e->match_list)
-		matchctoradd(e->pattern, TRUE, \
+		matchctoradd(e->pattern, true, \
 					!(*(e->flags) & GLOBUX_NOSORT), &e->match_list);
 	if (match_save)
 	{

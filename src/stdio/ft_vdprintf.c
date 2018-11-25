@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   stdio/ft_vdprintf.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "internal/internal.h"
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
+int	ft_vdprintf(int fd, char const *fmt, va_list ap)
+{
+	t_stream f;
 
-#endif
+	if (fd == 1)
+		return (ft_vfprintf(g_stdout, fmt, ap));
+	if (fd == 2)
+		return (ft_vfprintf(g_stderr, fmt, ap));
+	f = (t_stream){
+		.fd = fd,
+		.lbf = FT_EOF,
+		.write = stdiowrite,
+		.buf = (void *)fmt,
+		.buf_size = 0,
+		.lock = -1
+	};
+	return (ft_vfprintf(&f, fmt, ap));
+}

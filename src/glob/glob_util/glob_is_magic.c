@@ -16,11 +16,11 @@
 
 #include "glob_util.h"
 
-static t_bool		is_escaped(char const *pattern, char const *pat, int flags)
+static bool			is_escaped(char const *pattern, char const *pat, int flags)
 {
 	if ((flags & GLOBUX_NOESCAPE))
-		return (FALSE);
-	return ((t_bool)(pat != pattern && *(pat - 1) == '\\'));
+		return (false);
+	return ((bool)(pat != pattern && *(pat - 1) == '\\'));
 }
 
 char const			*is_there_a_closing_bracket(char const *pattern, \

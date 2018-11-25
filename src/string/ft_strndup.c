@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   string/ft_strndup.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft/string.h"
+#include "ft/malloc.h"
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
+inline char	*ft_strndup(char const *src, size_t n)
+{
+	char	*dup;
 
-#endif
+	dup = ft_malloc(n + 1);
+	ft_memcpy(dup, src, n);
+	dup[n] = '\0';
+	return (dup);
+}

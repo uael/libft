@@ -12,13 +12,15 @@
 
 #include "glob_util.h"
 
+#include "ft/malloc.h"
+
 t_match		*matchctor(char const *path, size_t len, int escape)
 {
 	t_match *new;
 
-	if (!(new = malloc(sizeof(t_match) + len)))
+	if (!(new = ft_malloc(sizeof(t_match) + len)))
 		return ((NULL));
-	ft_bzero(new, sizeof(t_match) + len);
+	ft_memset(new, 0, sizeof(t_match) + len);
 	if (escape)
 		sprglbcp((char *)new->buf, path);
 	else
@@ -34,12 +36,12 @@ void		matchdtor(t_match *match)
 		return ;
 	prev = match;
 	match = match->next;
-	free(prev);
+	ft_free(prev);
 	while (match)
 	{
 		prev = match;
 		match = match->next;
-		free(prev);
+		ft_free(prev);
 	}
 }
 

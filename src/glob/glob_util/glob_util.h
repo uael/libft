@@ -13,12 +13,16 @@
 #ifndef GLOB_UTIL_H
 # define GLOB_UTIL_H
 
-# include <sys/types.h>
-# include <dirent.h>
+# include "ft/glob.h"
+# include "ft/malloc.h"
+# include "ft/string.h"
+# include "ft/stdlib.h"
 
-# include "libft/ft_glob.h"
-# include "libft/str.h"
-# include "libft/sort.h"
+# include <dirent.h>
+# include <limits.h>
+# include <stdbool.h>
+
+# include <sys/types.h>
 
 # ifndef PATH_MAX
 #  ifdef __MACOSX__
@@ -27,13 +31,6 @@
 #  ifdef __linux__
 #   include <linux/limits.h>
 #  endif
-# endif
-
-# ifndef TRUE
-#  define TRUE			1
-# endif
-# ifndef FALSE
-#  define FALSE			0
 # endif
 
 # define IS_DIR(d) ((d)->d_type == DT_DIR || (d)->d_type == DT_LNK)
@@ -110,7 +107,7 @@ int							glob_actually_open_some_folder(t_glob_env *e, \
 /*
 ** in glob_path.c:
 */
-t_bool						glob_get_sub_pattern(char *sub_pat_buf, \
+bool						glob_get_sub_pattern(char *sub_pat_buf, \
 											char const *pattern, \
 											int depth, int flags);
 char const					*glob_get_folder_name(char const *path);

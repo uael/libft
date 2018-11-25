@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   string/ft_strncmp.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft/string.h"
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
-
-#endif
+inline int	ft_strncmp(char const *s1, char const *s2, size_t n)
+{
+	while (n && ((uint8_t)*s1 == (uint8_t)*s2) && *s1)
+	{
+		++s1;
+		++s2;
+		--n;
+	}
+	return (n == 0 ? 0 : *(uint8_t *)s1 - *(uint8_t *)s2);
+}

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   string/ft_strstr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft/string.h"
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
+inline char	*ft_strstr(char const *haystack, char const *needle)
+{
+	const char	*o_needle = needle;
 
-#endif
+	if (!*needle)
+		return ((char *)haystack);
+	while (*haystack && *needle)
+		if (*haystack++ == *needle)
+			needle++;
+		else
+		{
+			haystack -= needle - o_needle;
+			needle = o_needle;
+		}
+	return (*needle ? 0 : (char *)(haystack - (needle - o_needle)));
+}

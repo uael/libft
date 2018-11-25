@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   string/ft_atol.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft/ctype.h"
+#include "ft/stdlib.h"
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
+inline long	ft_atol(const char *s)
+{
+	long	n;
+	int		c;
 
-#endif
+	n = 0;
+	while (ft_isspace(*s))
+		s++;
+	if (*s == '-' || *s == '+')
+		c = (*s++ == '-');
+	while (ft_isdigit(*s))
+		n = 10 * n - (*s++ - '0');
+	return (c ? -n : n);
+}

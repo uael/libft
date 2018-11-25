@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   stdio/ft_vasprintf.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft/malloc.h"
+#include "ft/stdio.h"
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
+int	ft_vasprintf(char **s, char const *fmt, va_list ap)
+{
+	int		ret;
+	va_list	ap2;
 
-#endif
+	va_copy(ap2, ap);
+	ret = ft_vsnprintf(NULL, 0, fmt, ap2);
+	va_end(ap2);
+	if (ret < 0)
+		return (-1);
+	return (ft_vsnprintf(*s = ft_malloc(ret + 1U), ret + 1U, fmt, ap));
+}

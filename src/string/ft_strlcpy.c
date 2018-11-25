@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   string/ft_strlcpy.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft/string.h"
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
+inline size_t	ft_strlcpy(char *dst, char const *src, size_t size)
+{
+	char const	*sptr;
+	size_t		slen;
 
-#endif
+	sptr = src;
+	while (*sptr++)
+		;
+	slen = ((size_t)(sptr - src - 1));
+	if (slen < size)
+		ft_strncpy(dst, src, slen + 1);
+	else if (size != 0)
+	{
+		ft_strncpy(dst, src, size - 1);
+		dst[size - 1] = '\0';
+	}
+	return (slen);
+}

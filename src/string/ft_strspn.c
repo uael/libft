@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   string/ft_strspn.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft/string.h"
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
+inline size_t	ft_strspn(const char *s, const char *accept)
+{
+	const char	*p = s;
+	const char	*a;
+	size_t		c;
 
-#endif
+	c = 0;
+	while (*p)
+	{
+		a = accept;
+		while (*a)
+			if (*p == *a++)
+				break ;
+		if (*a == '\0')
+			return (c);
+		++c;
+		++p;
+	}
+	return (c);
+}

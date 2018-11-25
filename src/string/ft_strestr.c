@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   string/ft_strestr.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft/string.h"
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
+inline char	*ft_strestr(char const *s1, char const *s2)
+{
+	char const *s3;
+	char const *s4;
 
-#endif
+	s3 = s1;
+	s4 = s2;
+	while (*s1)
+		++s1;
+	while (*s2)
+		++s2;
+	while ((*(uint8_t *)s1 == *(uint8_t *)s2) && s1 > s3 && s2 > s4)
+	{
+		--s1;
+		--s2;
+	}
+	return (s2 == s4 ? (char *)s3 : NULL);
+}

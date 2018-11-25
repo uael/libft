@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft/string.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef FT_MALLOC_H
+# define FT_MALLOC_H
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
+# include <stdint.h>
+# include <stddef.h>
+
+extern void	ft_free(void *ptr);
+extern void *ft_memalign(size_t alignment, size_t size);
+extern void	*ft_malloc(size_t size);
+extern void	*ft_realloc(void *ptr, size_t size);
+extern void	*ft_reallocf(void *ptr, size_t size);
+extern void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif

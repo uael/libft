@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   stdio/ft_fflush.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "ft/stdio.h"
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
+void	ft_fflushstd(void)
+{
+	ft_fflush(g_stderr);
+	ft_fflush(g_stdout);
+}
 
-#endif
+int		ft_fflush(t_stream *f)
+{
+	if (f->wpos > f->wbase)
+	{
+		f->write(f, 0, 0);
+		if (!f->wpos)
+			return (FT_EOF);
+	}
+	f->wpos = 0;
+	f->wbase = 0;
+	f->wend = 0;
+	f->rpos = 0;
+	f->rend = 0;
+	return (0);
+}

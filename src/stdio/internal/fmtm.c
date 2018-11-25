@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   stdio/internal/fmtm.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "internal.h"
 
-# include "ft/ctype.h"
-# include "ft/glob.h"
-# include "ft/malloc.h"
-# include "ft/stdio.h"
-# include "ft/stdlib.h"
-# include "ft/string.h"
-
-#endif
+ssize_t			iofmt_fmtm(t_stream *s, t_fmt *f, t_varg arg)
+{
+	(void)s;
+	(void)arg;
+	if (!(f->beg = ft_strerror(errno)))
+		return (-1);
+	f->end = f->beg + ft_strnlen(f->beg,
+		(size_t)(f->p < 0 ? INT_MAX : f->p));
+	if (f->p < 0 && *f->end)
+		return (-(errno = EOVERFLOW));
+	f->p = (int32_t)(f->end - f->beg);
+	return (0);
+}

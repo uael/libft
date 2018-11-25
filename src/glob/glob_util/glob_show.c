@@ -25,7 +25,7 @@ int	show_files(int *flags, char const *pattern)
 		&& *(pattern + ft_strlen(pattern) - 1) == '/')
 	{
 		*flags |= GLOBUX_ONLYDIR;
-		return (FALSE);
+		return (false);
 	}
-	return (TRUE);
+	return (true);
 }

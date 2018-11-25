@@ -92,7 +92,7 @@ char const	*glob_get_folder_name(char const *path)
 ** the sub-pattern is stored in some buffer, don't worry about it
 */
 
-t_bool		glob_get_sub_pattern(char *sub_pat_buf, char const *pattern, \
+bool			glob_get_sub_pattern(char *sub_pat_buf, char const *pattern, \
 								int depth, int flags)
 {
 	char	const	*dir_end;
@@ -113,12 +113,12 @@ t_bool		glob_get_sub_pattern(char *sub_pat_buf, char const *pattern, \
 		dir_end++;
 	len = (size_t)(dir_end - pat);
 	if (len + 1 > NAME_MAX)
-		return (FALSE);
-	ft_bzero(sub_pat_buf, NAME_MAX);
+		return (false);
+	ft_memset(sub_pat_buf, 0, NAME_MAX);
 	ft_memcpy(sub_pat_buf, pat, len);
 	if (*dir_end)
 		*(sub_pat_buf + len) = '\0';
-	return (TRUE);
+	return (true);
 }
 
 void		remove_last_dir_from_path(char *path_buf)

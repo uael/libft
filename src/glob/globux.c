@@ -21,14 +21,14 @@ static char		**alloc_pathv(t_glob *pglob)
 {
 	if ((pglob->gl_flags & GLOBUX_DOOFFS))
 	{
-		if (!(pglob->gl_pathv = malloc(sizeof(char *) \
+		if (!(pglob->gl_pathv = ft_malloc(sizeof(char *) \
 								* (pglob->gl_pathc + pglob->gl_offs + 1))))
 			return (NULL);
 		return (pglob->gl_pathv + pglob->gl_offs);
 	}
 	else
 	{
-		if (!(pglob->gl_pathv = malloc(sizeof(char *) * (pglob->gl_pathc + 1))))
+		if (!(pglob->gl_pathv = ft_malloc(sizeof(char *) * (pglob->gl_pathc + 1))))
 			return (NULL);
 		return (pglob->gl_pathv);
 	}
@@ -64,7 +64,7 @@ int				ft_glob(const char *pattern, int flags, t_glob *pglob)
 		return (GLOBUX_NOSYS);
 	if (!(flags & GLOBUX_NOCHECK) && !*pattern)
 		return (GLOBUX_NOMATCH);
-	ft_bzero(&glob_env, sizeof(t_glob_env));
+	ft_memset(&glob_env, 0, sizeof(t_glob_env));
 	glob_sanitize_pattern(pat_buf, pattern);
 	pglob->gl_flags = flags;
 	glob_env.flags = &(pglob->gl_flags);
@@ -89,9 +89,9 @@ void			ft_globfree(t_glob *pglob)
 		av = pglob->gl_pathv;
 	while (pglob->gl_pathc--)
 	{
-		free((t_byte *)(*av) - sizeof(t_match) + sizeof(t_byte *));
+		ft_free((t_byte *)(*av) - sizeof(t_match) + sizeof(t_byte *));
 		av++;
 	}
-	free(pglob->gl_pathv);
+	ft_free(pglob->gl_pathv);
 	pglob->gl_pathv = NULL;
 }
