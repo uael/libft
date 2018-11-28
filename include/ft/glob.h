@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   ft/glob.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mcanal <mc.maxcanal@gmail.com>            +#+  +:+       +#+        */
+/*   By: mcanal <mc.maxcanal@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 1970/01/01 00:00:42 by mcanal            #+#    #+#             */
 /*   Updated: 1970/01/01 00:00:42 by mcanal           ###   ########.fr       */
@@ -28,64 +28,64 @@
 
 /*
 ** Bits set in the FLAGS argument to `globctor'.
-** GLOBUX_ERR (1 << 0) // Return on read errors.
-** GLOBUX_MARK (1 << 1) // Append a slash to each name.
-** GLOBUX_NOSORT (1 << 2) // Don't sort the names.
-** GLOBUX_DOOFFS (1 << 3) // Insert PGLOB->gl_offs NULLs.
-** GLOBUX_NOCHECK (1 << 4) // If nothing matches, return the pattern.
-** GLOBUX_APPEND (1 << 5) // Append to results of a previous call.
-** GLOBUX_NOESCAPE (1 << 6) // Backslashes don't quote metacharacters.
-** GLOBUX_PERIOD (1 << 7) // Leading `.' can be matched by metachars.
+** FT_GLOB_ERR (1 << 0) // Return on read errors.
+** FT_GLOB_MARK (1 << 1) // Append a slash to each name.
+** FT_GLOB_NOSORT (1 << 2) // Don't sort the names.
+** FT_GLOB_DOOFFS (1 << 3) // Insert PGLOB->gl_offs NULLs.
+** FT_GLOB_NOCHECK (1 << 4) // If nothing matches, return the pattern.
+** FT_GLOB_APPEND (1 << 5) // Append to results of a previous call.
+** FT_GLOB_NOESCAPE (1 << 6) // Backslashes don't quote metacharacters.
+** FT_GLOB_PERIOD (1 << 7) // Leading `.' can be matched by metachars.
 **
-** GLOBUX_MAGCHAR (1 << 8) // Set in gl_flags if any metachars seen.
-** GLOBUX_ALTDIRFUNC (1 << 9) // Use gl_opendir et al functions.
-** GLOBUX_BRACE (1 << 10) // Expand "{a,b}" to "a" "b".
-** GLOBUX_NOMAGIC (1 << 11) // If no magic chars, return the pattern.
-** GLOBUX_TILDE (1 << 12) // Expand ~user and ~ to home directories.
-** GLOBUX_ONLYDIR (1 << 13) // Match only directories.
-** GLOBUX_TILDE_CHECK (1 << 14) // Like GLOBUX_TILDE but return an err
+** FT_GLOB_MAGCHAR (1 << 8) // Set in gl_flags if any metachars seen.
+** FT_GLOB_ALTDIRFUNC (1 << 9) // Use gl_opendir et al functions.
+** FT_GLOB_BRACE (1 << 10) // Expand "{a,b}" to "a" "b".
+** FT_GLOB_NOMAGIC (1 << 11) // If no magic chars, return the pattern.
+** FT_GLOB_TILDE (1 << 12) // Expand ~user and ~ to home directories.
+** FT_GLOB_ONLYDIR (1 << 13) // Match only directories.
+** FT_GLOB_TILDE_CHECK (1 << 14) // Like FT_GLOB_TILDE but return an err
 **										if the user name is not available.
 */
-# define GLOBUX_ERR (1 << 0)
-# define GLOBUX_MARK (1 << 1)
-# define GLOBUX_NOSORT (1 << 2)
-# define GLOBUX_DOOFFS (1 << 3)
-# define GLOBUX_NOCHECK (1 << 4)
-# define GLOBUX_APPEND (1 << 5)
-# define GLOBUX_NOESCAPE (1 << 6)
-# define GLOBUX_PERIOD (1 << 7)
+# define FT_GLOB_ERR (1 << 0)
+# define FT_GLOB_MARK (1 << 1)
+# define FT_GLOB_NOSORT (1 << 2)
+# define FT_GLOB_DOOFFS (1 << 3)
+# define FT_GLOB_NOCHECK (1 << 4)
+# define FT_GLOB_APPEND (1 << 5)
+# define FT_GLOB_NOESCAPE (1 << 6)
+# define FT_GLOB_PERIOD (1 << 7)
 
-# define GLOBUX_MAGCHAR (1 << 8)
-# define GLOBUX_NOMATCH_FLAG (1 << 9)
-# define GLOBUX_BRACE (1 << 10)
-# define GLOBUX_NOMAGIC (1 << 11)
-# define GLOBUX_TILDE (1 << 12)
-# define GLOBUX_ONLYDIR (1 << 13)
-# define GLOBUX_TILDE_CHECK (1 << 14)
+# define FT_GLOB_MAGCHAR (1 << 8)
+# define FT_GLOB_NOMATCH_FLAG (1 << 9)
+# define FT_GLOB_BRACE (1 << 10)
+# define FT_GLOB_NOMAGIC (1 << 11)
+# define FT_GLOB_TILDE (1 << 12)
+# define FT_GLOB_ONLYDIR (1 << 13)
+# define FT_GLOB_TILDE_CHECK (1 << 14)
 
 /*
 ** Not implemented: (handled in ush)
-** GLOBUX_TILDE | GLOBUX_TILDE_CHECK
+** FT_GLOB_TILDE | FT_GLOB_TILDE_CHECK
 */
-# define FLAGS_A (GLOBUX_ERR | GLOBUX_MARK | GLOBUX_NOSORT | GLOBUX_ONLYDIR)
-# define FLAGS_B (GLOBUX_DOOFFS | GLOBUX_NOESCAPE | GLOBUX_NOCHECK)
-# define FLAGS_C (GLOBUX_PERIOD | GLOBUX_BRACE | GLOBUX_NOMAGIC | GLOBUX_APPEND)
-# define __GLOBUX_FLAGS	(FLAGS_A | FLAGS_B | FLAGS_C | GLOBUX_NOMATCH_FLAG)
+# define FLAGS_A (FT_GLOB_ERR|FT_GLOB_MARK|FT_GLOB_NOSORT|FT_GLOB_ONLYDIR)
+# define FLAGS_B (FT_GLOB_DOOFFS|FT_GLOB_NOESCAPE|FT_GLOB_NOCHECK)
+# define FLAGS_C (FT_GLOB_PERIOD|FT_GLOB_BRACE|FT_GLOB_NOMAGIC|FT_GLOB_APPEND)
+# define __FT_GLOB_FLAGS (FLAGS_A|FLAGS_B|FLAGS_C|FT_GLOB_NOMATCH_FLAG)
 
 /*
-** GLOBUX_SUCCESS 0 // Yay
-** GLOBUX_NOSPACE 1   // Ran out of memory.
-** GLOBUX_ABORTED 2   // Read error.
-** GLOBUX_NOMATCH 3   // No matches found.
-** GLOBUX_NOSYS 4 // Not implemented.
-** GLOBUX_ABEND GLOBUX_ABORTED // Compat
+** FT_GLOB_SUCCESS 0 // Yay
+** FT_GLOB_NOSPACE 1   // Ran out of memory.
+** FT_GLOB_ABORTED 2   // Read error.
+** FT_GLOB_NOMATCH 3   // No matches found.
+** FT_GLOB_NOSYS 4 // Not implemented.
+** FT_GLOB_ABEND FT_GLOB_ABORTED // Compat
 */
-# define GLOBUX_SUCCESS 0
-# define GLOBUX_NOSPACE 1
-# define GLOBUX_ABORTED 2
-# define GLOBUX_NOMATCH 3
-# define GLOBUX_NOSYS 4
-# define GLOBUX_ABEND GLOBUX_ABORTED
+# define FT_GLOB_SUCCESS 0
+# define FT_GLOB_NOSPACE 1
+# define FT_GLOB_ABORTED 2
+# define FT_GLOB_NOMATCH 3
+# define FT_GLOB_NOSYS 4
+# define FT_GLOB_ABEND FT_GLOB_ABORTED
 
 /*
 ** Structure describing a globbing run.
@@ -96,7 +96,7 @@
 ** 	size_t	gl_pathc;    // Count of paths matched so far
 ** 	char	**gl_pathv;  // List of matched pathnames.
 ** 	size_t	gl_offs;     // Slots to reserve in gl_pathv.
-**  int		gl_flags;    // Set to FLAGS, maybe | GLOBUX_MAGCHAR.
+**  int		gl_flags;    // Set to FLAGS, maybe | FT_GLOB_MAGCHAR.
 **  int     gl_padding;  // Just for struct padding
 ** };
 */

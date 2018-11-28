@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glob_sanitize.c                                    :+:      :+:    :+:   */
+/*   glob/internal/sanitize.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mc <mc.maxcanal@gmail.com>                 +#+  +:+       +#+        */
+/*   By: mcanal <mc.maxcanal@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/04 17:38:00 by mc                #+#    #+#             */
-/*   Updated: 2018/03/04 18:17:40 by mc               ###   ########.fr       */
+/*   Created: 1970/01/01 00:00:42 by mcanal            #+#    #+#             */
+/*   Updated: 1970/01/01 00:00:42 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "glob_util.h"
+#include "internal.h"
 
 /*
 ** remove all the ugly stuffs from patterns (mostly extraneous slashes)

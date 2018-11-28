@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glob_finder.c                                      :+:      :+:    :+:   */
+/*   glob/internal/finder.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mc <mc.maxcanal@gmail.com>                 +#+  +:+       +#+        */
+/*   By: mcanal <mc.maxcanal@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/25 13:20:58 by mc                #+#    #+#             */
-/*   Updated: 2018/02/25 22:41:35 by mc               ###   ########.fr       */
+/*   Created: 1970/01/01 00:00:42 by mcanal            #+#    #+#             */
+/*   Updated: 1970/01/01 00:00:42 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "glob_util.h"
+#include "internal.h"
 
 char const	*glob_find_comma(char const *pat, char const *pat_end)
 {

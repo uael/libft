@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glob_is_magic.c                                    :+:      :+:    :+:   */
+/*   glob/internal/is_magic.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mc <mc.maxcanal@gmail.com>                 +#+  +:+       +#+        */
+/*   By: mcanal <mc.maxcanal@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/15 13:36:27 by mc                #+#    #+#             */
-/*   Updated: 2018/02/23 20:36:35 by mcanal           ###   ########.fr       */
+/*   Created: 1970/01/01 00:00:42 by mcanal            #+#    #+#             */
+/*   Updated: 1970/01/01 00:00:42 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 ** it is!
 */
 
-#include "glob_util.h"
+#include "internal.h"
 
 static bool			is_escaped(char const *pattern, char const *pat, int flags)
 {
-	if ((flags & GLOBUX_NOESCAPE))
+	if ((flags & FT_GLOB_NOESCAPE))
 		return (false);
 	return ((bool)(pat != pattern && *(pat - 1) == '\\'));
 }
@@ -78,7 +78,7 @@ char const			*is_magic(char *magic_buf, char const *pattern, int *flags)
 		{
 			if (!is_escaped(pattern, pat, *flags))
 			{
-				*flags |= GLOBUX_MAGCHAR;
+				*flags |= FT_GLOB_MAGCHAR;
 				return (previous_dir(magic_buf, pattern, pat));
 			}
 		}
@@ -87,7 +87,7 @@ char const			*is_magic(char *magic_buf, char const *pattern, int *flags)
 			if (!is_escaped(pattern, pat, *flags) \
 				&& is_there_a_closing_bracket(pat, *flags, ']', '['))
 			{
-				*flags |= GLOBUX_MAGCHAR;
+				*flags |= FT_GLOB_MAGCHAR;
 				return (previous_dir(magic_buf, pattern, pat));
 			}
 		}

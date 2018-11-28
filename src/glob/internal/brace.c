@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glob_brace.c                                       :+:      :+:    :+:   */
+/*   glob/internal/brace.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mcanal <mc.maxcanal@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/23 17:55:44 by mcanal            #+#    #+#             */
-/*   Updated: 2018/03/05 22:01:22 by mc               ###   ########.fr       */
+/*   Created: 1970/01/01 00:00:42 by mcanal            #+#    #+#             */
+/*   Updated: 1970/01/01 00:00:42 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "glob_climb_tree.h"
+#include "internal.h"
 
 static int			glob_boom(t_glob_env *e, char const *brace_buf)
 {
@@ -26,7 +26,7 @@ static int			glob_boom(t_glob_env *e, char const *brace_buf)
 	glob_climb_tree(e);
 	if (!e->match_list)
 		matchctoradd(e->pattern, true, \
-					!(*(e->flags) & GLOBUX_NOSORT), &e->match_list);
+					!(*(e->flags) & FT_GLOB_NOSORT), &e->match_list);
 	if (match_save)
 	{
 		link = match_save;
@@ -78,14 +78,14 @@ int					glob_brace(t_glob_env *e)
 	char const	*pat_end;
 	char const	*comma;
 
-	if (!(*(e->flags) & GLOBUX_BRACE))
-		return (GLOBUX_SUCCESS);
+	if (!(*(e->flags) & FT_GLOB_BRACE))
+		return (FT_GLOB_SUCCESS);
 	if (!(pat_start = glob_find_opening_brace(e->pattern, e->pattern)))
-		return (GLOBUX_SUCCESS);
+		return (FT_GLOB_SUCCESS);
 	if (!(pat_end = is_there_a_closing_bracket(pat_start, *(e->flags), '}', \
 		'{')))
-		return (GLOBUX_SUCCESS);
+		return (FT_GLOB_SUCCESS);
 	if (!(comma = glob_find_comma(pat_start + 1, pat_end)))
-		return (GLOBUX_SUCCESS);
+		return (FT_GLOB_SUCCESS);
 	return (glob_find_sub_brace(e, comma, pat_start, pat_end));
 }

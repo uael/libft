@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glob_list.c                                        :+:      :+:    :+:   */
+/*   glob/internal/list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mc <mc.maxcanal@gmail.com>                 +#+  +:+       +#+        */
+/*   By: mcanal <mc.maxcanal@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/13 09:57:56 by mc                #+#    #+#             */
-/*   Updated: 2018/03/04 13:24:31 by mc               ###   ########.fr       */
+/*   Created: 1970/01/01 00:00:42 by mcanal            #+#    #+#             */
+/*   Updated: 1970/01/01 00:00:42 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "glob_util.h"
+#include "internal.h"
 
 #include "ft/malloc.h"
 
@@ -71,15 +71,15 @@ int			matchctoradd(char const *path, int escape, \
 
 	match = matchctor(path, ft_strlen(path), escape);
 	if (!match)
-		return (GLOBUX_NOSPACE);
+		return (FT_GLOB_NOSPACE);
 	if (!sort || !*match_list)
 	{
 		match->next = *match_list;
 		*match_list = match;
-		return (GLOBUX_SUCCESS);
+		return (FT_GLOB_SUCCESS);
 	}
 	insert_sorted(match, match_list);
-	return (GLOBUX_SUCCESS);
+	return (FT_GLOB_SUCCESS);
 }
 
 size_t		list_len(t_match *match_list)

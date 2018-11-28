@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glob_util.h                                        :+:      :+:    :+:   */
+/*   glob/internal/internal.h                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mc <mc.maxcanal@gmail.com>                 +#+  +:+       +#+        */
+/*   By: mcanal <mc.maxcanal@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/09 20:57:25 by mc                #+#    #+#             */
-/*   Updated: 2018/03/04 17:42:05 by mc               ###   ########.fr       */
+/*   Created: 1970/01/01 00:00:42 by mcanal            #+#    #+#             */
+/*   Updated: 1970/01/01 00:00:42 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GLOB_UTIL_H
-# define GLOB_UTIL_H
+#ifndef GLOB_INTERNAL_INTERNAL_H
+# define GLOB_INTERNAL_INTERNAL_H
 
 # include "ft/glob.h"
 # include "ft/malloc.h"
@@ -35,8 +35,8 @@
 
 # define IS_DIR(d) ((d)->d_type == DT_DIR || (d)->d_type == DT_LNK)
 
-# define GLOBUX_BOOM_BABY 5
-# define GLOBUX_NOBODY_GIVES_A_DAMN 6
+# define FT_GLOB_BOOM_BABY 5
+# define FT_GLOB_NOBODY_GIVES_A_DAMN 6
 
 # define MAX_DEPTH			(1 << 8)
 
@@ -75,7 +75,7 @@ struct						s_glob_env
 ** This function is actually here to avoid calling glob_match() too much
 **
 ** @pat: Shell-style pattern to match, e.g. "*.[ch]".
-** @flags: cf ft_glob.h (GLOBUX_NOESCAPE)
+** @flags: cf ft_glob.h (FT_GLOB_NOESCAPE)
 */
 char const					*is_magic(char *magic_buf, char const *pattern, \
 								int *flags);
@@ -137,4 +137,34 @@ char const					*glob_find_comma(char const *pat, \
 char const					*glob_find_opening_brace(char const *pat, \
 													char const *pat_start);
 void						sprglbcp(char *dst, char const *path);
+
+/*
+** Perform shell-style glob matching, returning true (1) if the match
+** succeeds, or false (0) if it fails.
+**
+** @pat: Shell-style pattern to match, e.g. "*.[ch]".
+** @str: String to match.	The pattern must match the entire string.
+** @flags: cf ft_glob.h (FT_GLOB_NOESCAPE | FT_GLOB_PERIOD | FT_GLOB_BRACE)
+*/
+int							glob_match(char const *pat, char const *str, \
+									int flags);
+
+/*
+** Recursively check PAT on the matching directory tree
+**
+** @pat: Shell-style pattern to match, e.g. "*.[ch]".
+*/
+int							glob_climb_tree(t_glob_env *glob_env);
+
+/*
+** TODO: doc
+*/
+int							glob_read_dir(t_glob_env *glob_env, int depth, \
+										char const *dir_name);
+
+/*
+** in glob_brace.c
+*/
+int							glob_brace(t_glob_env *e);
+
 #endif

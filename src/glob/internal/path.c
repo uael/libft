@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glob_path.c                                        :+:      :+:    :+:   */
+/*   glob/internal/path.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mc <mc.maxcanal@gmail.com>                 +#+  +:+       +#+        */
+/*   By: mcanal <mc.maxcanal@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/14 21:56:00 by mc                #+#    #+#             */
-/*   Updated: 2018/02/26 00:58:08 by mc               ###   ########.fr       */
+/*   Created: 1970/01/01 00:00:42 by mcanal            #+#    #+#             */
+/*   Updated: 1970/01/01 00:00:42 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "glob_util.h"
+#include "internal.h"
 
 /*
 ** Append to PATH_BUF buffer the NEW_FILE file-name
@@ -27,9 +27,9 @@ int			glob_append_file_name(char *path_buf, char const *new_file)
 	new_size = ft_strlen(new_file);
 	path = ft_strrchr(path_buf, '/') + 1;
 	if ((size_t)(path - path_buf) + new_size + 2 > PATH_MAX)
-		return (GLOBUX_NOSPACE);
+		return (FT_GLOB_NOSPACE);
 	ft_memcpy(path, new_file, new_size + 1);
-	return (GLOBUX_SUCCESS);
+	return (FT_GLOB_SUCCESS);
 }
 
 /*
@@ -48,7 +48,7 @@ int			glob_store_dir_name(char *path_buf, char const *prev_dir, \
 	prev_size = ft_strlen(prev_dir);
 	new_size = ft_strlen(new_dir);
 	if (prev_size + new_size + 3 > PATH_MAX)
-		return (GLOBUX_NOSPACE);
+		return (FT_GLOB_NOSPACE);
 	ft_memcpy(path_buf, prev_dir, prev_size);
 	if (*(path_buf + prev_size - 1) != '/')
 	{
@@ -61,7 +61,7 @@ int			glob_store_dir_name(char *path_buf, char const *prev_dir, \
 		*(path_buf + prev_size + new_size) = '/';
 		*(path_buf + prev_size + new_size + 1) = '\0';
 	}
-	return (GLOBUX_SUCCESS);
+	return (FT_GLOB_SUCCESS);
 }
 
 /*
@@ -100,7 +100,7 @@ bool			glob_get_sub_pattern(char *sub_pat_buf, char const *pattern, \
 	size_t			len;
 
 	len = ft_strlen(pattern);
-	if ((flags & GLOBUX_ONLYDIR))
+	if ((flags & FT_GLOB_ONLYDIR))
 		len--;
 	pat = pattern + len;
 	while (depth && pat != pattern && pat--)

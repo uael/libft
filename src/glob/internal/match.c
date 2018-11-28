@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glob_match.c                                       :+:      :+:    :+:   */
+/*   glob/internal/match.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mc <mc.maxcanal@gmail.com>                 +#+  +:+       +#+        */
+/*   By: mcanal <mc.maxcanal@gmail.com>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/09 21:09:16 by mc                #+#    #+#             */
-/*   Updated: 2018/02/23 16:41:17 by mcanal           ###   ########.fr       */
+/*   Created: 1970/01/01 00:00:42 by mcanal            #+#    #+#             */
+/*   Updated: 1970/01/01 00:00:42 by mcanal           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 ** glob_match - glob util function to check if a pattern actually match
 */
 
-#include "glob_match.h"
+#include "internal.h"
 
 static int		handle_rev_char_class(char const *pat, char const *str, \
 									int flags, int matched)
 {
 	if (!*pat)
 		return (false);
-	if (*pat == '\\' && !(flags & GLOBUX_NOESCAPE))
+	if (*pat == '\\' && !(flags & FT_GLOB_NOESCAPE))
 	{
 		return (handle_rev_char_class(pat + 2, str, flags, \
 									matched & (*(pat + 1) != *str)));
@@ -47,7 +47,7 @@ static int		handle_char_class(char const *pat, char const *str, int flags, \
 {
 	if (!*pat)
 		return (false);
-	if (*pat == '\\' && !(flags & GLOBUX_NOESCAPE))
+	if (*pat == '\\' && !(flags & FT_GLOB_NOESCAPE))
 	{
 		return (handle_char_class(pat + 2, str, flags, \
 									matched | (*(pat + 1) == *str)));
@@ -88,7 +88,7 @@ static int		handle_str_wildcard(char const *pat, char const *str, \
 
 int				glob_match(char const *pat, char const *str, int flags)
 {
-	if (*pat == '\\' && !(flags & GLOBUX_NOESCAPE))
+	if (*pat == '\\' && !(flags & FT_GLOB_NOESCAPE))
 	{
 		return ((*(pat + 1) == *str) ?
 				glob_match(pat + 2, str + 1, flags) : false);
