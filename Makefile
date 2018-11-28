@@ -72,11 +72,9 @@ define target_bin
   $(eval $(call target,$(1),$(2),$(3),TARGET_BIN,OUTBIN_DIR,))
 endef
 
-INCLUDE += include
-LDDIRS  += $(OUTLIB_DIR)
-
 LIBFT_ROOT_DIR := $(shell pwd)
 include makefile.mk
+include test/makefile.mk
 
 lib: $(TARGET_LIB)
 bin: $(TARGET_BIN)
@@ -105,12 +103,12 @@ $(BUILD_PATH)/%.o: %.s $(MAKE_DEPS)
 	$(V)$(AS) $< -c $(CFLAGS) $(addprefix -I,$(INCLUDE)) \
 	  $(addprefix -D,$(DEFINE)) -MMD -MF $(@:.o=.d) -o $@
 
-$(TARGET_LIB): | $(MAKE_DEPS)
+$(TARGET_LIB): | $(DEPS) $(MAKE_DEPS)
 	@mkdir -p $(dir $@)
 	@echo "  AR      $(notdir $@)"
 	$(V)$(AR) rcs $@ $^
 
-$(TARGET_BIN): | $(MAKE_DEPS)
+$(TARGET_BIN): | $(DEPS) $(MAKE_DEPS)
 	@mkdir -p $(dir $@)
 	@echo "  LD      $(notdir $@)"
 	$(V)$(LD) $^ $(LDFLAGS) $(addprefix -L,$(LDDIRS)) \
@@ -123,6 +121,6 @@ clean:
 	@rm -rf $(BUILD_DIR)
 
 fclean: clean
-	@rm -rf $(TARGET_BIN)
+	@rm -rf $(TARGET_LIB) $(TARGET_BIN)
 
 re: clean all

@@ -12,4 +12,4 @@ macro (add_target name)
   add_dependencies(${name} ${name}_compiledb)
 endmacro()
 
-add_target(libft lib)
+add_target(libft)

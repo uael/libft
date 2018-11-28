@@ -10,19 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-ifeq (,$(LIBFT_ROOT_DIR))
-  $(error Must precise LIBFT_ROOT_DIR)
-endif
+TEST_MALLOC_OBJ = test/malloc.o
 
-ifeq (,$(OUTLIB_DIR))
-  $(error Must precise OUTLIB_DIR)
-endif
-
-LIBFT_CFLAGS += -I$(LIBFT_ROOT_DIR)/include
-LIBFT_LDFLAGS += -L$(OUTLIB_DIR) -lft
-
-include $(LIBFT_ROOT_DIR)/src/makefile.mk
-
-$(call target_lib,libft,LIBFT_OBJ,LIBFT_LIB)
-$(LIBFT_LIB): CFLAGS  += $(LIBFT_CFLAGS)
-$(LIBFT_LIB): LDFLAGS += $(LIBFT_LDFLAGS)
+$(eval $(call target_bin,test-malloc,TEST_MALLOC_OBJ,TEST_MALLOC_BIN))
+$(TEST_MALLOC_BIN): $(LIBFT_LIB)
+$(TEST_MALLOC_BIN): CFLAGS += $(LIBFT_CFLAGS)
