@@ -14,8 +14,6 @@
 
 #include <errno.h>
 
-#define COUNT_OF(x) (sizeof(x) / sizeof(*(x)))
-
 static const char *errno_str[] = {
 	[EPERM] = "Operation not permitted",
 	[ENOENT] = "No such file or directory",

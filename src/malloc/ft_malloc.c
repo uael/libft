@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft/malloc.h"
+#include "ft/stdlib.h"
 #include "ft/stdio.h"
 
 #include <stdbool.h>
@@ -45,9 +46,9 @@ struct				s_bin
 	uint64_t		binmap[MIN_ALLOC / (sizeof(uint64_t) * BITSPERBYTE)];
 };
 
-struct				s_mmapl
+struct				s_lrg
 {
-	struct s_mmapl	*next;
+	struct s_lrg	*next;
 	struct s_mmap	mmap;
 };
 
@@ -55,51 +56,40 @@ struct				s_heap
 {
 	struct s_blk	blks[12];
 	struct s_bin	*free_bins;
-	struct s_mmapl	*free_mmapl;
-	struct s_mmapl	*mmapl;
+	struct s_lrg	*free_lrgs;
+	struct s_lrg	*lrgs;
 };
 
-static bool binhas(struct s_bin *bin, uint8_t *ppos)
-{
-	const uint8_t nmap = sizeof(bin->binmap) / sizeof(*bin->binmap);
-
-	*ppos = 0;
-	while (*ppos < nmap)
-	{
-		if (bin->binmap[*ppos]) return (true);
-		++*ppos;
-	}
-	return (false);
-}
-
-static struct s_bin *binfind(struct s_bin *bin, uint8_t *ppos)
+static struct s_bin *bin_find(struct s_bin *bin, uint8_t *ppos)
 {
 	if (bin == NULL)
-		return (false);
-	if (binhas(bin, ppos))
-		return (bin);
-	return (binfind(bin->next, ppos));
+		return (NULL);
+	*ppos = 0;
+	while (*ppos < COUNT_OF(bin->binmap))
+	{
+		if (bin->binmap[*ppos]) return (bin);
+		++*ppos;
+	}
+	return (bin_find(bin->next, ppos));
 }
 
 static int nb_pages;
 static int nb_free_pages;
 
-static void heap_init(struct s_heap *heap)
+static void			heap_init(struct s_heap *heap)
 {
-	const uint8_t	nblk = sizeof(heap->blks) / sizeof(*heap->blks);
-	const uint8_t	nmap = sizeof(heap->blks->freemask) / sizeof(*heap->blks->freemask);
 	uint8_t			i;
 	uint8_t			j;
 	uint8_t			k;
 
 	i = 0;
-	while (i < nblk)
+	while (i < COUNT_OF(heap->blks))
 	{
 		heap->blks[i].bins = NULL;
 		heap->blks[i].nbyte = (uint16_t)(1 << i);
 		k = 0;
 		j = (uint8_t)(PAGE_SIZE / (1 << i));
-		while (k < nmap)
+		while (k < COUNT_OF(heap->blks->freemask))
 		{
 			heap->blks[i].freemask[k++] = ~(~0ULL << j);
 			j = j >= (sizeof(uint64_t) * BITSPERBYTE)
@@ -108,41 +98,37 @@ static void heap_init(struct s_heap *heap)
 		++i;
 	}
 	heap->free_bins = NULL;
-	heap->free_mmapl = NULL;
-	heap->mmapl = NULL;
+	heap->free_lrgs = NULL;
+	heap->lrgs = NULL;
 }
 
-static void heap_fini(struct s_heap *heap)
+static void			heap_fini(struct s_heap *heap)
 {
-	const uint8_t	nblk = sizeof(heap->blks) / sizeof(*heap->blks);
 	uint8_t			i;
 	struct s_bin	*bin;
 	struct s_bin	*next;
 	struct s_bin	*mapped_bin;
 
-	struct s_mmapl	*mmapl;
-	struct s_mmapl	*mmapl_next;
-	struct s_mmapl	*mapped_mmapl;
+	struct s_lrg	*lrg;
+	struct s_lrg	*lrg_next;
+	struct s_lrg	*mapped_lrg;
 
 	i = 0;
 	mapped_bin = NULL;
-	while (i < nblk)
+	while (i < COUNT_OF(heap->blks))
 	{
 		bin = heap->blks[i].bins;
 		heap->blks[i].bins = NULL;
 		while (bin)
 		{
 			next = bin->next;
-
 			munmap(bin->mmap.mem, bin->mmap.size);
 			++nb_free_pages;
-
 			if (((uintptr_t)bin % PAGE_SIZE) == 0)
 			{
 				bin->next = mapped_bin;
 				mapped_bin = bin;
 			}
-
 			bin = next;
 		}
 		++i;
@@ -169,49 +155,48 @@ static void heap_fini(struct s_heap *heap)
 		mapped_bin = next;
 	}
 
-	mapped_mmapl = NULL;
-	mmapl = heap->mmapl;
-	while (mmapl)
+	mapped_lrg = NULL;
+	lrg = heap->lrgs;
+	while (lrg)
 	{
-		mmapl_next = mmapl->next;
+		lrg_next = lrg->next;
 
-		munmap(mmapl->mmap.mem, mmapl->mmap.size);
+		munmap(lrg->mmap.mem, lrg->mmap.size);
 		++nb_free_pages;
 
-		if (((uintptr_t)mmapl % PAGE_SIZE) == 0)
+		if (((uintptr_t)lrg % PAGE_SIZE) == 0)
 		{
-			mmapl->next = mapped_mmapl;
-			mapped_mmapl = mmapl;
+			lrg->next = mapped_lrg;
+			mapped_lrg = lrg;
 		}
 
-		mmapl = mmapl_next;
+		lrg = lrg_next;
 	}
-	mmapl = heap->free_mmapl;
-	while (mmapl)
+	lrg = heap->free_lrgs;
+	while (lrg)
 	{
-		mmapl_next = mmapl->next;
+		lrg_next = lrg->next;
 
-		if (((uintptr_t)mmapl % PAGE_SIZE) == 0)
+		if (((uintptr_t)lrg % PAGE_SIZE) == 0)
 		{
-			mmapl->next = mapped_mmapl;
-			mapped_mmapl = mmapl;
+			lrg->next = mapped_lrg;
+			mapped_lrg = lrg;
 		}
 
-		mmapl = mmapl_next;
+		lrg = lrg_next;
 	}
-	while (mapped_mmapl)
+	while (mapped_lrg)
 	{
-		mmapl_next = mapped_mmapl->next;
-		munmap(mapped_mmapl, PAGE_SIZE);
+		lrg_next = mapped_lrg->next;
+		munmap(mapped_lrg, PAGE_SIZE);
 		++nb_free_pages;
-		mapped_mmapl = mmapl_next;
+		mapped_lrg = lrg_next;
 	}
 }
 
-static int bininit(struct s_bin *bin, struct s_blk *blk)
+static int			bin_init(struct s_bin *bin, struct s_blk *blk)
 {
-	const uint8_t nmap = sizeof(bin->binmap) / sizeof(*bin->binmap);
-	uint8_t i;
+	uint8_t			i;
 
 	bin->mmap.mem = mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE,
 		MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
@@ -221,7 +206,7 @@ static int bininit(struct s_bin *bin, struct s_blk *blk)
 	bin->blk = blk;
 	bin->mmap.size = PAGE_SIZE;
 	i = 0;
-	while (i < nmap)
+	while (i < COUNT_OF(bin->binmap))
 	{
 		bin->binmap[i] = blk->freemask[i];
 		++i;
@@ -229,17 +214,18 @@ static int bininit(struct s_bin *bin, struct s_blk *blk)
 	return (0);
 }
 
-static bool bin_isfree(struct s_bin *bin)
+static bool			bin_isfree(struct s_bin *bin)
 {
 	return (!ft_memcmp(bin->binmap, bin->blk->freemask, sizeof(bin->binmap)));
 }
 
-static struct s_bin *blkfind(struct s_heap *heap, struct s_blk *blk, uint8_t *ppos)
+static struct s_bin	*blk_find(struct s_heap *heap, struct s_blk *blk,
+	uint8_t *ppos)
 {
 	size_t			i;
 	struct s_bin	*bin;
 
-	if ((bin = binfind(blk->bins, ppos)))
+	if ((bin = bin_find(blk->bins, ppos)))
 		return (bin);
 	if (!heap->free_bins)
 	{
@@ -249,56 +235,58 @@ static struct s_bin *blkfind(struct s_heap *heap, struct s_blk *blk, uint8_t *pp
 			return (NULL);
 		++nb_pages;
 		i = 0;
-		while (i + sizeof(struct s_bin) < PAGE_SIZE)
+		while ((i += sizeof(struct s_bin)) < PAGE_SIZE)
 		{
 			*bin = (struct s_bin){ };
 			bin->next = heap->free_bins;
 			heap->free_bins = bin;
 			++bin;
-			i += sizeof(struct s_bin);
 		}
 	}
 	bin = heap->free_bins;
 	heap->free_bins = bin->next;
 	bin->next = blk->bins;
 	*ppos = 0;
-	return (bininit(bin, blk) ? NULL : (blk->bins = bin));
+	return (bin_init(bin, blk) ? NULL : (blk->bins = bin));
 }
 
-static void			*alloc_lrg(struct s_heap *heap, size_t sz)
+static int			lrg_init(struct s_lrg *lrg, size_t sz)
+{
+	sz = (sz + PAGE_SIZE - 1) & -PAGE_SIZE;
+	lrg->mmap.mem = mmap(NULL, sz, PROT_READ | PROT_WRITE,
+		MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
+	if (lrg->mmap.mem == MAP_FAILED)
+		return (-errno);
+	++nb_pages;
+	lrg->mmap.size = sz;
+	return (0);
+}
+
+static void			*lrg_alloc(struct s_heap *heap, size_t sz)
 {
 	size_t			i;
-	struct s_mmapl	*m;
+	struct s_lrg	*lrg;
 
-	if (!heap->free_mmapl) {
-		m = mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE,
+	if (!heap->free_lrgs) {
+		lrg = mmap(NULL, PAGE_SIZE, PROT_READ | PROT_WRITE,
 			MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-		if (m == MAP_FAILED)
+		if (lrg == MAP_FAILED)
 			return (NULL);
 		++nb_pages;
 		i = 0;
-		while (i + sizeof(struct s_bin) < PAGE_SIZE)
+		while ((i += sizeof(struct s_bin)) < PAGE_SIZE)
 		{
-			*m = (struct s_mmapl){ };
-			m->next = heap->free_mmapl;
-			heap->free_mmapl = m;
-			++m;
-			i += sizeof(struct s_mmapl);
+			*lrg = (struct s_lrg){ };
+			lrg->next = heap->free_lrgs;
+			heap->free_lrgs = lrg;
+			++lrg;
 		}
 	}
-	m = heap->free_mmapl;
-	heap->free_mmapl = m->next;
-	m->next = heap->mmapl;
-	heap->mmapl = m;
-
-	sz = (sz + PAGE_SIZE - 1) & -PAGE_SIZE;
-	m->mmap.mem = mmap(NULL, sz, PROT_READ | PROT_WRITE,
-					   MAP_PRIVATE | MAP_ANONYMOUS, -1, 0);
-	if (m->mmap.mem == MAP_FAILED)
-		return (NULL);
-	++nb_pages;
-	m->mmap.size = sz;
-	return m->mmap.mem;
+	lrg = heap->free_lrgs;
+	heap->free_lrgs = lrg->next;
+	lrg->next = heap->lrgs;
+	heap->lrgs = lrg;
+	return (lrg_init(lrg, sz) ? NULL : lrg->mmap.mem);
 }
 
 static void			*alloc(struct s_heap *heap, size_t sz)
@@ -311,10 +299,9 @@ static void			*alloc(struct s_heap *heap, size_t sz)
 	if (sz == 0)
 		return (NULL);
 	if (sz > 2048)
-		return (alloc_lrg(heap, sz));
-	bit = 31 - __builtin_clz(sz);
-	blk = heap->blks + (sz > 2 ? ((int)bit) : (int)(sz - 1));
-	bin = blkfind(heap, blk, &pos);
+		return (lrg_alloc(heap, sz));
+	blk = heap->blks + (sz > 2 ? (31 - __builtin_clz(sz)) : (int)(sz - 1));
+	bin = blk_find(heap, blk, &pos);
 	if (bin == NULL)
 		return (NULL);
 	bit = __builtin_ctzll(bin->binmap[pos]);
@@ -324,13 +311,13 @@ static void			*alloc(struct s_heap *heap, size_t sz)
 	return (bin->mmap.mem + (blk->nbyte * pos));
 }
 
-static struct s_mmapl	**mmaplbymem(struct s_heap *heap, void *mem)
+static struct s_lrg	**lrg_bymem(struct s_heap *heap, void *mem)
 {
-	struct s_mmapl *hd;
-	struct s_mmapl **phd;
+	struct s_lrg	*hd;
+	struct s_lrg	**phd;
 
-	phd = &heap->mmapl;
-	hd = heap->mmapl;
+	phd = &heap->lrgs;
+	hd = heap->lrgs;
 	while (hd)
 	{
 		if (hd->mmap.mem <= mem && (hd->mmap.mem + hd->mmap.size) > mem)
@@ -341,16 +328,15 @@ static struct s_mmapl	**mmaplbymem(struct s_heap *heap, void *mem)
 	return (NULL);
 }
 
-static struct s_bin		**binbymem(struct s_heap *heap, void *mem)
+static struct s_bin	**bin_bymem(struct s_heap *heap, void *mem)
 {
-	const uint8_t	nblk = sizeof(heap->blks) / sizeof(*heap->blks);
 	struct s_blk	*blk;
 	struct s_bin	**phd;
 	struct s_bin	*hd;
 	uint8_t			i;
 
 	i = 0;
-	while (i < nblk)
+	while (i < COUNT_OF(heap->blks))
 	{
 		blk = heap->blks + i;
 		phd = &blk->bins;
@@ -370,8 +356,8 @@ static struct s_bin		**binbymem(struct s_heap *heap, void *mem)
 static void			ft_mfree(struct s_heap *heap, void *ptr)
 {
 	void			*mem;
-	struct s_mmapl	**pmmapl;
-	struct s_mmapl	*mmapl;
+	struct s_lrg	**plrg;
+	struct s_lrg	*lrg;
 	struct s_bin	**pbin;
 	struct s_bin	*bin;
 	uint8_t			i;
@@ -380,17 +366,17 @@ static void			ft_mfree(struct s_heap *heap, void *ptr)
 	if (ptr == NULL)
 		return ;
 	mem = (void *)((uintptr_t)ptr & -PAGE_SIZE);
-	if ((pmmapl = mmaplbymem(heap, mem)))
+	if ((plrg = lrg_bymem(heap, mem)))
 	{
-		mmapl = *pmmapl;
-		munmap(mmapl->mmap.mem, mmapl->mmap.size);
+		lrg = *plrg;
+		munmap(lrg->mmap.mem, lrg->mmap.size);
 		++nb_free_pages;
 
-		*pmmapl = mmapl->next;
-		mmapl->next = heap->free_mmapl;
-		heap->free_mmapl = mmapl;
+		*plrg = lrg->next;
+		lrg->next = heap->free_lrgs;
+		heap->free_lrgs = lrg;
 	}
-	else if ((pbin = binbymem(heap, mem)))
+	else if ((pbin = bin_bymem(heap, mem)))
 	{
 		bin = *pbin;
 		pos = (uint8_t)((ptr - mem) / bin->blk->nbyte);
