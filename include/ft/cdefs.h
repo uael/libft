@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft/ctype.h                                         :+:      :+:    :+:   */
+/*   ft/cdefs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CTYPE_H
-# define FT_CTYPE_H
+#ifndef FT_CDEFS_H
+# define FT_CDEFS_H
 
-# include "ft/cdefs.h"
+# include <stdint.h>
+# include <stddef.h>
 
-extern int	ft_isalnum(int c);
-extern int	ft_isascii(int c);
-extern int	ft_isalpha(int c);
-extern int	ft_isdigit(int c);
-extern int	ft_islower(int c);
-extern int	ft_isprint(int c);
-extern int	ft_isupper(int c);
-extern int	ft_isspace(int c);
-extern int	ft_iscntrl(int c);
-extern int	ft_tolower(int c);
-extern int	ft_toupper(int c);
+# ifndef COUNT_OF
+#  define COUNT_OF(x) (sizeof(x) / sizeof(*(x)))
+# endif
+
+# ifndef OFFSET_OF
+#  define OFFSET_OF(type, field) \
+	((size_t)((uintptr_t)&(((type *)(0))->field) - (uintptr_t)(0)))
+# endif
+
+# ifndef CONTAINER_OF
+#  define CONTAINER_OF(ptr, type, field) \
+	((type *)((uintptr_t)(ptr) - OFFSET_OF(type, field)))
+# endif
 
 #endif

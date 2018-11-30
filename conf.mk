@@ -10,24 +10,24 @@
 #                                                                              #
 # **************************************************************************** #
 
-ifeq (,$(LIBFT_ROOT_DIR))
-  $(error Must precise LIBFT_ROOT_DIR)
-endif
 
-ifeq (,$(OUTLIB_DIR))
-  $(error Must precise OUTLIB_DIR)
-endif
+# ------------------------------------------------------------------------------
+# glob configuration
+# ------------------------------------------------------------------------------
 
-ifeq (,$(LIBFT_CONF_FILE))
-  LIBFT_CONF_FILE := $(LIBFT_ROOT_DIR)/conf.mk
-endif
+FT_GLOB_ENABLE := 1
 
-LIBFT_CFLAGS += -I$(LIBFT_ROOT_DIR)/include
-LIBFT_LDFLAGS += -L$(OUTLIB_DIR) -lft
 
-include $(LIBFT_CONF_FILE)
-include $(LIBFT_ROOT_DIR)/src/makefile.mk
+# ------------------------------------------------------------------------------
+# malloc configuration
+# ------------------------------------------------------------------------------
 
-$(call target_lib,libft,LIBFT_OBJ,LIBFT_LIB)
-$(LIBFT_LIB): CFLAGS  += $(LIBFT_CFLAGS)
-$(LIBFT_LIB): LDFLAGS += $(LIBFT_LDFLAGS)
+FT_MALLOC_ENABLE    := 1
+FT_MALLOC_MAX_MPOOL := 1
+
+
+# ------------------------------------------------------------------------------
+# stdio configuration
+# ------------------------------------------------------------------------------
+
+FT_STDIO_ENABLE := 1

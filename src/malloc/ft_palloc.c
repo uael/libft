@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft/ctype.h                                         :+:      :+:    :+:   */
+/*   malloc/ft_palloc.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CTYPE_H
-# define FT_CTYPE_H
+#include "internal/internal.h"
 
-# include "ft/cdefs.h"
+void	*ft_palloc(t_mpool pool, size_t sz)
+{
+	const struct s_mpool_hdr *hdr = (const struct s_mpool_hdr *)pool;
 
-extern int	ft_isalnum(int c);
-extern int	ft_isascii(int c);
-extern int	ft_isalpha(int c);
-extern int	ft_isdigit(int c);
-extern int	ft_islower(int c);
-extern int	ft_isprint(int c);
-extern int	ft_isupper(int c);
-extern int	ft_isspace(int c);
-extern int	ft_iscntrl(int c);
-extern int	ft_tolower(int c);
-extern int	ft_toupper(int c);
-
-#endif
+	return g_ops[hdr->mid]->alloc(pool, sz);
+}

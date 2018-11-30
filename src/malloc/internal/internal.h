@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft/ctype.h                                         :+:      :+:    :+:   */
+/*   malloc/internal/internal.h                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alucas- <alucas-@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,21 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CTYPE_H
-# define FT_CTYPE_H
+#ifndef MALLOC_INTERNAL_INTERNAL_H
+# define MALLOC_INTERNAL_INTERNAL_H
 
-# include "ft/cdefs.h"
+# include "ft/malloc.h"
+# include "ft/string.h"
 
-extern int	ft_isalnum(int c);
-extern int	ft_isascii(int c);
-extern int	ft_isalpha(int c);
-extern int	ft_isdigit(int c);
-extern int	ft_islower(int c);
-extern int	ft_isprint(int c);
-extern int	ft_isupper(int c);
-extern int	ft_isspace(int c);
-extern int	ft_iscntrl(int c);
-extern int	ft_tolower(int c);
-extern int	ft_toupper(int c);
+# include <errno.h>
+
+# define PAGE_SIZE (4096)
+
+extern const struct s_mpool_ops	*g_ops[FT_MALLOC_MAX_MPOOL];
+extern t_mpool					g_pools;
 
 #endif

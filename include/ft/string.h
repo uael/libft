@@ -13,8 +13,7 @@
 #ifndef FT_STRING_H
 # define FT_STRING_H
 
-# include <stdint.h>
-# include <stddef.h>
+# include "ft/cdefs.h"
 
 extern void		*ft_memccpy(void *dst, const void *src, int c, size_t n);
 extern void		*ft_memchr(const void *s, int c, size_t n);

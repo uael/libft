@@ -13,10 +13,7 @@
 #ifndef FT_STDLIB_H
 # define FT_STDLIB_H
 
-# include <stdint.h>
-# include <stddef.h>
-
-# define COUNT_OF(x) (sizeof(x) / sizeof(*(x)))
+# include "ft/cdefs.h"
 
 typedef int			t_ncmp(const void *a, const void *b, size_t n);
 

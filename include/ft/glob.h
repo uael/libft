@@ -23,8 +23,7 @@
 #ifndef FT_GLOB_H
 # define FT_GLOB_H
 
-# include <stdint.h>
-# include <stddef.h>
+# include "ft/cdefs.h"
 
 /*
 ** Bits set in the FLAGS argument to `globctor'.
