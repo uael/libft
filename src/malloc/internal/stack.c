@@ -54,7 +54,7 @@ static void			*stack_alloc(struct s_mpool *stack, size_t sz)
 
 	sz = (sz + sizeof(struct s_chunk) - 1) & sizeof(struct s_chunk);
 	chk = stack->head;
-	while (chk->rfc || (chunk_size(chk) - chunk_mem(chk)) < sz)
+	while (chk->rfc || chunk_size(chk) < sz)
 	{
 		if (chk->nxt == stack->tail->off)
 		{
