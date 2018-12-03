@@ -23,7 +23,6 @@ struct					s_chunk
 	uint16_t			nxt;
 };
 
-extern struct s_mpool	*chunk_pool(struct s_chunk *chunk);
 extern uintptr_t		chunk_mem(struct s_chunk *chunk);
 extern size_t			chunk_size(struct s_chunk *chunk);
 extern struct s_chunk	*chunk_nxt(struct s_chunk *chunk, struct s_mpool *pool);
@@ -33,8 +32,8 @@ struct					s_mpool
 {
 	uint8_t				mid;
 	size_t				size: 56;
+	struct s_chunk		*head;
 	struct s_chunk		*tail;
-	struct s_chunk		head[0];
 };
 
 #endif

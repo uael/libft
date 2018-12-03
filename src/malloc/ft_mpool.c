@@ -54,7 +54,8 @@ static DTOR					dtor(void)
 	{
 		if (g_ops[i])
 		{
-			g_ops[i]->fini(g_pools[i]);
+			if (g_ops[i]->fini)
+				g_ops[i]->fini(g_pools[i]);
 			g_ops[i] = NULL;
 			g_pools[i] = NULL;
 		}

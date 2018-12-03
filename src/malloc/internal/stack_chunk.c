@@ -12,11 +12,6 @@
 
 #include "stack.h"
 
-inline struct s_mpool	*chunk_pool(struct s_chunk *chunk)
-{
-	return ((struct s_mpool *)(chunk - chunk->off) - 1);
-}
-
 inline uintptr_t		chunk_mem(struct s_chunk *chunk)
 {
 	return ((uintptr_t)(chunk + 1));
