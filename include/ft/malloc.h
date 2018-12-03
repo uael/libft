@@ -47,6 +47,13 @@ struct							s_mpool_def
 
 extern t_mpool					g_heap;
 extern const struct s_mpool_def *g_heap_def;
+extern const struct s_mpool_def *g_stack_def;
+
+struct							s_stack_conf
+{
+	void						*mem;
+	size_t						size;
+};
 
 extern int						ft_mpool(const struct s_mpool_def *def,
 									void *conf, t_mpool *pool);

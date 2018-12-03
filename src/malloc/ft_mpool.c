@@ -21,7 +21,7 @@ const struct s_mpool_ops	*g_ops[FT_MALLOC_MAX_MPOOL];
 t_mpool						g_pools[FT_MALLOC_MAX_MPOOL];
 
 int							ft_mpool(const struct s_mpool_def *def,
-											void *conf, t_mpool *_pool)
+								void *conf, t_mpool *_pool)
 {
 	uint8_t					i;
 	t_mpool					pool;
@@ -41,8 +41,7 @@ int							ft_mpool(const struct s_mpool_def *def,
 	ft_memset(pool, 0, def->mpool_size);
 	((struct s_mpool_hdr *)pool)->mid = i;
 	*_pool = pool;
-	g_ops[i]->init(pool, conf);
-	return (0);
+	return (g_ops[i]->init(pool, conf));
 }
 
 static DTOR					dtor(void)

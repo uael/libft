@@ -71,6 +71,8 @@ LIBFT_MALLOC_OBJ += $(LIBFT_ROOT_DIR)/src/malloc/ft_pfree.o
 LIBFT_MALLOC_OBJ += $(LIBFT_ROOT_DIR)/src/malloc/internal/heap.o
 LIBFT_MALLOC_OBJ += $(LIBFT_ROOT_DIR)/src/malloc/internal/heap_bin.o
 LIBFT_MALLOC_OBJ += $(LIBFT_ROOT_DIR)/src/malloc/internal/heap_lrg.o
+LIBFT_MALLOC_OBJ += $(LIBFT_ROOT_DIR)/src/malloc/internal/stack.o
+LIBFT_MALLOC_OBJ += $(LIBFT_ROOT_DIR)/src/malloc/internal/stack_chunk.o
 
 ifeq (1,$(FT_MALLOC_ENABLE))
   LIBFT_OBJ += $(LIBFT_MALLOC_OBJ)

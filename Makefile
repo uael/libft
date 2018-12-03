@@ -31,8 +31,8 @@ else
   ifneq ($(SAN),)
     CONFIG         = san
     TARGET_SUFFIX  = -san
-  	CFLAGS        += -fsanitize=address
-  	LDFLAGS       += -fsanitize=address
+    CFLAGS        += -fsanitize=address
+    LDFLAGS       += -fsanitize=address
   endif
 endif
 
