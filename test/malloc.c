@@ -49,9 +49,9 @@ int main(void)
 
 	assert(0 == test(pool));
 
-//	ft_mpool(g_heap_def, NULL, &pool);
-//
-//	assert(0 == test(pool));
+	ft_mpool(g_heap_def, NULL, &pool);
+
+	assert(0 == test(pool));
 
 	return 0;
 }

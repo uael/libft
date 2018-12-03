@@ -57,7 +57,7 @@ static void			*heap_alloc(struct s_mpool *heap, size_t sz)
 		return (NULL);
 	if (sz > 2048)
 		return (lrg_alloc(heap, sz));
-	blk = heap->blks + (sz > 2 ? (31 - __builtin_clz(sz)) : (int)(sz - 1));
+	blk = heap->blks + (31 - __builtin_clz(sz));
 	bin = bin_find(heap, blk, &pos);
 	if (bin == NULL)
 		return (NULL);
