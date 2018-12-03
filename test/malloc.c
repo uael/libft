@@ -12,16 +12,11 @@
 
 #include <ft/malloc.h>
 #include <ft/stdio.h>
+#include <assert.h>
 
-static int test_stack(void)
+static int test(t_mpool pool)
 {
-	static uint8_t mem[UINT16_MAX];
 	void *ptrs[1024], *ptr1 = NULL, *ptr2 = NULL, *begin = NULL;
-	t_mpool pool;
-
-	ft_mpool(g_stack_def,
-		&(struct s_stack_conf){ .mem = mem, .size = sizeof(mem) },
-		&pool);
 
 	for (size_t i = 0; i < 128; ++i) {
 		ptrs[i] = ft_palloc(pool, i);
@@ -30,37 +25,14 @@ static int test_stack(void)
 	}
 
 	ptr1 = ft_palloc(pool, 4000);
+	ft_printf("%p\n", ptr1);
 	ptr2 = ft_palloc(pool, 4000);
+	ft_printf("%p\n", ptr2);
 
 	ft_pfree(pool, ptr2);
 	ft_pfree(pool, ptr1);
 
-	for (size_t i = 0; i < 8; ++i)
-		ft_pfree(pool, ptrs[i]);
-
-	return 0;
-}
-
-static int test_heap(void)
-{
-	t_mpool pool;
-	void *ptrs[1024], *ptr1 = NULL, *ptr2 = NULL, *begin = NULL;
-
-	ft_mpool(g_heap_def, NULL, &pool);
-
-	for (size_t i = 0; i < 1024; ++i) {
-		ptrs[i] = ft_palloc(pool, 1024);
-		ft_printf("%p\n", ptrs[i]);
-		if (!begin) begin = ptrs[i];
-	}
-
-	ptr1 = ft_palloc(pool, 4000);
-	ptr2 = ft_palloc(pool, 4000);
-
-	ft_pfree(pool, ptr2);
-	ft_pfree(pool, ptr1);
-
-	for (size_t i = 0; i < 1024; ++i)
+	for (size_t i = 0; i < 128; ++i)
 		ft_pfree(pool, ptrs[i]);
 
 	return 0;
@@ -68,7 +40,18 @@ static int test_heap(void)
 
 int main(void)
 {
-	test_stack();
-	(void)test_heap;
+	static uint8_t mem[UINT16_MAX];
+	t_mpool pool;
+
+	ft_mpool(g_stack_def,
+			 &(struct s_stack_conf){ .mem = mem, .size = sizeof(mem) },
+			 &pool);
+
+	assert(0 == test(pool));
+
+//	ft_mpool(g_heap_def, NULL, &pool);
+//
+//	assert(0 == test(pool));
+
 	return 0;
 }
