@@ -62,8 +62,9 @@ static void			*heap_alloc(struct s_mpool *heap, size_t sz)
 	if (bin == NULL)
 		return (NULL);
 	bit = __builtin_ctzll(bin->binmap[pos]);
-	bin->binmap[pos] ^= (1 << bit);
-	pos *= (sizeof(uint64_t) * BITSPERBYTE);
+	bin->binmap[pos] &= ~(1 << bit);
+	bin->ptrmap[pos] |= +(1 << bit);
+	pos *= BITS;
 	pos += bit;
 	return (bin->mmap.mem + (blk->nbyte * pos));
 }
@@ -84,9 +85,9 @@ static int			heap_free(struct s_mpool *heap, void *ptr)
 
 	if (ptr == NULL)
 		return (0);
-	mem = (void *)((uintptr_t)ptr & -PAGE_SIZE);
-	if ((plrg = lrg_bymem(heap, mem)))
+	if ((plrg = lrg_bymem(heap, ptr)))
 		return (lrg_free(heap, plrg));
+	mem = (void *)((uintptr_t)ptr & -PAGE_SIZE);
 	if ((pbin = bin_bymem(heap, mem)))
 		return (bin_free(heap, pbin, ptr, mem));
 	return (0);

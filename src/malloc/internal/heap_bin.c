@@ -14,6 +14,8 @@
 
 #include <sys/mman.h>
 
+#define BITS (sizeof(uint64_t) * BITSPERBYTE)
+
 int					bin_init(struct s_bin *bin, struct s_blk *blk)
 {
 	uint8_t			i;
@@ -27,6 +29,7 @@ int					bin_init(struct s_bin *bin, struct s_blk *blk)
 	i = 0;
 	while (i < COUNT_OF(bin->binmap))
 	{
+		bin->ptrmap[i] = 0x00;
 		bin->binmap[i] = blk->freemask[i];
 		++i;
 	}
@@ -43,14 +46,17 @@ int					bin_free(struct s_mpool *heap, struct s_bin **pbin,
 	bin = *pbin;
 	pos = (uint8_t)((ptr - mem) / bin->blk->nbyte);
 	i = 0;
-	while (pos > (sizeof(uint64_t) * BITSPERBYTE))
+	while (pos > BITS)
 	{
 		++i;
-		pos -= (sizeof(uint64_t) * BITSPERBYTE);
+		pos -= BITS;
 	}
+	if (!(bin->ptrmap[i] & (1 << pos)))
+		return (-(errno = EINVAL));
 	if ((bin->binmap[i] & (1 << pos)))
 		return (-(errno = EINVAL));
-	bin->binmap[i] ^= (1 << pos);
+	bin->binmap[i] |= +(1 << pos);
+	bin->ptrmap[i] &= ~(1 << pos);
 	if (bin->blk->bins->next
 		&& ft_memcmp(bin->binmap, bin->blk->freemask, sizeof(bin->binmap)) == 0)
 	{
@@ -60,19 +66,6 @@ int					bin_free(struct s_mpool *heap, struct s_bin **pbin,
 		heap->free_bins = bin;
 	}
 	return (0);
-}
-
-struct s_bin		*bin_used(struct s_bin *bin, uint8_t *ppos)
-{
-	if (bin == NULL)
-		return (NULL);
-	*ppos = 0;
-	while (*ppos < COUNT_OF(bin->binmap))
-	{
-		if (bin->binmap[*ppos]) return (bin);
-		++*ppos;
-	}
-	return (bin_used(bin->next, ppos));
 }
 
 struct s_bin		**bin_bymem(struct s_mpool *heap, void *mem)
@@ -100,8 +93,22 @@ struct s_bin		**bin_bymem(struct s_mpool *heap, void *mem)
 	return (NULL);
 }
 
+static struct s_bin	*bin_used(struct s_bin *bin, uint8_t *ppos)
+{
+	if (bin == NULL)
+		return (NULL);
+	*ppos = 0;
+	while (*ppos < COUNT_OF(bin->binmap))
+	{
+		if (bin->binmap[*ppos])
+			return (bin);
+		++*ppos;
+	}
+	return (bin_used(bin->next, ppos));
+}
+
 struct s_bin		*bin_find(struct s_mpool *heap, struct s_blk *blk,
-						uint8_t *ppos)
+								uint8_t *ppos)
 {
 	size_t			i;
 	struct s_bin	*bin;

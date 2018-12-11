@@ -72,7 +72,7 @@ struct s_lrg		**lrg_bymem(struct s_mpool *heap, void *mem)
 	hd = heap->lrgs;
 	while (hd)
 	{
-		if (hd->mmap.mem <= mem && (hd->mmap.mem + hd->mmap.size) > mem)
+		if (hd->mmap.mem == mem)
 			return (phd);
 		phd = &hd->next;
 		hd = hd->next;

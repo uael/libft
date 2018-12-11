@@ -41,12 +41,12 @@ struct				s_bin
 	struct s_mmap	mmap;
 
 	uint64_t		binmap[MIN_ALLOC / (sizeof(uint64_t) * BITSPERBYTE)];
+	uint64_t		ptrmap[MIN_ALLOC / (sizeof(uint64_t) * BITSPERBYTE)];
 };
 
 int					bin_init(struct s_bin *bin, struct s_blk *blk);
 int					bin_free(struct s_mpool *heap, struct s_bin **pbin,
 						void *ptr, void *mem);
-struct s_bin		*bin_used(struct s_bin *bin, uint8_t *ppos);
 struct s_bin		**bin_bymem(struct s_mpool *heap, void *mem);
 struct s_bin		*bin_find(struct s_mpool *heap, struct s_blk *blk,
 						uint8_t *ppos);
