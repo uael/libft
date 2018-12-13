@@ -22,8 +22,8 @@ CFLAGS += -Wall -Wextra -Werror
 
 ifeq ($(DEBUG),)
   CONFIG   = release
-  CFLAGS  += -flto -O2
-  LDFLAGS += -flto
+  CFLAGS  += -O2
+  LDFLAGS +=
 else
   CONFIG         = debug
   TARGET_SUFFIX  = -debug

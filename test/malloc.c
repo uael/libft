@@ -51,7 +51,9 @@ int main(void)
 
 	ft_mpool(g_heap_def, NULL, &pool);
 
-	assert(0 == test(pool));
+	ft_printf("%p\n", g_heap);
+
+	assert(0 == test(NULL));
 
 	return 0;
 }

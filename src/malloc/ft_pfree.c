@@ -14,7 +14,8 @@
 
 int	ft_pfree(t_mpool pool, void *ptr)
 {
-	const struct s_mpool_hdr *hdr = (const struct s_mpool_hdr *)pool;
+	const t_mpool				p = pool ? pool : g_heap;
+	const struct s_mpool_hdr	*hdr = (const struct s_mpool_hdr *)p;
 
-	return g_ops[hdr->mid]->free(pool, ptr);
+	return g_ops[hdr->mid]->free(p, ptr);
 }

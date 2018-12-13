@@ -15,10 +15,12 @@
 
 #include <errno.h>
 
+#define CTOR __attribute__((__constructor__)) void
 #define DTOR __attribute__((__destructor__)) void
 
 const struct s_mpool_ops	*g_ops[FT_MALLOC_MAX_MPOOL];
 t_mpool						g_pools[FT_MALLOC_MAX_MPOOL];
+t_mpool						g_heap;
 
 int							ft_mpool(const struct s_mpool_def *def,
 								void *conf, t_mpool *_pool)
@@ -42,6 +44,12 @@ int							ft_mpool(const struct s_mpool_def *def,
 	((struct s_mpool_hdr *)pool)->mid = i;
 	*_pool = pool;
 	return (g_ops[i]->init(pool, conf));
+}
+
+static CTOR					ctor(void)
+{
+	(void)ctor;
+	ft_mpool(g_heap_def, NULL, &g_heap);
 }
 
 static DTOR					dtor(void)
